@@ -16,6 +16,8 @@ class Realtor
   field :phone, type: String
   field :time_zone, type: String, default: 'Mountain Time (US & Canada)'
   
+  mount_uploader :avatar, MediaUploader
+  
   
   ## associations ##
   belongs_to :account

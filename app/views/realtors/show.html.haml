@@ -1,5 +1,6 @@
 %p#notice= notice
 
+= image_tag @realtor.avatar_url(:thumb) if @realtor.avatar?
 %p
   %b Account:
   = @realtor.account_id

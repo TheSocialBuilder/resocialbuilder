@@ -2,9 +2,7 @@
 
 %table
   %tr
-    %th Account
-    %th First name
-    %th Last name
+    %th Realtor
     %th Mls agent
     %th Email
     %th Password
@@ -16,9 +14,10 @@
 
   - @realtors.each do |realtor|
     %tr
-      %td= realtor.account_id
-      %td= realtor.first_name
-      %td= realtor.last_name
+      %td
+        = image_tag realtor.avatar_url(:small) if realtor.avatar?
+        = realtor.first_name
+        = realtor.last_name
       %td= realtor.mls_agent_id
       %td= realtor.email
       %td= realtor.password

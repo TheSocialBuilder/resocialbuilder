@@ -5,6 +5,11 @@ class MediaUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_limit => [150, 150]
   end
+  
+  # Small
+  version :small do
+    process :resize_to_limit => [25, 25]
+  end
 
   def extension_white_list
     %w(jpg jpeg gif png)

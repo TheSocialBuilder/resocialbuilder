@@ -1,0 +1,12 @@
+development:
+  username: bhammond
+  api_key: 850842e4a357f1a0f8bdc312c32922d7
+  container: resb_mls_listings
+test:
+  username: bhammond
+  api_key: 850842e4a357f1a0f8bdc312c32922d7
+  container: resb_mls_listings
+production:
+  username: bhammond
+  api_key: 850842e4a357f1a0f8bdc312c32922d7
+  container: resb_mls_listings

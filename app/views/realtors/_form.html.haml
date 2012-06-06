@@ -1,0 +1,13 @@
+= semantic_form_for @realtor do |f|
+  = f.inputs do
+    = f.input :account_id
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :mls_agent_id
+    = f.input :email
+    = f.input :password
+    = f.input :phone
+    = f.input :time_zone
+
+  = f.actions do
+    = f.action :submit, :as => :input

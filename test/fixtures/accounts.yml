@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  site_title: MyString
+  subdomain: MyString
+  time_zone: MyString
+  settings_search_min: MyString
+  settings_search_max: MyString
+  mls_office_id: MyString
+
+two:
+  title: MyString
+  site_title: MyString
+  subdomain: MyString
+  time_zone: MyString
+  settings_search_min: MyString
+  settings_search_max: MyString
+  mls_office_id: MyString

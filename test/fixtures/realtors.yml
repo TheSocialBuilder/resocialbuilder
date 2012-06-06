@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_id: MyString
+  first_name: MyString
+  last_name: MyString
+  mls_agent_id: MyString
+  email: MyString
+  password: MyString
+  phone: MyString
+  time_zone: MyString
+
+two:
+  account_id: MyString
+  first_name: MyString
+  last_name: MyString
+  mls_agent_id: MyString
+  email: MyString
+  password: MyString
+  phone: MyString
+  time_zone: MyString

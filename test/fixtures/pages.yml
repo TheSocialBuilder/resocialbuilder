@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyString
+  account_id: MyString
+  seo_title: MyString
+  seo_meta: MyString
+  seo_desc: MyString
+
+two:
+  title: MyString
+  content: MyString
+  account_id: MyString
+  seo_title: MyString
+  seo_meta: MyString
+  seo_desc: MyString

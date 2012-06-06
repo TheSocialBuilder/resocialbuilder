@@ -1,0 +1,33 @@
+%h1 Listing realtors
+
+%table
+  %tr
+    %th Account
+    %th First name
+    %th Last name
+    %th Mls agent
+    %th Email
+    %th Password
+    %th Phone
+    %th Time zone
+    %th
+    %th
+    %th
+
+  - @realtors.each do |realtor|
+    %tr
+      %td= realtor.account_id
+      %td= realtor.first_name
+      %td= realtor.last_name
+      %td= realtor.mls_agent_id
+      %td= realtor.email
+      %td= realtor.password
+      %td= realtor.phone
+      %td= realtor.time_zone
+      %td= link_to 'Show', realtor
+      %td= link_to 'Edit', edit_realtor_path(realtor)
+      %td= link_to 'Destroy', realtor, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Realtor', new_realtor_path

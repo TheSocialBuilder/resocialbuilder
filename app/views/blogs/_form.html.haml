@@ -1,0 +1,12 @@
+= semantic_form_for @blog do |f|
+  = f.inputs do
+    = f.input :title
+    = f.input :content
+    = f.input :account_id
+    = f.input :seo_title
+    = f.input :seo_meta
+    = f.input :seo_desc
+    = f.input :published
+
+  = f.actions do
+    = f.action :submit, :as => :input

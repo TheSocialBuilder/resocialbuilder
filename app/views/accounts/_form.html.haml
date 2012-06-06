@@ -1,0 +1,12 @@
+= semantic_form_for @account do |f|
+  = f.inputs do
+    = f.input :title
+    = f.input :site_title
+    = f.input :subdomain
+    = f.input :time_zone
+    = f.input :settings_search_min
+    = f.input :settings_search_max
+    = f.input :mls_office_id
+
+  = f.actions do
+    = f.action :submit, :as => :input

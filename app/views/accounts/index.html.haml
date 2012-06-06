@@ -1,0 +1,31 @@
+%h1 Listing accounts
+
+%table
+  %tr
+    %th Title
+    %th Site title
+    %th Subdomain
+    %th Time zone
+    %th Settings search min
+    %th Settings search max
+    %th Mls office
+    %th
+    %th
+    %th
+
+  - @accounts.each do |account|
+    %tr
+      %td= account.title
+      %td= account.site_title
+      %td= account.subdomain
+      %td= account.time_zone
+      %td= account.settings_search_min
+      %td= account.settings_search_max
+      %td= account.mls_office_id
+      %td= link_to 'Show', account
+      %td= link_to 'Edit', edit_account_path(account)
+      %td= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Account', new_account_path

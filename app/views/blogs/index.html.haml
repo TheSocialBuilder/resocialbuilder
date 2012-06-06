@@ -1,0 +1,31 @@
+%h1 Listing blogs
+
+%table
+  %tr
+    %th Title
+    %th Content
+    %th Account
+    %th Seo title
+    %th Seo meta
+    %th Seo desc
+    %th Published
+    %th
+    %th
+    %th
+
+  - @blogs.each do |blog|
+    %tr
+      %td= blog.title
+      %td= blog.content
+      %td= blog.account_id
+      %td= blog.seo_title
+      %td= blog.seo_meta
+      %td= blog.seo_desc
+      %td= blog.published
+      %td= link_to 'Show', blog
+      %td= link_to 'Edit', edit_blog_path(blog)
+      %td= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Blog', new_blog_path

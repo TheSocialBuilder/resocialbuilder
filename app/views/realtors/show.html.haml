@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Account:
+  = @realtor.account_id
+%p
+  %b First name:
+  = @realtor.first_name
+%p
+  %b Last name:
+  = @realtor.last_name
+%p
+  %b Mls agent:
+  = @realtor.mls_agent_id
+%p
+  %b Email:
+  = @realtor.email
+%p
+  %b Password:
+  = @realtor.password
+%p
+  %b Phone:
+  = @realtor.phone
+%p
+  %b Time zone:
+  = @realtor.time_zone
+
+= link_to 'Edit', edit_realtor_path(@realtor)
+\|
+= link_to 'Back', realtors_path

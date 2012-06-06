@@ -27,6 +27,8 @@ gem 'mongoid-paperclip', require: 'mongoid_paperclip', :git => 'git@github.com:b
 gem 'mongoid_paperclip_queue', :git => 'git@github.com:bhammond/mongoid_paperclip_queue.git'
 
 gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'rmagick'
 gem "fog", "~> 1.3.1"
 gem 'omniauth', '~> 1.0.3'
 gem 'omniauth-facebook'

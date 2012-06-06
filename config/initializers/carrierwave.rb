@@ -1,4 +1,5 @@
 CarrierWave.configure do |config|
+  config.storage = :fog
   config.fog_credentials = {
     :provider           => 'Rackspace',
     :rackspace_username => 'bhammond',

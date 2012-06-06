@@ -15,11 +15,13 @@ class Account
   field :settings_search_max, type: String
   field :mls_office_id, type: String
   
+  mount_uploader :logo, MediaUploader
   
   ## associations ##
   has_many :realtors, dependent: :delete
   has_many :pages, dependent: :delete
   has_many :blogs, dependent: :delete
+  
   
   ## validations ##
   

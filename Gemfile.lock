@@ -1,0 +1,363 @@
+GIT
+  remote: git@github.com:bhammond/geocoder.git
+  revision: 4577bb275099fe2c79fcb5ce5d2762ae8017d546
+  specs:
+    geocoder (1.1.2)
+
+GIT
+  remote: git@github.com:bhammond/mongoid-paperclip.git
+  revision: 71a2d21a0fec44c454428aad9c32ce9f93e9208c
+  specs:
+    mongoid-paperclip (0.0.7)
+      paperclip (>= 2.3.6)
+
+GIT
+  remote: git@github.com:bhammond/mongoid-slug.git
+  revision: d45cc836fb673b57e26cb8441420a44db3187c7a
+  specs:
+    mongoid_slug (0.10.0)
+      stringex (~> 1.3)
+
+GIT
+  remote: git@github.com:bhammond/mongoid_paperclip_queue.git
+  revision: c1edbb807405f24bb5a35fe9e48cdc13e742f6b2
+  specs:
+    mongoid_paperclip_queue (0.1.4)
+      paperclip
+      redis-namespace
+      resque
+
+GIT
+  remote: git@github.com:bhammond/mongoid_taggable_with_context.git
+  revision: 6e290ec98bb30b0754e21352f1c57f4cb3ba0d87
+  specs:
+    mongoid_taggable_with_context (0.8.1)
+      mongoid (>= 2.0.0)
+
+GIT
+  remote: git@github.com:bhammond/will_paginate_mongoid.git
+  revision: cc64a99e37d5d8cd2414734f8b11da745681bded
+  specs:
+    will_paginate_mongoid (1.0.5)
+      will_paginate (~> 3.0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (3.2.3)
+      actionpack (= 3.2.3)
+      mail (~> 2.4.4)
+    actionpack (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      journey (~> 1.0.1)
+      rack (~> 1.4.0)
+      rack-cache (~> 1.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.1.2)
+    active_utils (1.0.3)
+      activesupport (>= 2.3.11)
+      i18n
+    activemerchant (1.23.0)
+      active_utils (>= 1.0.2)
+      activesupport (>= 2.3.11)
+      builder (>= 2.0.0)
+      i18n
+      json (>= 1.5.1)
+      money
+      nokogiri
+    activemodel (3.2.3)
+      activesupport (= 3.2.3)
+      builder (~> 3.0.0)
+    activerecord (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
+    activeresource (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+    activesupport (3.2.3)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    arel (3.0.2)
+    bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.3.1)
+    bourbon (2.1.0)
+      sass (>= 3.1)
+    breadcrumbs_on_rails (2.2.0)
+    builder (3.0.0)
+    cells (3.8.5)
+      actionpack (~> 3.0)
+      railties (~> 3.0)
+    chosen-rails (0.9.8)
+      railties (~> 3.0)
+      thor (~> 0.14)
+    chunky_png (1.2.5)
+    ckeditor (3.7.1)
+      mime-types
+      orm_adapter
+    cloudfiles (1.5.0.1)
+      json
+    cocaine (0.2.1)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.3.3)
+    compass (0.12.1)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.2)
+      compass (>= 0.12.0, < 0.14)
+    country_select (1.0.0)
+    daemons (1.1.8)
+    erubis (2.7.0)
+    eventmachine (0.12.10)
+    excon (0.13.4)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    faraday (0.8.1)
+      multipart-post (~> 1.1)
+    fog (1.3.1)
+      builder
+      excon (~> 0.13.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.3)
+    formtastic (2.2.0)
+      actionpack (>= 3.0)
+    fssm (0.2.9)
+    gon (3.0.4)
+      actionpack (>= 2.3.0)
+      json
+    haml (3.1.6)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
+    haml_coffee_assets (0.9.4)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
+    hashie (1.2.0)
+    hike (1.2.1)
+    httpauth (0.1)
+    i18n (0.6.0)
+    journey (1.0.3)
+    jquery-rails (2.0.2)
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+    json (1.7.3)
+    koala (1.5.0)
+      faraday (~> 0.7)
+      multi_json (~> 1.3)
+    liquid (2.3.0)
+    mail (2.4.4)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.18)
+    money (5.0.0)
+      i18n (~> 0.4)
+      json
+    mongoid (3.0.0.rc)
+      activemodel (~> 3.1)
+      moped (~> 1.0.0.rc)
+      origin (~> 1.0.0.rc)
+      tzinfo (~> 0.3.22)
+    moped (1.0.0.rc)
+    multi_json (1.3.6)
+    multipart-post (1.1.5)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-ssh (2.5.2)
+    nokogiri (1.5.3)
+    oauth2 (0.6.1)
+      faraday (~> 0.7)
+      httpauth (~> 0.1)
+      multi_json (~> 1.3)
+    omniauth (1.0.3)
+      hashie (~> 1.2)
+      rack
+    omniauth-facebook (1.3.0)
+      omniauth-oauth2 (~> 1.0.2)
+    omniauth-oauth2 (1.0.2)
+      oauth2 (~> 0.6.0)
+      omniauth (~> 1.0)
+    origin (1.0.0)
+    orm_adapter (0.0.7)
+    paperclip (3.0.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
+    paperclip-cloudfiles (2.3.10.1)
+      activerecord
+      activesupport
+    polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
+    rabl (0.6.13)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
+    rack (1.4.1)
+    rack-cache (1.2)
+      rack (>= 0.4)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
+    rack-protection (1.2.0)
+      rack
+    rack-ssl (1.3.2)
+      rack
+    rack-test (0.6.1)
+      rack (>= 1.0)
+    rails (3.2.3)
+      actionmailer (= 3.2.3)
+      actionpack (= 3.2.3)
+      activerecord (= 3.2.3)
+      activeresource (= 3.2.3)
+      activesupport (= 3.2.3)
+      bundler (~> 1.0)
+      railties (= 3.2.3)
+    rails3-generators (0.17.4)
+      railties (>= 3.0.0)
+    railties (3.2.3)
+      actionpack (= 3.2.3)
+      activesupport (= 3.2.3)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.6)
+    rake (0.9.2.2)
+    rdoc (3.12)
+      json (~> 1.4)
+    redis (2.2.2)
+    redis-actionpack (3.2.3)
+      actionpack (~> 3.2.3)
+      redis-rack (~> 1.4.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (3.2.3)
+      activesupport (~> 3.2.3)
+      redis-store (~> 1.1.0)
+    redis-namespace (1.0.3)
+      redis (< 3.0.0)
+    redis-objects (0.5.2)
+      redis (>= 2.1.1)
+    redis-rack (1.4.1)
+      rack (= 1.4.1)
+      redis-store (~> 1.1.0)
+    redis-rails (3.2.3)
+      redis-actionpack (~> 3.2.3)
+      redis-activesupport (~> 3.2.3)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.0)
+      redis (~> 2.2.0)
+    resque (1.20.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.0.2)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
+    ruby-hmac (0.4.0)
+    ruby-rets (2.0.5)
+      nokogiri (~> 1.5.0)
+    sass (3.1.19)
+    sass-rails (3.2.5)
+      railties (~> 3.2.0)
+      sass (>= 3.1.10)
+      tilt (~> 1.3)
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    soulmate (0.1.3)
+      multi_json (>= 1.0)
+      redis (>= 2.0)
+      sinatra (>= 1.0)
+      vegas (>= 0.1.0)
+    sprockets (2.1.3)
+      hike (~> 1.2)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    stringex (1.4.0)
+    thin (1.3.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.14.6)
+    tilt (1.3.3)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.33)
+    uglifier (1.2.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
+    will_paginate (3.0.3)
+    yajl-ruby (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activemerchant
+  bcrypt-ruby (~> 3.0.0)
+  bootstrap-sass (~> 2.0.1)
+  bourbon
+  breadcrumbs_on_rails
+  cells (~> 3.8.5)
+  chosen-rails
+  ckeditor (= 3.7.1)
+  cloudfiles
+  coffee-rails (~> 3.2.1)
+  compass-rails
+  country_select
+  fog (~> 1.3.1)
+  formtastic
+  geocoder!
+  gon (~> 3.0.4)
+  haml-rails
+  haml_coffee_assets
+  jquery-rails
+  koala
+  liquid
+  mongoid (~> 3.0.0rc)
+  mongoid-paperclip!
+  mongoid_paperclip_queue!
+  mongoid_slug!
+  mongoid_taggable_with_context!
+  moped (~> 1.0.0.rc)
+  omniauth (~> 1.0.3)
+  omniauth-facebook
+  paperclip (~> 3.0)
+  paperclip-cloudfiles
+  quiet_assets
+  rabl
+  rack-contrib
+  rails (= 3.2.3)
+  rails3-generators
+  redis (~> 2.2.2)
+  redis-objects
+  redis-rails
+  resque (~> 1.20.0)
+  ruby-rets
+  sass-rails (~> 3.1)
+  soulmate
+  thin
+  uglifier (>= 1.0.3)
+  will_paginate_mongoid!
+  yajl-ruby

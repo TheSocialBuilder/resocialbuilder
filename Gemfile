@@ -19,7 +19,7 @@ gem 'breadcrumbs_on_rails'
 
 gem 'rails3-generators'
 gem 'haml-rails'
-gem 'simple_form'
+gem 'formtastic'
 gem 'country_select'
 gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
 gem "paperclip", "~> 3.0"

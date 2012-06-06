@@ -26,9 +26,8 @@ gem "paperclip", "~> 3.0"
 gem 'mongoid-paperclip', require: 'mongoid_paperclip', :git => 'git@github.com:bhammond/mongoid-paperclip.git'
 gem 'mongoid_paperclip_queue', :git => 'git@github.com:bhammond/mongoid_paperclip_queue.git'
 
+gem 'carrierwave'
 gem "fog", "~> 1.3.1"
-gem 'cloudfiles'
-gem 'paperclip-cloudfiles'
 gem 'omniauth', '~> 1.0.3'
 gem 'omniauth-facebook'
 gem "koala"

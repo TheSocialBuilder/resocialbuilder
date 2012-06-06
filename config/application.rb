@@ -21,8 +21,6 @@ module Resocialbuilder
     Mongoid.logger.level = Logger::DEBUG
     Moped.logger.level = Logger::DEBUG
     
-    config.gem 'cloudfiles'
-    config.gem "paperclip-cloudfiles", :lib => 'paperclip', :source => "http://gemcutter.org/"
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

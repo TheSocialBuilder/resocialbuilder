@@ -89,6 +89,9 @@ GEM
       sass (>= 3.1)
     breadcrumbs_on_rails (2.2.0)
     builder (3.0.0)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     cells (3.8.5)
       actionpack (~> 3.0)
       railties (~> 3.0)
@@ -99,8 +102,6 @@ GEM
     ckeditor (3.7.1)
       mime-types
       orm_adapter
-    cloudfiles (1.5.0.1)
-      json
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -204,9 +205,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (>= 0.0.2)
       mime-types
-    paperclip-cloudfiles (2.3.10.1)
-      activerecord
-      activesupport
     polyglot (0.3.3)
     quiet_assets (1.0.1)
       railties (~> 3.1)
@@ -319,10 +317,10 @@ DEPENDENCIES
   bootstrap-sass (~> 2.0.1)
   bourbon
   breadcrumbs_on_rails
+  carrierwave
   cells (~> 3.8.5)
   chosen-rails
   ckeditor (= 3.7.1)
-  cloudfiles
   coffee-rails (~> 3.2.1)
   compass-rails
   country_select
@@ -344,7 +342,6 @@ DEPENDENCIES
   omniauth (~> 1.0.3)
   omniauth-facebook
   paperclip (~> 3.0)
-  paperclip-cloudfiles
   quiet_assets
   rabl
   rack-contrib

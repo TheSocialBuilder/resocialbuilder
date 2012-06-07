@@ -1,0 +1,17 @@
+%h1 Listings
+
+%table
+  %tr
+    %th Image
+    %th Listing
+
+
+  - @listings.each do |listing|
+    %tr
+      %td
+        - listing.images.each do |image|
+          = image_tag image.image_url(:large) if image.image?
+      %td= listing.listing
+
+%br
+

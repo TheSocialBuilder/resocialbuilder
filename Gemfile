@@ -25,6 +25,10 @@ gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
 gem "paperclip", "~> 3.0"
 gem 'mongoid-paperclip', require: 'mongoid_paperclip', :git => 'git@github.com:bhammond/mongoid-paperclip.git'
 gem 'mongoid_paperclip_queue', :git => 'git@github.com:bhammond/mongoid_paperclip_queue.git'
+gem 'phone'
+
+
+
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

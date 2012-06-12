@@ -38,15 +38,16 @@ class Location
   
   ## callbacks ##
   geocoded_by :address_info
-  after_validation :geocode
+  before_save :geocode
   
   ## methods ##
   
   geocoded_by :address_info do |obj,results|
+    # raise obj.class.to_s
     if geo = results.first
       
       
-      #raise geo.to_yaml
+      # raise geo.to_yaml
       #$redis.set :address, geo.to_json
       obj.latitude     = geo.latitude
       obj.longitude    = geo.longitude
@@ -57,10 +58,12 @@ class Location
       address_info_1 = geo.address_components_of_type(:street_number).first
       address_info_2 = geo.address_components_of_type(:route).first
       
-      obj.address_1 = address_info_1['long_name'] if address_info_2['long_name']
-      obj.address_1 += " #{address_info_2['long_name']}" if address_info_2['long_name']
-      obj.address = "#{obj.address_1}"
-      obj.address += " #{obj.address_2}" if obj.address_2
+      if address_info_1
+        obj.address_1 = address_info_1['long_name'] 
+        obj.address_1 += " #{address_info_2['long_name']}" if address_info_2
+        obj.address = "#{obj.address_1}"
+        obj.address += " #{obj.address_2}" if obj.address_2
+      end
       
       if county = geo.address_components_of_type(:administrative_area_level_2).first
         obj.county = county['long_name']
@@ -82,7 +85,7 @@ class Location
   end
 
   def address_info
-    [address_1, address_2, city, state, zip, country].compact.join(' ')
+    [address_1, address_2, city, state, zip].compact.join(' ')
   end
   
   

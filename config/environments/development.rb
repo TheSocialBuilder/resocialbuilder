@@ -29,4 +29,7 @@ Resocialbuilder::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+  
+  # Default country code for Phone gem
+  Phoner::Phone.default_country_code = '1'
 end

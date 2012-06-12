@@ -26,7 +26,6 @@ class Listing
   field :garage_type
   field :garage_capacity, type: Integer
   field :carport_capacity, type: Integer
-  field :parking_capacity
   taggable :features, :separator => ','
   field :pool
   taggable :utilities, :separator => ','
@@ -36,12 +35,14 @@ class Listing
   field :brokered_by
   field :office_id
   field :agent_id
+  field :listing_timestamp
   
   index({ listing: 1 }, { unique: true})
   
   embeds_one :location, as: :locatable
   embeds_many :images, :cascade_callbacks => true
   
+  has_one :listing
   
   
   # attr_accessible :images_attributes, :mls, :mls_list_id, :list_type, :list_status, :list_price, :address, :unit_number, :city, :state, :county, :zip, :mls_area, :total_sq_ft, :year_built, :lot_acres, :short_sale, :total_bed, :total_bath, :sub_division, :public_remarks, :garage_type, :garage_capacity, :carport_capacity, :parking_capacity, :features, :pool, :utilities, :water, :landscape, :zoning, :brokered_by, :office_id, :agent_id

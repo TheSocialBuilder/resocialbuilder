@@ -1,6 +1,9 @@
 Resocialbuilder::Application.routes.draw do
   
+  match 'listings/nnrmls', to: 'listings#nnrmls', as: 'nnrmls'
+  match 'listings/stgeorge', to: 'listings#stgeorge', as: 'stgeorge'
   match 'listings/mls', to: 'listings#mls', as: 'mls'
+  
   
   resources :accounts
   resources :realtors
@@ -9,7 +12,7 @@ Resocialbuilder::Application.routes.draw do
   resources :listings
   
   
-  match 'listings/mls', to: 'listings#mls', as: 'mls'
+
 
   root :to => 'welcome#index'
 end

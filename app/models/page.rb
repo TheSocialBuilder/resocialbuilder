@@ -6,6 +6,9 @@ class Page
   include Mongoid::Timestamps
   include Mongoid::Slug
   # include Mongoid::Versioning
+  include Mongoid::Tree
+  include Mongoid::Tree::Ordering
+  include Mongoid::Tree::Traversal
   
   
   ## fields ##
@@ -21,6 +24,8 @@ class Page
   
   ## associations ##
   belongs_to :account
+  
+  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_ids
   
   
   ## validations ##

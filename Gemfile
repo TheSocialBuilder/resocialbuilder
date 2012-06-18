@@ -19,12 +19,15 @@ gem 'breadcrumbs_on_rails'
 
 gem 'rails3-generators'
 gem 'haml-rails'
-gem 'formtastic'
+
+gem "formtastic", "~> 2.1"
+
 gem 'country_select'
 gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
 gem "paperclip", "~> 3.0"
 gem 'mongoid-paperclip', require: 'mongoid_paperclip', :git => 'git@github.com:bhammond/mongoid-paperclip.git'
 gem 'mongoid_paperclip_queue', :git => 'git@github.com:bhammond/mongoid_paperclip_queue.git'
+gem 'mongoid-tree', :git => 'git://github.com/bhammond/mongoid-tree.git', :require => 'mongoid/tree'
 gem 'phone'
 
 
@@ -57,12 +60,18 @@ gem "cells", "~> 3.8.5"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  
 	gem 'sass-rails', '~> 3.1'
 	gem 'coffee-rails', '~> 3.2.1'
-	gem 'bootstrap-sass', '~> 2.0.1'
-	gem 'compass-rails'
 	gem 'bourbon'
   gem 'haml_coffee_assets'
   gem 'uglifier', '>= 1.0.3'
 end
+
+group :development, :test do
+  gem 'railroady', git: 'git@github.com:bhammond/railroady.git'
+  gem 'sprite-factory', '>= 1.4.0', git: 'git://github.com/bhammond/sprite-factory.git'
+  gem 'chunky_png'
+end
+
+gem 'bootstrap-sass', '~> 2.0.3'
+gem "formtastic-plus-bootstrap"

@@ -1,0 +1,13 @@
+Facebook
+
+- if @facebook.nil?
+  %p= link_to 'Login with Facebook', '/auth/facebook'
+- else
+  
+  = simple_form_for([:dashboard, current_account], :url => 'settings') do |f|
+    = f.error_messages
+    %fieldset
+      %legend Facebook Pages
+      .field
+        = f.input :facebook_page_id, :collection => @facebook_pages.each.map { |page| [page['name'], page['id']] }, :include_blank => false
+  

@@ -1,0 +1,130 @@
+.page.register
+  .padding_10
+    %h1 Settings
+    %hr
+    
+    = simple_form_for([:dashboard, current_account], :url => 'settings', :html => { :class => 'form-horizontal' } ) do |f|
+      
+      .tabbable.tabs-left
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#facebook"} Facebook Application
+          %li
+            %a{"data-toggle" => "tab", :href => "#listings"} Listings Info
+          %li
+            %a{"data-toggle" => "tab", :href => "#website"} Website Settings
+          %li
+            %a{"data-toggle" => "tab", :href => "#location"} Location Settings
+          %li
+            %a{"data-toggle" => "tab", :href => "#personal"} Personal Info
+        .tab-content
+          = f.error_messages
+          #facebook.tab-pane.active
+            %h3 Facebook Application
+            %hr
+            %p To install the RE Social Builder MLS Application on your Facebook Business page, select the page from the list below. After you click save we will automatically install the Application to your specified page. 
+            
+            .alert.alert-info
+              <b>Note:</b> Changing pages will remove the application from your current page, as we only allow 1 Facebook Application per account.
+            - if @facebook
+              .field
+                = f.input :facebook_page_id, :collection => @facebook_pages.each.map { |page| [page['name'], page['id']] }, :include_blank => false
+              .form-actions
+                = f.button :submit, 'Update Facebook Application', :class => 'btn btn-primary'
+            - else
+              You Must be logged into Facebook to access this feature
+              %br
+              = link_to 'LOGIN WITH FACEBOOK HERE', '/auth/facebook'
+              
+              
+          #listings.tab-pane
+            %h3 Listing Defaults
+            %hr
+            
+            .field
+              = f.input :agent_id, :hint => 'Your MLS Realtor Agent ID Number'
+            .field
+              = f.input :office_id, :hint => 'Your MLS Realtor Office ID Number'
+            .field
+              = f.input :office_or_agent, :collection => default_office_or_agent, :include_blank => false, :hint => 'Which lists to display on your My Listings page'
+            .field
+              = f.input :search_min, :collection => default_prices, :include_blank => false
+            .field
+              = f.input :search_max, :collection => default_prices, :include_blank => false
+            .field
+              = f.input :featured_listings
+            .form-actions
+              = f.button :submit, 'Save Listing Defaults', :class => 'btn btn-primary'
+              
+          #website.tab-pane
+            %h3 Website Settings
+            %hr
+            .field
+              = f.input :subdomain
+            .field
+              = f.input :site_title, :hint => 'Title in browser tab for your website'
+            .field
+              = f.input :google_analytics, :placeholder => 'UA-XXXXXXX-XX', :hint => 'Refer to http://google.com/analytics'
+            %br
+            .field
+              = f.input :social_facebook, :label => 'Facebook URL', :placeholder => 'http://facebook.com/username'
+            .field
+              = f.input :social_twitter, :label => 'Twitter URL', :placeholder => 'http://twitter.com/username'
+            .field
+              = f.input :social_youtube, :label => 'YouTube URL', :placeholder => 'http://youtube.com/username'
+            .field
+              = f.input :social_blogger, :label => 'Blogspot URL', :placeholder => 'http://blog.blogspot.com'
+            .field
+              = f.input :social_linkedin, :label => 'Linkedin URL', :placeholder => 'http://linkedin.com/username'
+            .form-actions
+              = f.button :submit, 'Save Website Settings', :class => 'btn btn-primary'
+        
+          #location.tab-pane
+            %h3 Address Settings
+            %hr
+            .field
+              = f.input :street
+            .field
+              = f.input :street_2
+            .field
+              = f.input :city
+            .field
+              = f.input :state_code, :collection => us_states, :include_blank => false
+            .field
+              = f.input :postal_code
+            .field
+              = f.input :country
+            .form-actions
+              = f.button :submit, 'Save Location Settings', :class => 'btn btn-primary'
+          
+          #personal.tab-pane
+            %h3 Personal Settings
+            %hr
+            .field
+              = f.input :first_name
+            .field
+              = f.input :last_name
+            .field
+              = f.input :email
+            .field
+              = f.input :company
+            .field
+              = f.input :phone, :as => :string
+            .field
+              = f.input :logo, :label => 'Logo'
+            .field
+              = f.input :avatar, :label => 'Personal Image'
+            .form-actions
+              = f.button :submit, 'Save Personal Settings', :class => 'btn btn-primary'
+        
+
+              
+        
+        
+
+    
+    
+      
+      
+
+  

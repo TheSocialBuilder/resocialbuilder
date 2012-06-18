@@ -1,0 +1,18 @@
+%h1 Listing pages
+
+%table
+  %tr
+    %th Title
+    %th Actions
+
+  - @pages.each do |page|
+    %tr
+      %td= page.title
+      %td
+        = link_to 'Show', dashboard_page_path(page)
+        = link_to 'Edit', edit_dashboard_page_path(page)
+        = link_to 'Destroy', dashboard_page_path(page), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Page', new_dashboard_page_path

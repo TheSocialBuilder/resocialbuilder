@@ -1,0 +1,19 @@
+
+= Page.traverse(:breadth_first) do |n|
+  = n.title
+
+
+= semantic_form_for [:dashboard, @page] do |f|
+  = f.inputs do
+    = f.input :title
+    = f.input :published, :as => :boolean
+    = f.input :seo_meta_title
+    = f.input :seo_meta_keys
+    = f.input :seo_meta_desc
+    = f.input :parent_ids, :collection => Page.all, :input_html => {:multiple => 'multiple'}
+
+    
+    = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}
+
+  = f.actions do
+    = f.action :submit, :as => :input

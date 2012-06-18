@@ -18,9 +18,9 @@ class Account
   mount_uploader :logo, MediaUploader
   
   ## associations ##
-  has_many :realtors, dependent: :delete
-  has_many :pages, dependent: :delete
-  has_many :blogs, dependent: :delete
+  # has_many :realtors, dependent: :delete
+  has_many :pages
+  # has_many :blogs, dependent: :delete
   
   
   ## validations ##

@@ -1,0 +1,87 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title Developer Guide · TimeSupply · Efficiency Gone Wild!
+    = include_gon(:namespace => 'TimeSupplyConfig')
+    = favicon_link_tag '/favicon.png'
+    = stylesheet_link_tag    "application", "dev/dev"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body.dev.padding_top_60.padding_bottom_40
+  
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-dev
+          .row
+            .span3
+              %center
+                = link_to image_tag("dashboard/logo.png", :height => '50'), '/dashboard'
+          
+            .span9
+              %ul.nav
+                %li.active
+                  %a{:href => "/"} CSS Style Guide
+                %li
+                  %a{:href => "/schema"} Data Schema
+
+  
+    .container-dev
+      .row
+        .span3.pos_fix
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header CSS Style Guide
+              %li
+                %a{:href => "#section_0_0"} 0.0 Overview
+              %li
+                %a{:href => "#section_1_0"} 1.0 Buttons
+              %li
+                %a{:href => "#section_2_0"} 2.0 Forms
+              %li
+                %a{:href => "#section_3_0"} 3.0 Tables
+              %li
+                %a{:href => "#section_4_0"} 4.0 Typography
+              %li
+                %a{:href => "#section_5_0"} 5.0 Colors
+              %li
+                %a{:href => "#section_6_0"} 6.0 Media
+              %li
+                %a{:href => "#section_7_0"} 7.0 Grid Layouts
+              %li
+                %a{:href => "#section_8_0"} 8.0 Plugins
+              %li
+                %a{:href => "#section_9_0"} 9.0 Miscellaneous
+              %li
+                %a{:href => "#section_10_0"} 10.0 Icons
+                
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Helpful Links
+              %li
+                %a{:href => "http://html2haml.heroku.com/", :target => '_blank'}
+                  HAML Convertor
+              %li
+                %a{:href => "http://css2sass.heroku.com/", :target => '_blank'}
+                  SCSS Convertor
+              %li
+                %a{:href => "http://js2coffee.org/", :target => '_blank'}
+                  Coffeescript Convertor
+              
+              
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header CSS Image Sprites
+              %li
+                %a.button{:href => "/dev/sprites/icon"}
+                  Re-Sprite /icon
+              %li
+                %a.button{:href => "/dev/sprites/icon_16"}
+                  Re-Sprite /icon_16
+              %li
+                %a.button{:href => "/dev/sprites/icon_32"}
+                  Re-Sprite /icon_32
+
+
+        .span9.offset3
+          = yield

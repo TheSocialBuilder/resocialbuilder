@@ -8,7 +8,7 @@
     = stylesheet_link_tag    "dashboard/application", :media => "all"
     = javascript_include_tag "dashboard/application"
     = csrf_meta_tags
-
+    = yield(:head)
   %body
     #maincontainer.clearfix
       %header
@@ -135,9 +135,9 @@
                     .accordion-inner
                       %ul.nav.nav-list
                         %li
-                          = link_to 'Pages', '#'
+                          = link_to 'Pages', dashboard_pages_path
                         %li
-                          = link_to 'Blogs', '#'
+                          = link_to 'Blogs', dashboard_blogs_path
                         %li
                           = link_to 'Comments', '#'
                 .accordion-group

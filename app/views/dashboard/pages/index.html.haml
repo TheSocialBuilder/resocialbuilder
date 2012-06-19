@@ -1,18 +1,15 @@
-%h1 Listing pages
+= link_to 'New Page', new_dashboard_page_path, :class => 'btn btn-primary pull-right'
+%h1 Pages
 
-%table
-  %tr
-    %th Title
-    %th Actions
+#output
 
-  - @pages.each do |page|
-    %tr
-      %td= page.title
-      %td
-        = link_to 'Show', dashboard_page_path(page)
-        = link_to 'Edit', edit_dashboard_page_path(page)
-        = link_to 'Destroy', dashboard_page_path(page), :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Page', new_dashboard_page_path
+%ol.sortable
+  - @pages.roots.each do |page|
+    %li{:id => "page_#{page.id}"}
+      %div
+        %span.actions.pull-right
+          = link_to 'Show', dashboard_page_path(page)
+          = link_to 'Edit', edit_dashboard_page_path(page)
+          = link_to 'Destroy', dashboard_page_path(page), :confirm => 'Are you sure?', :method => :delete
+        = page.title
+      = render 'children', :page => page unless page.leaf?

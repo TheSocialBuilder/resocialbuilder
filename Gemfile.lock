@@ -6,6 +6,12 @@ GIT
       mongoid (~> 3.0.0rc)
 
 GIT
+  remote: git://github.com/bhammond/sprite-factory.git
+  revision: 06678638a90848043f1c6d163eba0d7f98e72099
+  specs:
+    sprite-factory (1.5.0)
+
+GIT
   remote: git@github.com:bhammond/geocoder.git
   revision: 4577bb275099fe2c79fcb5ce5d2762ae8017d546
   specs:
@@ -36,10 +42,16 @@ GIT
 
 GIT
   remote: git@github.com:bhammond/mongoid_taggable_with_context.git
-  revision: 6e290ec98bb30b0754e21352f1c57f4cb3ba0d87
+  revision: c1e940eb4dc47848bb53b9a669d84ca0f75d7755
   specs:
     mongoid_taggable_with_context (0.8.1)
       mongoid (>= 2.0.0)
+
+GIT
+  remote: git@github.com:bhammond/railroady.git
+  revision: fe90584cd42d031ea25b1a50ca558be3fde465c2
+  specs:
+    railroady (1.0.7)
 
 GIT
   remote: git@github.com:bhammond/will_paginate_mongoid.git
@@ -67,7 +79,7 @@ GEM
     active_utils (1.0.3)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.23.0)
+    activemerchant (1.24.0)
       active_utils (>= 1.0.2)
       activesupport (>= 2.3.11)
       builder (>= 2.0.0)
@@ -108,6 +120,7 @@ GEM
     chosen-rails (0.9.8)
       railties (~> 3.0)
       thor (~> 0.14)
+    chunky_png (1.2.5)
     ckeditor (3.7.1)
       mime-types
       orm_adapter
@@ -139,7 +152,7 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
-    formtastic (2.2.0)
+    formtastic (2.2.1)
       actionpack (>= 3.0)
     formtastic-plus-bootstrap (1.0.3)
       bootstrap-sass (~> 2.0.3)
@@ -155,7 +168,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    haml_coffee_assets (0.9.4)
+    haml_coffee_assets (1.1.0)
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt (>= 1.3.3)
@@ -163,7 +176,7 @@ GEM
     hike (1.2.1)
     httpauth (0.1)
     i18n (0.6.0)
-    journey (1.0.3)
+    journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
@@ -171,6 +184,7 @@ GEM
     koala (1.5.0)
       faraday (~> 0.7)
       multi_json (~> 1.3)
+    kss (0.3.0)
     liquid (2.3.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -185,13 +199,14 @@ GEM
       moped (~> 1.0.0.rc)
       origin (~> 1.0.0.rc)
       tzinfo (~> 0.3.22)
+    mongoid_taggable (0.1.7)
     moped (1.0.0.rc)
     multi_json (1.3.6)
     multipart-post (1.1.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.5.2)
-    nokogiri (1.5.3)
+    nokogiri (1.5.4)
     oauth2 (0.6.1)
       faraday (~> 0.7)
       httpauth (~> 0.1)
@@ -204,9 +219,9 @@ GEM
     omniauth-oauth2 (1.0.2)
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
-    origin (1.0.0)
-    orm_adapter (0.0.7)
-    paperclip (3.0.4)
+    origin (1.0.1)
+    orm_adapter (0.1.0)
+    paperclip (3.1.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -260,7 +275,7 @@ GEM
       redis-store (~> 1.1.0)
     redis-namespace (1.0.3)
       redis (< 3.0.0)
-    redis-objects (0.5.2)
+    redis-objects (0.5.3)
       redis (>= 2.1.1)
     redis-rack (1.4.1)
       rack (= 1.4.1)
@@ -330,6 +345,7 @@ DEPENDENCIES
   carrierwave-mongoid
   cells (~> 3.8.5)
   chosen-rails
+  chunky_png
   ckeditor (= 3.7.1)
   coffee-rails (~> 3.2.1)
   country_select
@@ -342,12 +358,14 @@ DEPENDENCIES
   haml_coffee_assets
   jquery-rails
   koala
+  kss (~> 0.3.0)
   liquid
   mongoid (~> 3.0.0rc)
   mongoid-paperclip!
   mongoid-tree!
   mongoid_paperclip_queue!
   mongoid_slug!
+  mongoid_taggable
   mongoid_taggable_with_context!
   moped (~> 1.0.0.rc)
   omniauth (~> 1.0.3)
@@ -357,6 +375,7 @@ DEPENDENCIES
   quiet_assets
   rabl
   rack-contrib
+  railroady!
   rails (= 3.2.3)
   rails3-generators
   redis (~> 2.2.2)
@@ -367,6 +386,7 @@ DEPENDENCIES
   ruby-rets
   sass-rails (~> 3.1)
   soulmate
+  sprite-factory (>= 1.4.0)!
   thin
   uglifier (>= 1.0.3)
   will_paginate_mongoid!

@@ -7,21 +7,18 @@
   %b Content:
   = @blog.content
 %p
-  %b Account:
-  = @blog.account_id
-%p
-  %b Seo title:
-  = @blog.seo_title
-%p
-  %b Seo meta:
-  = @blog.seo_meta
-%p
-  %b Seo desc:
-  = @blog.seo_desc
-%p
   %b Published:
   = @blog.published
+%p
+  %b Seo title:
+  = @blog.seo_meta_title
+%p
+  %b Seo meta:
+  = @blog.seo_meta_keys
+%p
+  %b Seo desc:
+  = @blog.seo_meta_desc
 
-= link_to 'Edit', edit_blog_path(@blog)
+= link_to 'Edit', edit_dashboard_blog_path(@blog)
 \|
-= link_to 'Back', blogs_path
+= link_to 'Back', dashboard_blogs_path(@blog)

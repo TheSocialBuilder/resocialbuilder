@@ -1,8 +1,3 @@
-
-= Page.traverse(:breadth_first) do |n|
-  = n.title
-
-
 = semantic_form_for [:dashboard, @page] do |f|
   = f.inputs do
     = f.input :title
@@ -10,7 +5,8 @@
     = f.input :seo_meta_title
     = f.input :seo_meta_keys
     = f.input :seo_meta_desc
-    = f.input :parent_ids, :collection => Page.all, :input_html => {:multiple => 'multiple'}
+    = f.input :tags
+    = f.input :parent, :collection => @build_tree_select, :prompt => "New parent page"
 
     
     = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}

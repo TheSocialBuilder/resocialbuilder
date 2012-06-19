@@ -578,3 +578,69 @@ form .row-fluid + .row-fluid {margin-top:10px !important}
   text-align:center;
   color:#CCC;
 }
+
+// Default Button & Anchor Buttons
+//  
+// :active    - Active state, when element is currently active.
+// .disabled  - For when you shouldn't be able to click on it.
+// .action  - Blue Action Button
+// .action.active - Action Active
+// .small - Button Small
+// .large - Button Large
+// .danger - Danger Delete
+//
+// Styleguide 1.1
+
+
+
+ol {
+  
+	margin: 0;
+	padding: 0;
+	padding-left: 30px;
+}
+
+ol.sortable, ol.sortable ol {
+	margin: 0 0 0 25px;
+	padding: 0;
+	list-style-type: none;
+	
+}
+
+ol.sortable {
+	margin: 4em 0;
+}
+
+.sortable li {
+	margin: 7px 0 0 0;
+	padding: 0;
+}
+
+.sortable li div  {
+	border: 1px solid #999;
+	-webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+	padding: 6px;
+	margin: 0;
+	cursor: move;
+  background-color: #fbfbfb;
+  background-image: -moz-linear-gradient(top, white, #f5f5f5);
+  background-image: -ms-linear-gradient(top, white, #f5f5f5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#f5f5f5));
+  background-image: -webkit-linear-gradient(top, white, #f5f5f5);
+  background-image: -o-linear-gradient(top, white, #f5f5f5);
+  background-image: linear-gradient(top, white, #f5f5f5);
+  background-repeat: repeat-x;
+}
+span.actions{
+  font-size:12px;
+  margin-right:10px;
+}
+.placeholder {
+  border: 1px solid #999;
+  background-color: #ECECEC;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}

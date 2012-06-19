@@ -1,6 +1,63 @@
 class Dashboard::PagesController < Dashboard::DashboardController
   
   add_breadcrumb "Pages", :dashboard_pages_path
+  
+  
+  def savesort
+    neworder = JSON.parse(params[:set])
+    # raise neworder.to_yaml
+    prev_item = nil
+    neworder.each do |item|
+      # raise item.to_yaml
+      db_item = current_account.pages.find(item['id'])
+      
+      if prev_item.nil?
+        db_item.move_to_top
+        db_item.parent_id = false
+      else
+        db_item.move_below(prev_item)
+      end
+      
+      
+      
+      # raise dbitem.to_yaml
+      # prev_item.nil? ? dbitem.move_to_top : dbitem.move_above(prev_item)
+      sort_children(item, db_item) unless item['children'].nil?
+      prev_item = db_item
+      # dbitem.rearrange_children!
+      db_item.save
+    end
+    
+    render :nothing => true
+  end
+  
+  def sort_children(element,current_db_item)
+    prev_item = nil
+    element['children'].each do |item|
+      db_item = current_account.pages.find(item['id'])
+      # raise childitem.to_yaml
+      
+      db_item.parent_id = current_db_item.id
+      
+      if prev_item.nil?
+        db_item.move_children_to_parent
+      else
+        db_item.move_below(prev_item)
+      end
+      
+      sort_children(item, db_item) unless item['children'].nil?
+      prev_item = db_item
+      db_item.save
+    end
+  end
+  
+  
+  
+  
+  
+  
+  
+  
   def index
     @pages = current_account.pages.all
 
@@ -24,7 +81,7 @@ class Dashboard::PagesController < Dashboard::DashboardController
   def new
     add_breadcrumb "Creating New Page", new_dashboard_page_path
     @page = current_account.pages.new
-
+    @build_tree_select = current_account.pages.traverse(:depth_first).map{|node| ["#{'--' * node.depth}- #{node.title}",node.id]}
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }
@@ -35,6 +92,8 @@ class Dashboard::PagesController < Dashboard::DashboardController
   def edit
     add_breadcrumb "Updating Page", edit_dashboard_page_path
     @page = current_account.pages.find_by_slug(params[:id])
+    
+    @build_tree_select = current_account.pages.traverse(:depth_first).map{|node| ["#{'--' * node.depth}- #{node.title}",node.id]}
   end
 
 
@@ -54,6 +113,7 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
 
   def update
+    # raise params[:page][:parent_id].to_yaml
     @page = current_account.pages.find_by_slug(params[:id])
 
     respond_to do |format|

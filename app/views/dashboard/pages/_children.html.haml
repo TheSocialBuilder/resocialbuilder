@@ -1,0 +1,10 @@
+%ol
+  - page.children.each do |child|
+    %li{:id => "page_#{child.id}"}
+      %div
+        %span.actions.pull-right
+          = link_to 'Show', dashboard_page_path(child)
+          = link_to 'Edit', edit_dashboard_page_path(child)
+          = link_to 'Destroy', dashboard_page_path(child), :confirm => 'Are you sure?', :method => :delete
+        = child.title
+      = render 'children', :page => child unless child.leaf?

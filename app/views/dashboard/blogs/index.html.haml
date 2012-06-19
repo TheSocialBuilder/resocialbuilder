@@ -1,31 +1,24 @@
+= link_to 'New Blog', new_dashboard_blog_path, :class => 'btn btn-primary pull-right'
 %h1 Listing blogs
 
-%table
-  %tr
-    %th Title
-    %th Content
-    %th Account
-    %th Seo title
-    %th Seo meta
-    %th Seo desc
-    %th Published
-    %th
-    %th
-    %th
-
-  - @blogs.each do |blog|
+%table.table.table-bordered
+  %thead
     %tr
-      %td= blog.title
-      %td= blog.content
-      %td= blog.account_id
-      %td= blog.seo_title
-      %td= blog.seo_meta
-      %td= blog.seo_desc
-      %td= blog.published
-      %td= link_to 'Show', blog
-      %td= link_to 'Edit', edit_blog_path(blog)
-      %td= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete
+      %th Title
+      %th Created
+      %th Updated
+      %th.action_row Actions
 
-%br
+  %tbody
+    - @blogs.each do |blog|
+      %tr
+        %td= blog.title
+        %td
+          = blog.created_at.strftime("%m/%d/%Y %l:%M %P")
+        %td
+          = blog.updated_at.strftime("%m/%d/%Y %l:%M %P")
 
-= link_to 'New Blog', new_blog_path
+        %td
+          = link_to 'Show', dashboard_blog_path(blog)
+          = link_to 'Edit', edit_dashboard_blog_path(blog)
+          = link_to 'Destroy', dashboard_blog_path(blog), :confirm => 'Are you sure?', :method => :delete

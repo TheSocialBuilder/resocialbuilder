@@ -1,12 +1,17 @@
-= semantic_form_for @blog do |f|
+= semantic_form_for [:dashboard, @blog] do |f|
   = f.inputs do
-    = f.input :title
-    = f.input :content
-    = f.input :account_id
-    = f.input :seo_title
-    = f.input :seo_meta
-    = f.input :seo_desc
-    = f.input :published
+    = f.input :title, :label => 'Post Title'
+    = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}, :label => 'Post Content'
+    
+    = f.inputs :name => 'Optional Settings' do
+      = f.input :published, :as => :boolean
+      = f.input :seo_meta_title, :label => 'SEO Title'
+      = f.input :seo_meta_keys, :label => 'SEO Keywords'
+      = f.input :seo_meta_desc, :label => 'SEO Description'
+    
+
+    
+    
 
   = f.actions do
     = f.action :submit, :as => :input

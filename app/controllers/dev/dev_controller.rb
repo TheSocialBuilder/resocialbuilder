@@ -6,8 +6,8 @@ class Dev::DevController < ApplicationController
     
   def index
 
-    @styleguide ||= Kss::Parser.new("app/assets/stylesheets")
-
+    @styleguide ||= Kss::Parser.new("app/assets/stylesheets/dashboard")
+    # raise @styleguide.to_yaml
   end
   
   def schema

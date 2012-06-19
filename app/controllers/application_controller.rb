@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # protect_from_forgery
   
   helper_method :mls_markets_supported, :default_office_or_agent, :default_prices, :current_account, :authenticate_account!, :current_user, :us_states, :page_assigned, :current_domain, :current_subdomain, :authenticate_subdomain!
   

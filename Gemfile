@@ -7,6 +7,7 @@ gem 'mongoid', '~> 3.0.0rc'
 gem 'moped', '~> 1.0.0.rc'
 gem 'mongoid_slug', :git => 'git@github.com:bhammond/mongoid-slug.git'
 gem 'mongoid_taggable_with_context', :git => 'git@github.com:bhammond/mongoid_taggable_with_context.git'
+gem 'mongoid_taggable'
 
 gem "redis", "~> 2.2.2"
 gem 'redis-objects'
@@ -66,8 +67,9 @@ group :assets do
   gem 'haml_coffee_assets'
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "kss", "~> 0.3.0"
 group :development, :test do
+  
   gem 'railroady', git: 'git@github.com:bhammond/railroady.git'
   gem 'sprite-factory', '>= 1.4.0', git: 'git://github.com/bhammond/sprite-factory.git'
   gem 'chunky_png'

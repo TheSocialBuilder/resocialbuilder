@@ -1,8 +1,8 @@
-class BlogsController < ApplicationController
-  # GET /blogs
-  # GET /blogs.json
+class Dashboard::BlogsController < Dashboard::DashboardController
+  
+  add_breadcrumb "Blogs", :dashboard_blogs_path
   def index
-    @blogs = Blog.all
+    @blogs = current_account.blogs.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +10,10 @@ class BlogsController < ApplicationController
     end
   end
 
-  # GET /blogs/1
-  # GET /blogs/1.json
+
   def show
-    @blog = Blog.find(params[:id])
+    add_breadcrumb "Showing Blog", dashboard_blog_path
+    @blog = current_account.blogs.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +21,9 @@ class BlogsController < ApplicationController
     end
   end
 
-  # GET /blogs/new
-  # GET /blogs/new.json
   def new
-    @blog = Blog.new
+    add_breadcrumb "Creating New Blog", new_dashboard_blog_path
+    @blog = current_account.blogs.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,19 +31,19 @@ class BlogsController < ApplicationController
     end
   end
 
-  # GET /blogs/1/edit
+
   def edit
-    @blog = Blog.find(params[:id])
+    add_breadcrumb "Updating Blog", edit_dashboard_blog_path
+    @blog = current_account.blogs.find_by_slug(params[:id])
   end
 
-  # POST /blogs
-  # POST /blogs.json
+
   def create
-    @blog = Blog.new(params[:blog])
+    @blog = current_account.blogs.new(params[:blog])
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to dashboard_blog_path(@blog), notice: 'Blog was successfully created.' }
         format.json { render json: @blog, status: :created, location: @blog }
       else
         format.html { render action: "new" }
@@ -53,14 +52,13 @@ class BlogsController < ApplicationController
     end
   end
 
-  # PUT /blogs/1
-  # PUT /blogs/1.json
+
   def update
-    @blog = Blog.find(params[:id])
+    @blog = current_account.blogs.find_by_slug(params[:id])
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to dashboard_blog_path(@blog), notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,14 +67,13 @@ class BlogsController < ApplicationController
     end
   end
 
-  # DELETE /blogs/1
-  # DELETE /blogs/1.json
+
   def destroy
-    @blog = Blog.find(params[:id])
+    @blog = current_account.blogs.find_by_slug(params[:id])
     @blog.destroy
 
     respond_to do |format|
-      format.html { redirect_to blogs_url }
+      format.html { redirect_to dashboard_blogs_path }
       format.json { head :no_content }
     end
   end

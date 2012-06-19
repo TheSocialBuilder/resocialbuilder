@@ -1,34 +1,33 @@
 !!!
 %html{:lang => "en"}
   %head
-    %title Developer Guide · TimeSupply · Efficiency Gone Wild!
-    = include_gon(:namespace => 'TimeSupplyConfig')
-    = favicon_link_tag '/favicon.png'
-    = stylesheet_link_tag    "application", "dev/dev"
+    %title Developer Guide · RE Social Builder
+    = stylesheet_link_tag    "application", "dashboard/application", "dev/dev"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body.dev.padding_top_60.padding_bottom_40
   
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-dev
-          .row
-            .span3
-              %center
-                = link_to image_tag("dashboard/logo.png", :height => '50'), '/dashboard'
+    %header
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container-dev
+            .row
+              .span3
+                %center
+                  = link_to 'RE Social Builder', '/dashboard', :class => 'brand'
           
-            .span9
-              %ul.nav
-                %li.active
-                  %a{:href => "/"} CSS Style Guide
-                %li
-                  %a{:href => "/schema"} Data Schema
+              .span9
+                %ul.nav
+                  %li.active
+                    %a{:href => "/"} CSS Style Guide
+                  %li
+                    %a{:href => "/schema"} Data Schema
 
   
     .container-dev
       .row
-        .span3.pos_fix
+        .span3
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header CSS Style Guide
@@ -83,5 +82,5 @@
                   Re-Sprite /icon_32
 
 
-        .span9.offset3
+        .span9
           = yield

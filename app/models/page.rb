@@ -9,6 +9,7 @@ class Page
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
   include Mongoid::Tree::Traversal
+  include Mongoid::TaggableWithContext
   
   
   ## fields ##
@@ -19,13 +20,13 @@ class Page
   field :seo_meta_keys, type: String
   field :seo_meta_desc, type: String
   field :published, type: Boolean, default: true
-  
+  taggable :tags, :separator => ','
   
   
   ## associations ##
   belongs_to :account
   
-  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_ids
+  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id
   
   
   ## validations ##

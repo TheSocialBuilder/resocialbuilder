@@ -34,6 +34,10 @@ Resocialbuilder::Application.routes.draw do
     match '/menu', to: 'dashboard#menu', as: 'menu'
     match '/support', to: 'dashboard#support', as: 'support'
     match '/settings', to: 'dashboard#settings', as: 'settings'
+    # match 'savesort', to: 'pages#savesort', as: 'savesort'
+    post '/savesort' => 'pages#savesort'
+    
+    
     
     resources :blogs
     resources :pages

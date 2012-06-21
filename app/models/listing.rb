@@ -1,20 +1,16 @@
 class Listing
+  
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::TaggableWithContext
 
-  field :mls
+
   field :listing
   field :type
   field :status
   field :price, type: Integer
-  field :address
-  field :unit_number
-  field :city
-  field :state
-  field :county
-  field :zip
-  field :mls_area
+
+
   field :square_feet, type: Integer
   field :year, type: Integer
   field :acres, type: Float
@@ -27,27 +23,29 @@ class Listing
   field :garage_capacity, type: Integer
   field :carport_capacity, type: Integer
   taggable :features, :separator => ','
-  field :pool
+  taggable :pool, :separator => ','
   taggable :utilities, :separator => ','
+  taggable :zoning, :separator => ','
   field :water
   taggable :landscape, :separator => ','
-  field :zoning
   field :brokered_by
-  field :office_id
-  field :agent_id
-  field :listing_timestamp
-  
+  field :listing_timestamp, type: DateTime
+
   index({ listing: 1 }, { unique: true})
-  
-  embeds_one :location, as: :locatable
+
+  embeds_one :location, store_as: "location", as: :locatable, :cascade_callbacks => true
   embeds_many :images, :cascade_callbacks => true
-  
-  has_one :listing
-  
-  
-  # attr_accessible :images_attributes, :mls, :mls_list_id, :list_type, :list_status, :list_price, :address, :unit_number, :city, :state, :county, :zip, :mls_area, :total_sq_ft, :year_built, :lot_acres, :short_sale, :total_bed, :total_bath, :sub_division, :public_remarks, :garage_type, :garage_capacity, :carport_capacity, :parking_capacity, :features, :pool, :utilities, :water, :landscape, :zoning, :brokered_by, :office_id, :agent_id
-  
+
+  belongs_to :agent, inverse_of: :agent_listing
+  belongs_to :office, inverse_of: :office_listing
+  belongs_to :market
+
+
+  attr_accessible :listing, :type, :status, :price, :square_feet, :year, :acres, :short_sale, :beds, :baths, :sub_division, :description, :garage_type, :garage_capacity, :carport_capacity, :features, :pool, :utilities, :water, :landscape, :zoning, :garage_type, :brokered_by, :listing_timestamp, :market_attributes, :location_attributes, :images_attributes, :agent_attributes, :office_attributes
+
+  accepts_nested_attributes_for :location, :market, :images, :agent, :office
+
   # attr_accessible :location
   # accepts_nested_attributes_for :location
-  
+
 end

@@ -199,7 +199,8 @@ GEM
       moped (~> 1.0.0.rc)
       origin (~> 1.0.0.rc)
       tzinfo (~> 0.3.22)
-    mongoid_taggable (0.1.7)
+    mongoid_taggable_on (0.1.4)
+      mongoid (> 2.0.0)
     moped (1.0.0.rc)
     multi_json (1.3.6)
     multipart-post (1.1.5)
@@ -365,7 +366,7 @@ DEPENDENCIES
   mongoid-tree!
   mongoid_paperclip_queue!
   mongoid_slug!
-  mongoid_taggable
+  mongoid_taggable_on
   mongoid_taggable_with_context!
   moped (~> 1.0.0.rc)
   omniauth (~> 1.0.3)

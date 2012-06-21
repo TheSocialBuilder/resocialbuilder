@@ -2,6 +2,7 @@
   = f.inputs do
     = f.input :title, :label => 'Post Title'
     = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}, :label => 'Post Content'
+    = f.input :tags
     
     = f.inputs :name => 'Optional Settings' do
       = f.input :published, :as => :boolean

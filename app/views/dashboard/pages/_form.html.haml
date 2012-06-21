@@ -1,15 +1,15 @@
 = semantic_form_for [:dashboard, @page] do |f|
   = f.inputs do
     = f.input :title
-    = f.input :published, :as => :boolean
-    = f.input :seo_meta_title
-    = f.input :seo_meta_keys
-    = f.input :seo_meta_desc
-    = f.input :tags
-    = f.input :parent, :collection => @build_tree_select, :prompt => "New parent page"
-
-    
     = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}
+    = f.input :tags
+    
+    = f.inputs :name => 'Optional Settings' do
+      = f.input :published, :as => :boolean
+      = f.input :parent, :collection => @build_tree_select, :prompt => "New parent page"
+      = f.input :seo_meta_title, :label => 'SEO Title'
+      = f.input :seo_meta_keys, :label => 'SEO Keywords'
+      = f.input :seo_meta_desc, :label => 'SEO Description'
 
   = f.actions do
     = f.action :submit, :as => :input

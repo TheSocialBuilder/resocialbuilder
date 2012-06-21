@@ -1,9 +1,10 @@
 class Dashboard::DashboardController < ApplicationController
   layout "dashboard"
 
-  # before_filter :authenticate_account!
+  before_filter :authenticate_account!
   # before_filter :set_timezone
-  # before_filter :set_facebook
+  before_filter :set_facebook
+  before_filter :setup_system
 
   respond_to :html, :json, :js
   
@@ -11,9 +12,11 @@ class Dashboard::DashboardController < ApplicationController
   
   def set_facebook
     
-    @facebook = Koala::Facebook::GraphAPI.new(session[:omniauth]['credentials']['token']) if session[:omniauth]
-    # @facebook_user = @facebook.get_object("me") if @facebook
-    @facebook_pic = @facebook.get_picture("me", {:type => "square"}) if @facebook
+    @facebook_pic ||= current_realtor.facebook.get_picture("me", {:type => "square"})
+  end
+  
+  def setup_system
+    gon.search_fields = ['user', 'listings 4fd6395e9a6f23070e00003b', "page #{current_account.id}", "blog #{current_account.id}"]
   end
   
   def index

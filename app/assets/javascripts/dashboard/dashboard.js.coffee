@@ -2,6 +2,28 @@ $(document).ready ->
   
   resb_sidebar.make()
   
+  render = (term, data, type) -> 
+    console.log term
+    term
+  select = (term, data, type) ->
+    window.location.href = data.url
+    # console.log("Selected #{term}")
+    # console.log term
+    # console.log data
+    # console.log type
+      
+  $('.dashboard_search').soulmate {
+    url:            'http://soulmate.lvh.me:3000/search'
+    types:          RESocialBuilder.search_fields
+    renderCallback: render
+    selectCallback: select
+    minQueryLength: 2
+    maxResults:     5
+  }
+  
+  
+  
+  
   $("ol.sortable").nestedSortable
     disableNesting: "no-nest"
     forcePlaceholderSize: true
@@ -22,9 +44,7 @@ $(document).ready ->
 
     
   
-  $(".search_query").typeahead
-    source: [ "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" ]
-    items: 4
+
 
   lastWindowHeight = $(window).height()
   lastWindowWidth = $(window).width()

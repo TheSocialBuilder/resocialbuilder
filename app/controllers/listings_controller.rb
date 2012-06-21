@@ -5,13 +5,13 @@ class ListingsController < ApplicationController
   end
   
   def connect_client
-    RETS::Client.login(:url => @mls_market.login_url, :username => @mls_market.username, :password => @mls_market.password)
+    RETS::Client.login(:url => @market.login_url, :username => @market.username, :password => @market.password)
   end
   
   
   def nnrmls
     
-    @mls_market = MlsMarket.find_by(:title => 'nnrmls')
+    @market = Mls::Market.find_by(:title => 'nnrmls')
     @client = connect_client
   
     
@@ -30,30 +30,31 @@ class ListingsController < ApplicationController
   
   def stgeorge
     
-    @mls_market = MlsMarket.find_by(:title => 'stgeorge')
+    @market = Market.find_by(:title => 'stgeorge')
     @client = connect_client
     
     # search_agent
-    search_office
+    # search_office
+    mls
     
     raise "Saved all Agent Data"
   end
   
   def search_office
     
-    if @mls_market.title == 'stgeorge'
+    if @market.title == 'stgeorge'
       
-      data_array = Array.new
-      @client.search(:search_type => :Office, :class => :Office, :limit => 10) do |data|
-        data_array << data
+      # data_array = Array.new
+      @client.search(:search_type => :Office, :class => :Office) do |data|
+        # data_array << data
         save_office(data)
       end
-      raise data_array.to_yaml
+      # raise data_array.to_yaml
       
     end
     
     
-    if @mls_market.title == 'nnrmls'
+    if @market.title == 'nnrmls'
       
       office_query = "(O_UpdateDate=2011-06-01T00:00:00+)"
       
@@ -70,8 +71,8 @@ class ListingsController < ApplicationController
   
   def save_office(data)
     
-    if @mls_market.title == 'stgeorge'
-      office = @mls_market.offices.find_or_create_by(:internal_office_id => data['OFFICE_0'])
+    if @market.title == 'stgeorge'
+      office = @market.offices.find_or_initialize_by(:internal_office_id => data['OFFICE_0'])
 
       office.internal_office_id = data['OFFICE_0']
       office.internal_office_nrds_id = data['OFFICE_1']
@@ -90,8 +91,8 @@ class ListingsController < ApplicationController
       # raise office.to_yaml
     end
     
-    if @mls_market.title == 'nnrmls'
-      office = @mls_market.offices.find_or_create_by(:internal_office_id => data['O_OfficeID'])
+    if @market.title == 'nnrmls'
+      office = @market.offices.find_or_create_by(:internal_office_id => data['O_OfficeID'])
 
       office.internal_office_id = data['O_OfficeID']
       # office.internal_office_nrds_id = data['OFFICE_1']
@@ -120,7 +121,7 @@ class ListingsController < ApplicationController
   
   def search_agent
     
-    if @mls_market.title == 'stgeorge'
+    if @market.title == 'stgeorge'
       
       @client.search(:search_type => :Agent, :class => :Agent) do |data|
         save_agent(data)
@@ -129,7 +130,7 @@ class ListingsController < ApplicationController
     end
     
     
-    if @mls_market.title == 'nnrmls'
+    if @market.title == 'nnrmls'
       
       agents_query = "(U_UpdateDate=2012-06-01T00:00:00+)"
       
@@ -144,8 +145,8 @@ class ListingsController < ApplicationController
   
   def save_agent(data)
     
-    if @mls_market.title == 'stgeorge'
-      agent = @mls_market.agents.find_or_create_by(:internal_agent_id => data['MEMBER_0'])
+    if @market.title == 'stgeorge'
+      agent = @market.agents.find_or_create_by(:internal_agent_id => data['MEMBER_0'])
 
       agent.internal_agent_id = data['MEMBER_0']
       agent.internal_agent_nrds_id = data['MEMBER_2']
@@ -163,8 +164,8 @@ class ListingsController < ApplicationController
 
     end
     
-    if @mls_market.title == 'nnrmls'
-      agent = @mls_market.agents.find_or_create_by(:internal_agent_id => data['U_AgentID'])
+    if @market.title == 'nnrmls'
+      agent = @market.agents.find_or_create_by(:internal_agent_id => data['U_AgentID'])
 
 
       agent.internal_agent_id = data['U_AgentID']
@@ -194,13 +195,13 @@ class ListingsController < ApplicationController
   def mls
     
     # mls = Mls.new
-    mls = Mls.find('4fd0283f9a6f23af26000096')
+    # mls = Mls.find('4fd0283f9a6f23af26000096')
     
     
     # mls.login_url = "http://retsgw.flexmls.com:80/rets2_0/Login"
     # 
     # 
-    # mls.search_fields = ['LIST_1','LIST_105','LIST_9','LIST_15','LIST_22','LIST_35','LIST_39','LIST_40','LIST_41', 'LIST_43','LIST_48','LIST_53','LIST_57','LIST_60','LIST_66','LIST_67','LIST_77','LIST_78','LIST_71','LIST_120','LIST_121','GF20060601190119598775000000','GF20060804131623427324000000','GF20060609021220658114000000','GF20060804131609269095000000','GF20060804124524581455000000','GF20060809131734372173000000','listing_office_name','LIST_106','LIST_5','LIST_31','LIST_33','LIST_34','LIST_36','LIST_37', 'LIST_87']
+    search_fields = ['LIST_1','LIST_105','LIST_9','LIST_15','LIST_22','LIST_35','LIST_39','LIST_40','LIST_41', 'LIST_43','LIST_48','LIST_53','LIST_57','LIST_60','LIST_66','LIST_67','LIST_77','LIST_78','LIST_71','LIST_120','LIST_121','GF20060601190119598775000000','GF20060804131623427324000000','GF20060609021220658114000000','GF20060804131609269095000000','GF20060804124524581455000000','GF20060809131734372173000000','listing_office_name','LIST_106','LIST_5','LIST_31','LIST_33','LIST_34','LIST_36','LIST_37', 'LIST_87']
     # 
     # 
     # mls.login_url = "http://retsgw.flexmls.com:80/rets2_0/Login";
@@ -209,7 +210,7 @@ class ListingsController < ApplicationController
     
     
     
-    @client = RETS::Client.login(:url => mls.login_url, :username => mls.username, :password => mls.password)
+    # @client = RETS::Client.login(:url => mls.login_url, :username => mls.username, :password => mls.password)
     
     
     # # meta_data = get_meta('METADATA-SYSTEM', '*')
@@ -246,24 +247,19 @@ class ListingsController < ApplicationController
     # 
     # raise meta_data.to_yaml
     # , :select => select_fields
-    client.search(:search_type => :Property, :class => 'A', :limit => 2, :select => search_fields) do |data|
+    # , :limit => 2
+    @client.search(:search_type => :Property, :class => 'A', :select => search_fields, :limit => 1000) do |data|
 
 
-      listing = Listing.find_or_initialize_by(listing: data['LIST_105'])      
-      # listing = Listing.new
-      
-      listing.mls = 'stgeorge'
+
+
+      listing = @market.listings.find_or_create_by(listing: data['LIST_105'])      
+
       listing.listing = data['LIST_105']
       listing.listing_timestamp = data['LIST_87']
       listing.type = data['LIST_9']
       listing.status = data['LIST_15']
       listing.price = data['LIST_22']
-
-      location = Location.new(:address_1 => "#{data['LIST_31']} #{data['LIST_33']} #{data['LIST_34']} #{data['LIST_36']} #{data['LIST_37']}", :address_2 => data['LIST_35'], :city => data['LIST_39'], :state => data['LIST_40'], :zip => data['LIST_43'])
-      
-      listing.location = location
-      
-      listing.mls_area = data['LIST_41']
       listing.square_feet = data['LIST_48']
       listing.year = data['LIST_53']
       listing.acres = data['LIST_57']
@@ -282,25 +278,49 @@ class ListingsController < ApplicationController
       listing.landscape = data['GF20060804124524581455000000']
       listing.zoning = data['GF20060809131734372173000000']
       listing.brokered_by = data['listing_office_name'].titlecase
-      listing.office_id = data['LIST_106']
-      listing.agent_id = data['LIST_5']
+
+      # Geocode the location
+      listing.location_attributes = {:address_1 => "#{data['LIST_31']} #{data['LIST_33']} #{data['LIST_34']} #{data['LIST_36']} #{data['LIST_37']}", :address_2 => data['LIST_35'], :city => data['LIST_39'], :state => data['LIST_40'], :zip => data['LIST_43']}
+      
+      # Find the agent from the db
+      agent = Agent.find_by(:internal_agent_id => data['LIST_5']) if data['LIST_5']
+      listing.agent_id = agent.id.to_s unless agent.nil?
+      
+      # Find the office from the db
+      office = Office.find_by(:internal_office_id => data['LIST_106']) if data['LIST_106']
+      listing.office_id = office.id.to_s unless office.nil?
       
       
-      id = data['LIST_105']
-      
-      # Loop through all the images and store them into a new array since this block is a bitch
-      image_data = Array.new
-      client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5:6:7:8:9:10") do |object|
-        image_data << object if object
-      end
-      
-      
-      image_data.each do |photo|
-        listing.images.new(:remote_image_url => photo['location'], :location => photo['location'], :image_content_id => photo['content-id'], :image_object_id => photo['object-id'], :description => photo['content-description'], :preferred => photo['preferred'])
-      end
       
       
       listing.save
+      
+      
+      soul = Soulmate::Loader.new("listings #{@market.id}")
+      soul.add("term" => "#{listing.listing} - #{listing.location.address_formatted}", "id" => listing.id, "data" => {"url" => dashboard_listing_path(listing), "subtitle" => "#{listing.listing} - #{listing.location.address_formatted}"})
+    
+    
+      
+      # Resque.enqueue(ListingImages, listing.id.to_s)
+      
+      # raise listing.to_json
+      
+      # id = data['LIST_105']
+      # 
+      # # Loop through all the images and store them into a new array since this block is a bitch
+      # image_data = Array.new
+      # # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5:6:7:8:9:10") do |object|
+      # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1") do |object|
+      #   image_data << object if object
+      # end
+      # 
+      # 
+      # image_data.each do |photo|
+      #   listing.images.new(:remote_image_url => photo['location'], :location => photo['location'], :image_content_id => photo['content-id'], :image_object_id => photo['object-id'], :description => photo['content-description'], :preferred => photo['preferred'])
+      # end
+      
+      
+      # listing.save
       
       
       

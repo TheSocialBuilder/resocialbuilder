@@ -1,0 +1,24 @@
+.page.register
+
+  
+  .padding_10
+    .float_right
+      = link_to 'Back', root_path
+
+    %h1 Account Registration
+
+    .padding_10
+      %fieldset
+        %legend Account Login
+        = form_tag login_path do
+          .field
+            = label(:email, "Email Address")
+            = text_field(:account, :email)
+
+          .field
+            = label(:password, "Password")
+            = password_field(:account, :password)
+
+          .field
+            = submit_tag("Login", :class => 'button blue')
+

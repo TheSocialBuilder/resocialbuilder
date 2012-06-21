@@ -18,9 +18,17 @@ class Account
   mount_uploader :logo, MediaUploader
   
   ## associations ##
-  # has_many :realtors, dependent: :delete
+  has_many :realtors, dependent: :delete
+  has_many :transactions, dependent: :delete
+  has_many :cards, dependent: :delete
   has_many :pages, dependent: :delete
   has_many :blogs, dependent: :delete
+  belongs_to :mls_market
+  
+  attr_accessible :cards_attributes, :realtors_attributes, :subdomain
+
+  accepts_nested_attributes_for :cards, :realtors
+
   
   
   ## validations ##

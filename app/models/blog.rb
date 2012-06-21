@@ -6,6 +6,7 @@ class Blog
   include Mongoid::Timestamps
   include Mongoid::Slug
   # include Mongoid::Versioning
+  include Mongoid::TaggableOn
   
   
   ## fields ##
@@ -16,13 +17,13 @@ class Blog
   field :seo_meta_keys, type: String
   field :seo_meta_desc, type: String
   field :published, type: Boolean, default: true
-  # field :parent_ids, type: Array
+  taggable_on :tags
   
   
   ## associations ##
   belongs_to :account
   
-  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id
+  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :tags
   
   
   ## validations ##

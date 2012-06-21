@@ -5,7 +5,7 @@ Resocialbuilder::Application.routes.draw do
   end
   
   constraints(:subdomain => 'dev') do
-    # mount Resque::Server, :at => '/resque'
+    mount Resque::Server, :at => '/resque'
     scope :module => "dev" do
       get '/sprites/:id' => 'dev#sprites'
       get '/sprites' => 'dev#sprites'
@@ -18,7 +18,7 @@ Resocialbuilder::Application.routes.draw do
   match '/login', to: 'accounts#login'
   match '/logout', to: 'accounts#logout'
 
-  match '/auth/:provider/callback', to: 'dashboard::authentications#create'
+  match '/auth/:provider/callback', to: 'authentications#create'
   match '/auth/failure', to: 'home::register#new', as: 'register'
   
   
@@ -45,6 +45,7 @@ Resocialbuilder::Application.routes.draw do
     resources :widgets
     resources :realtors
     resources :listings
+    resources :transactions
     
   end
   

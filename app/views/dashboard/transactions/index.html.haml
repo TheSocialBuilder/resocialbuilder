@@ -1,0 +1,25 @@
+
+%h1 Listing Transactions
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Title
+      %th Total
+      %th Invoice Created
+      %th Invoice Paid
+      %th.action_row Actions
+
+  %tbody
+    - @transactions.each do |transaction|
+      %tr
+        %td= transaction.title
+        %td
+          $
+          = transaction.base_amount
+        %td
+          = transaction.created_at.strftime("%m/%d/%Y %l:%M %P")
+        %td
+          = transaction.transaction_date.strftime("%m/%d/%Y %l:%M %P")
+        %td
+          = link_to 'Show', dashboard_transaction_path(transaction)

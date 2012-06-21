@@ -8,6 +8,7 @@ development:
     allow_dynamic_fields: true
     identity_map_enabled: false
     include_root_in_json: false
+    raise_not_found_error: false
 
 test:
   host: localhost

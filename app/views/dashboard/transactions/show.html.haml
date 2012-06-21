@@ -1,0 +1,7 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @transaction.title
+
+= link_to 'Back', dashboard_transactions_path(@transaction)

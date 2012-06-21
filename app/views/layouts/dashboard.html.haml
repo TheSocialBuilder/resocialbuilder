@@ -4,6 +4,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title RE Social Builder
+    = include_gon(:namespace => 'RESocialBuilder')
     = stylesheet_link_tag    "application", :media => "all"
     = stylesheet_link_tag    "dashboard/application", :media => "all"
     = javascript_include_tag "dashboard/application"
@@ -23,7 +24,11 @@
                 %li.divider-vertical.hidden-phone.hidden-tablet
                 %li.dropdown
                   = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                    Johny Smith
+                    - if @facebook_pic
+                      = image_tag @facebook_pic, :size => '20x20'
+                    - else
+                      %i.icon-user
+                    = current_realtor.name
                     %b.caret
                   %ul.dropdown-menu
                     %li
@@ -123,7 +128,7 @@
           .sidebar
             .sidebar_inner
               %form
-                %input.search_query{:autocomplete => "off", :name => "query", :placeholder => "Search...", :size => "16", :type => "text"}/
+                %input.dashboard_search.search-input{:autocomplete => "off", :name => "query", :placeholder => "Search...", :size => "16", :type => "text"}/
 
               #side_accordion.accordion
                 .accordion-group
@@ -185,7 +190,7 @@
                           = link_to 'Facebook', '#'
                         %li.nav-header Billing
                         %li
-                          = link_to 'Statements', '#'
+                          = link_to 'Statements', dashboard_transactions_path
                         %li
                           = link_to 'Credit Cards', '#'
                         %li

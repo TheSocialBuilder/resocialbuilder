@@ -7,10 +7,8 @@ class Realtor
   
   
   ## fields ##
-  field :account_id, type: String
   field :first_name, type: String
   field :last_name, type: String
-  field :mls_agent_id, type: String
   field :email, type: String
   field :password, type: String
   field :phone, type: String
@@ -21,6 +19,7 @@ class Realtor
   
   ## associations ##
   belongs_to :account
+  embeds_many :authentications, as: :authorized
   
   
   ## validations ##
@@ -33,6 +32,21 @@ class Realtor
   
   
   ## methods ##
+  def apply_omniauth(omniauth)
+    self.email = omniauth['user_info']['email'] if email.blank?
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :info => omniauth['info'], :credentials => omniauth['credentials'])
+  end
   
+  
+  
+  def facebook
+    if self.authentications.first.provider == 'facebook'
+      @facebook ||= Koala::Facebook::GraphAPI.new(self.authentications.first.credentials['token'])
+    end
+  end
+  
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
   
 end

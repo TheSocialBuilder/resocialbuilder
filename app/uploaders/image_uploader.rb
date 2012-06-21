@@ -14,12 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-     "#{timestamp}.#{file.extension}" if original_filename.present?
-  end
-  
-  def timestamp
-    var = :"@#{mounted_as}_timestamp"
-    model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
+     "#{model.id}_#{model.image_content_id}_#{model.image_object_id}.#{file.extension}" if original_filename.present?
   end
   
 

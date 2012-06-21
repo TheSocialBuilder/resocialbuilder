@@ -1,0 +1,35 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title RE Social Builder
+    = stylesheet_link_tag    "application", "home/application"
+    = javascript_include_tag "application", 'jwplayer'
+    = csrf_meta_tags
+
+  %body.home
+    .container
+      .top_bar
+        .logo
+          = link_to image_tag('home/logo.png'), root_path
+        .login
+          = link_to 'Login', login_path, :class => 'button orange'
+
+      .clear
+      .content
+        .blue_bar
+          .price
+            $30 Per Month
+            .small
+              No Contracts, Cancel Anytime, 5 Minute Setup
+          .tag_line
+            Simple, MLS Listings on Facebook
+          .tag_line_small
+            Instantly Display Real Estate Listings Directly on Facebook, Website Included.
+        .yield
+          = render :partial => "shared/flash_messages"
+          = yield        
+      .footer
+        .float_right
+          Pricing · Support · Legal  · Blog
+        &copy; The Social Builder LLC
+    = yield :scripts

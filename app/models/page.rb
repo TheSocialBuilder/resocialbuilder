@@ -4,12 +4,13 @@ class Page
   ## includes ##
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::TaggableOn
   include Mongoid::Slug
   # include Mongoid::Versioning
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
   include Mongoid::Tree::Traversal
-  include Mongoid::TaggableWithContext
+  
   
   
   ## fields ##
@@ -20,13 +21,13 @@ class Page
   field :seo_meta_keys, type: String
   field :seo_meta_desc, type: String
   field :published, type: Boolean, default: true
-  taggable :tags, :separator => ','
+  taggable_on :tags
   
   
   ## associations ##
   belongs_to :account
   
-  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id
+  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id, :tags
   
   
   ## validations ##

@@ -79,7 +79,7 @@ class Location
       obj.zip          = geo.postal_code
       obj.country      = geo.country
       obj.country_code = geo.country_code
-      obj.address_formatted = geo.address
+      obj.address_formatted = geo.address.gsub(', USA', '')
       # raise obj.to_yaml
     end  
   end

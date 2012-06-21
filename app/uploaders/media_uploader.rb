@@ -16,7 +16,7 @@ class MediaUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-     "#{timestamp}.#{file.extension}" if original_filename.present?
+     "#{timestamp}_test.#{file.extension}" if original_filename.present?
   end
   
   def timestamp

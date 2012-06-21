@@ -1,0 +1,32 @@
+.page.home
+
+  .left
+  
+    #mediaplayer JW Player goes here
+    :javascript
+      jwplayer("mediaplayer").setup({
+        skin: "jwplayer/glow.zip",
+        stretching: "fill",
+        flashplayer: "jwplayer/player.swf",
+        file: "http://content.bitsontherun.com/videos/bkaovAYt-364766.mp4",
+        image: "http://s0-www.ltvimg.com/v3_6_4/images/jw-player/bkaovAYt-480.jpg"
+      });
+
+  .right
+    .padding_10
+      %h1 Why Sign Up with RE Social Builder?
+      
+      %ul
+        %li Deliver your MLS Listings directly on Facebook!
+        %li Every account gets a personalized website.
+        %li Allow your customers to search the entire MLS in your area.
+        %li Upload company logo, and personal image to website and Facebook.
+        %li Personalized subdomain URL for ease of access to website.
+        %li Personal or Business blog with absolutely no restrictions!
+        %li 100% Real Time website traffic analytics.
+      = link_to 'Create your account', new_account_path, :class => 'button green'
+
+
+
+
+

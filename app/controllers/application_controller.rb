@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery
   
-  helper_method :mls_markets_supported, :default_office_or_agent, :default_prices, :current_account, :authenticate_account!, :current_user, :us_states, :page_assigned, :current_domain, :current_subdomain, :authenticate_subdomain!
+  helper_method :mls_markets_supported, :default_office_or_agent, :default_prices, :current_account, :authenticate_account!, :current_user, :us_states, :page_assigned, :current_domain, :current_subdomain, :authenticate_subdomain!, :current_realtor
   
   
   # Helper function to show and set just the domain name
@@ -66,18 +66,13 @@ class ApplicationController < ActionController::Base
   
   
   # Helper function to get the current_account
+  def current_realtor
+    @current_realtor ||= Realtor.find(session[:realtor_id]) if session[:realtor_id]
+  end
+  
+  # Helper function to get the current_account
   def current_account
-    session[:account_id] = '4fd26c77b48f662f60000001'
-    begin
-      if session[:account_id]
-        @current_account ||= Account.find(session[:account_id]) 
-        # session[:account_id]
-      elsif current_subdomain
-        @current_account ||= Account.find_by(:subdomain => current_subdomain)
-      end
-    rescue Mongoid::Errors::DocumentNotFound
-      nil
-    end
+    @current_account ||= Account.find(session[:account_id]) if session[:account_id]
   end
 
 

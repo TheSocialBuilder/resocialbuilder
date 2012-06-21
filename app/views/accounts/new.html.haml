@@ -1,5 +1,34 @@
-%h1 New account
+.page.register
 
-= render 'form'
+  
 
-= link_to 'Back', accounts_path
+
+
+  
+  .padding_10
+  
+    = semantic_form_for @account do |f|
+      = f.inputs do
+      
+        = f.semantic_fields_for :realtor do |realtor|
+          = realtor.input :first_name
+          = realtor.input :last_name
+          = realtor.input :email
+          = realtor.input :password
+      
+        = f.input :subdomain, :label => 'Custom website subdomain'
+        
+        = f.semantic_fields_for :card do |card|
+          = card.input :name, :label => 'Name on Credit Card:'
+          = card.input :number, :label => 'Credit Card #:'
+          = card.input :type, :collection => [['Visa', 'visa'], ['Mastercard', 'master'], ['Discover', 'discover']], :label => 'Card Type:'
+          = card.input :month, :collection => 1..12, :label => 'Exp. Month'
+          = card.input :year, :collection => 2012..2020, :label => 'Exp. Year'
+          = card.input :verification_value, :label => 'CCV Security Code:', :hint => '3 Digit Security Code on back of card.'
+        
+        
+ 
+      = f.actions do
+        = f.action :submit, :as => :input
+
+      

@@ -3,6 +3,7 @@ class Dashboard::PagesController < Dashboard::DashboardController
   add_breadcrumb "Pages", :dashboard_pages_path
   
   
+  
   def savesort
     neworder = JSON.parse(params[:set])
     # raise neworder.to_yaml
@@ -102,6 +103,12 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
     respond_to do |format|
       if @page.save
+        
+        
+        soul = Soulmate::Loader.new("page #{current_account.id}")
+        soul.add("term" => @page.title, "id" => @page.id, "data" => {"url" => edit_dashboard_page_path(@page.slug), "subtitle" => @page.title})
+        
+        
         format.html { redirect_to dashboard_page_path(@page), notice: 'Page was successfully created.' }
         format.json { render json: @page, status: :created, location: @page }
       else
@@ -118,6 +125,11 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
+        
+        soul = Soulmate::Loader.new("page #{current_account.id}")
+        soul.add("term" => @page.title, "id" => @page.id, "data" => {"url" => edit_dashboard_page_path(@page.slug), "subtitle" => @page.title})
+        
+        
         format.html { redirect_to dashboard_page_path(@page), notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -130,6 +142,10 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
   def destroy
     @page = current_account.pages.find_by_slug(params[:id])
+    
+    soul = Soulmate::Loader.new("page #{current_account.id}")
+    soul.remove("id" => @page.id)
+    
     @page.destroy
 
     respond_to do |format|

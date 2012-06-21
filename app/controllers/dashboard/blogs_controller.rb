@@ -43,6 +43,10 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
     respond_to do |format|
       if @blog.save
+        
+        soul = Soulmate::Loader.new("blog #{current_account.id}")
+        soul.add("term" => @blog.title, "id" => @blog.id, "data" => {"url" => edit_dashboard_blog_path(@blog.slug), "subtitle" => @blog.title})
+        
         format.html { redirect_to dashboard_blog_path(@blog), notice: 'Blog was successfully created.' }
         format.json { render json: @blog, status: :created, location: @blog }
       else
@@ -58,6 +62,11 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
+        
+        soul = Soulmate::Loader.new("blog #{current_account.id}")
+        soul.add("term" => @blog.title, "id" => @blog.id, "data" => {"url" => edit_dashboard_blog_path(@blog.slug), "subtitle" => @blog.title})
+        
+        
         format.html { redirect_to dashboard_blog_path(@blog), notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,6 +79,10 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
   def destroy
     @blog = current_account.blogs.find_by_slug(params[:id])
+    
+    soul = Soulmate::Loader.new("blog_#{current_account.id}")
+    soul.remove("id" => @blog.id)
+    
     @blog.destroy
 
     respond_to do |format|

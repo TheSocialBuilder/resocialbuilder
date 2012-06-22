@@ -133,24 +133,26 @@
               #side_accordion.accordion
                 .accordion-group
                   .accordion-heading
-                    = link_to '#collapseOne', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                    = link_to '#accordian_dashboard', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
                       %i.icon-folder-close
-                      Content
-                  #collapseOne.accordion-body.collapse
+                      Dashboard
+                  #accordian_dashboard.accordion-body.collapse
                     .accordion-inner
                       %ul.nav.nav-list
-                        %li
+                        %li#link_dashboard
+                          = link_to 'Home', dashboard_path
+                        %li#link_pages
                           = link_to 'Pages', dashboard_pages_path
-                        %li
+                        %li#link_blogs
                           = link_to 'Blogs', dashboard_blogs_path
-                        %li
-                          = link_to 'Comments', '#'
+                        %li#link_dashboard
+                          = link_to 'Facebook Posts', dashboard_posts_path
                 .accordion-group
                   .accordion-heading
-                    = link_to '#collapseTwo', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                    = link_to '#accordian_listings', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
                       %i.icon-th
                       Listings
-                  #collapseTwo.accordion-body.collapse
+                  #accordian_listings.accordion-body.collapse
                     .accordion-inner
                       %ul.nav.nav-list
                         %li
@@ -161,10 +163,10 @@
                           = link_to 'Set Featured Listings', '#'
                 .accordion-group
                   .accordion-heading
-                    = link_to '#collapseThree', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                    = link_to '#accordian_users', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
                       %i.icon-user
                       User/Leads
-                  #collapseThree.accordion-body.collapse
+                  #accordian_users.accordion-body.collapse
                     .accordion-inner
                       %ul.nav.nav-list
                         %li
@@ -177,22 +179,22 @@
                           = link_to 'User Searches', '#'
                 .accordion-group
                   .accordion-heading
-                    = link_to '#collapseFour', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                    = link_to '#accordian_account', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
                       %i.icon-cog
                       Account Management
-                  #collapseFour.accordion-body.collapse.in
+                  #accordian_account.accordion-body.collapse
                     .accordion-inner
                       %ul.nav.nav-list
                         %li.nav-header Account
-                        %li.active
+                        %li
                           = link_to 'Settings', '#'
                         %li
                           = link_to 'Facebook', '#'
                         %li.nav-header Billing
-                        %li
-                          = link_to 'Statements', dashboard_transactions_path
-                        %li
-                          = link_to 'Credit Cards', '#'
+                        %li#link_transactions
+                          = link_to "Statements (#{transactions_total})", dashboard_transactions_path
+                        %li#link_cards
+                          = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
                         %li
                           = link_to 'Membership', '#'
                         %li.divider

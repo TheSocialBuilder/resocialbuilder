@@ -46,6 +46,8 @@ Resocialbuilder::Application.routes.draw do
     resources :realtors
     resources :listings
     resources :transactions
+    resources :cards
+    resources :facebook_posts
     
   end
   

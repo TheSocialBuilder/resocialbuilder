@@ -1,0 +1,16 @@
+= semantic_form_for [:dashboard, @card] do |f|
+  = f.inputs do
+    = f.input :name, :label => 'Name on Credit Card:'
+    = f.input :number, :label => 'Credit Card #:'
+    = f.input :type, :collection => [['Visa', 'visa'], ['Mastercard', 'master'], ['Discover', 'discover']], :label => 'Card Type:'
+    = f.input :month, :collection => 1..12, :label => 'Exp. Month'
+    = f.input :year, :collection => 2012..2020, :label => 'Exp. Year'
+    = f.input :verification_value, :label => 'CCV Security Code:', :hint => '3 Digit Security Code on back of card.'
+    - if !@card.default
+      = f.input :default, :as => :boolean, :label => 'Make this my default card to charge'
+        
+    
+    
+
+  = f.actions do
+    = f.action :submit, :as => :input

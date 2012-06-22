@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @card.title
+
+= link_to 'Edit', edit_dashboard_card_path(@card)
+\|
+= link_to 'Back', dashboard_cards_path(@card)

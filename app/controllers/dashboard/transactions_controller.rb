@@ -1,5 +1,13 @@
 class Dashboard::TransactionsController < Dashboard::DashboardController
   
+  before_filter :setup_menu
+
+  def setup_menu
+    gon.menu_active_accordian = 'account'
+    gon.menu_active_link = 'transactions'
+  end
+  
+  
   add_breadcrumb "Transactions", :dashboard_transactions_path
   def index
     @transactions = current_account.transactions.all

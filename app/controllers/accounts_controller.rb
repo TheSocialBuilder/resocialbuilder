@@ -38,6 +38,7 @@ class AccountsController < ApplicationController
       :authorization => response.authorization
     )
     @transaction.save
+    @card.default = true
     @card.save
     
     # if response.success? == false

@@ -7,10 +7,7 @@ $(document).ready ->
     term
   select = (term, data, type) ->
     window.location.href = data.url
-    # console.log("Selected #{term}")
-    # console.log term
-    # console.log data
-    # console.log type
+
       
   $('.dashboard_search').soulmate {
     url:            'http://soulmate.lvh.me:3000/search'
@@ -20,9 +17,6 @@ $(document).ready ->
     minQueryLength: 2
     maxResults:     5
   }
-  
-  
-  
   
   $("ol.sortable").nestedSortable
     disableNesting: "no-nest"
@@ -41,9 +35,6 @@ $(document).ready ->
       set = {set : JSON.stringify($('ol.sortable').nestedSortable('toHierarchy', {startDepthCount: 0}))}
       $.post("savesort", set)
       $('#output').html('<p id="flash_notice">Saved Successfully</p>')
-
-    
-  
 
 
   lastWindowHeight = $(window).height()
@@ -67,36 +58,12 @@ $(document).ready ->
   resb_crumbs.init()
   prettyPrint()
   resb_external_links.init()
-  resb_style.init()
+
 
 is_touch_device = ("ontouchstart" of document.documentElement)
 resb_sidebar =
   init: ->
-    if $(window).width() > 767
-      unless $("body").hasClass("sidebar_hidden")
-        if $.cookie("resb_sidebar") is "hidden"
-          $("body").addClass "sidebar_hidden"
-          $(".sidebar_switch").toggleClass("on_switch off_switch").attr "title", "Show Sidebar"
-      else
-        $(".sidebar_switch").toggleClass("on_switch off_switch").attr "title", "Show Sidebar"
-    else
-      $("body").addClass "sidebar_hidden"
-      $(".sidebar_switch").removeClass("on_switch").addClass "off_switch"
-    $(".sidebar_switch").click ->
-      $(this).qtip "hide"  unless is_touch_device
-      $(".sidebar_switch").removeClass "on_switch off_switch"
-      if $("body").hasClass("sidebar_hidden")
-        $.cookie "resb_sidebar", null
-        $("body").removeClass "sidebar_hidden"
-        $(".sidebar_switch").addClass("on_switch").show()
-        $(".sidebar_switch").attr "title", "Hide Sidebar"
-      else
-        $.cookie "resb_sidebar", "hidden"
-        $("body").addClass "sidebar_hidden"
-        $(".sidebar_switch").addClass "off_switch"
-        $(".sidebar_switch").attr "title", "Show Sidebar"
-      $(window).resize()
-      resb_sidebar.make()
+
 
     $(".sidebar").css "min-height", "100%"
     s_box = $(".sidebar_info")
@@ -123,9 +90,20 @@ resb_sidebar =
 
   make_active: ->
     thisAccordion = $("#side_accordion")
-    thisAccordion.find(".accordion-heading").removeClass "sdb_h_active"
-    thisHeading = thisAccordion.find(".accordion-body.in").prev(".accordion-heading")
-    thisHeading.addClass "sdb_h_active"  if thisHeading.length
+    
+    active_accordian = RESocialBuilder.menu_active_accordian
+    active_link = RESocialBuilder.menu_active_link
+    
+    if active_accordian
+      $("#accordian_"+active_accordian).addClass "in" 
+      
+    if active_link
+      $("#link_"+active_link).addClass "active" 
+    
+    
+    # thisAccordion.find(".accordion-heading").removeClass "sdb_h_active"
+    #     thisHeading = thisAccordion.find(".accordion-body.in").prev(".accordion-heading")
+    #     thisHeading.addClass "sdb_h_active"  if thisHeading.length
     
     
   
@@ -187,8 +165,3 @@ resb_external_links = init: ->
   $("a[href^='http']").each ->
     $(this).attr("target", "_blank").addClass "external_link"
 
-resb_style = init: ->
-  $(".style_switcher a").click ->
-    $("#link_theme").attr "href", "css/" + $(this).attr("title") + ".css"
-    $(".style_switcher a").removeClass "th_active"
-    $(this).addClass "th_active"

@@ -5,13 +5,20 @@ class Dashboard::DashboardController < ApplicationController
   # before_filter :set_timezone
   before_filter :set_facebook
   before_filter :setup_system
-
+  before_filter :setup_menu
+  
   respond_to :html, :json, :js
   
   add_breadcrumb "Dashboard", :dashboard_path
   
-  def set_facebook
+  def setup_menu
     
+    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_link = 'dashboard'
+  end
+  
+  def set_facebook
+
     @facebook_pic ||= current_realtor.facebook.get_picture("me", {:type => "square"})
   end
   
@@ -20,6 +27,7 @@ class Dashboard::DashboardController < ApplicationController
   end
   
   def index
+    gon.menu_active_link = 'dashboard'
     # @listings = Listing.all.cache
   end
   

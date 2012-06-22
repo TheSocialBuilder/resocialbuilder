@@ -1,5 +1,13 @@
 class Dashboard::BlogsController < Dashboard::DashboardController
-  
+
+  before_filter :setup_menu
+
+  def setup_menu
+    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_link = 'blogs'
+  end
+
+
   add_breadcrumb "Blogs", :dashboard_blogs_path
   def index
     @blogs = current_account.blogs.all

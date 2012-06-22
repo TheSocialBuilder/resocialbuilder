@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @post.title
+%p
+  %b Content:
+  = @post.content
+%p
+  %b Published:
+  = @post.published
+%p
+  %b Seo title:
+  = @post.seo_meta_title
+%p
+  %b Seo meta:
+  = @post.seo_meta_keys
+%p
+  %b Seo desc:
+  = @post.seo_meta_desc
+
+= link_to 'Edit', edit_dashboard_post_path(@post)
+\|
+= link_to 'Back', dashboard_posts_path(@post)

@@ -1,0 +1,31 @@
+= link_to 'Add New Credit Card', new_dashboard_card_path, :class => 'btn btn-primary pull-right'
+%h1 Credit Cards on File
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Type
+      %th Name on Card
+      %th Number
+      %th Expiration Date
+      %th.action_row Actions
+
+  %tbody
+    - @cards.each do |card|
+      %tr
+        %td
+          = image_tag("dashboard/cc_#{card.type}.png")
+        %td
+          = card.name
+        %td
+          = card.number 
+          - if card.default
+            %span.label.label-success Default Card
+        %td
+          = "#{card.month}/#{card.year[-2..-1]}"
+        %td
+          = link_to 'Edit', edit_dashboard_card_path(card)
+          - if !card.default
+            = link_to 'Destroy', dashboard_card_path(card), :confirm => 'Are you sure?', :method => :delete
+          - else
+            Destroy

@@ -1,5 +1,13 @@
 class Dashboard::PagesController < Dashboard::DashboardController
   
+  before_filter :setup_menu
+
+  def setup_menu
+    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_link = 'pages'
+  end
+  
+  
   add_breadcrumb "Pages", :dashboard_pages_path
   
   

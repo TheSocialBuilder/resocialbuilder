@@ -20,6 +20,8 @@ class Realtor
   ## associations ##
   belongs_to :account
   embeds_many :authentications, as: :authorized
+  has_many :facebook_pages
+  has_many :facebook_posts
   
   
   ## validations ##

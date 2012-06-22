@@ -23,6 +23,8 @@ class Account
   has_many :cards, dependent: :delete
   has_many :pages, dependent: :delete
   has_many :blogs, dependent: :delete
+  has_many :facebook_pages, dependent: :delete
+  has_many :facebook_posts, dependent: :delete
   belongs_to :mls_market
   
   attr_accessible :cards_attributes, :realtors_attributes, :subdomain

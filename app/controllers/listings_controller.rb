@@ -248,7 +248,7 @@ class ListingsController < ApplicationController
     # raise meta_data.to_yaml
     # , :select => select_fields
     # , :limit => 2
-    @client.search(:search_type => :Property, :class => 'A', :select => search_fields, :limit => 1000) do |data|
+    @client.search(:search_type => :Property, :class => 'A', :select => search_fields, :limit => 1) do |data|
 
 
 

@@ -39,7 +39,15 @@ Resocialbuilder::Application.routes.draw do
     
     
     
-    resources :blogs
+    resources :blogs do
+      
+      resources :comments
+    end
+    
+    get 'blogs/:id/manage_comments', to: 'blogs#manage_comments', as: 'manage_comments'
+    
+    resources :accounts
+    resources :comments
     resources :pages
     resources :links
     resources :widgets
@@ -48,6 +56,7 @@ Resocialbuilder::Application.routes.draw do
     resources :transactions
     resources :cards
     resources :facebook_posts
+
     
   end
   

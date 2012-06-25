@@ -28,6 +28,21 @@ class Dashboard::BlogsController < Dashboard::DashboardController
       format.json { render json: @blog }
     end
   end
+  
+  def manage_comments
+    add_breadcrumb "Manage Blog Comments", dashboard_blog_path
+    @blog = current_account.blogs.find_by_slug(params[:id])
+    
+    @commentable = @blog
+    @comments = @commentable.comments
+    @comment = Comment.new
+  
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @blog }
+    end
+  end
 
   def new
     add_breadcrumb "Creating New Blog", new_dashboard_blog_path
@@ -51,6 +66,10 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
     respond_to do |format|
       if @blog.save
+        
+        Activity.create_indexes
+        
+        current_realtor.publish_activity(:new_blog, :object => @blog)
         
         soul = Soulmate::Loader.new("blog #{current_account.id}")
         soul.add("term" => @blog.title, "id" => @blog.id, "data" => {"url" => edit_dashboard_blog_path(@blog.slug), "subtitle" => @blog.title})

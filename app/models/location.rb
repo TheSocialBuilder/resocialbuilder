@@ -3,8 +3,8 @@ class Location
   
   ## includes ##
   include Mongoid::Document
-  include Mongoid::Timestamps
-  include Geocoder::Model::Mongoid
+  # include Mongoid::Timestamps
+  
   
   
   ## fields ##
@@ -22,28 +22,29 @@ class Location
   field :state_code, type: String
   field :zip, type: String
   field :country, type: String
+  field :test, type: String
   field :country_code, type: String
   
   
   
 
   ## associations ##
-  belongs_to :locatable, polymorphic: true
+  embedded_in :locatable, polymorphic: true
   
   ## validations ##
-  
+  attr_accessible :coordinates, :address, :address_formatted, :address_1, :address_2, :latitude, :longitude, :city, :county, :address_1, :county_code, :state, :state_code, :zip, :country, :country_code
   
   ## scopes ##
   
   
   ## callbacks ##
+  include Geocoder::Model::Mongoid
   geocoded_by :address_info
-  before_save :geocode
+  after_validation :geocode
   
   ## methods ##
   
   geocoded_by :address_info do |obj,results|
-    # raise obj.class.to_s
     if geo = results.first
       
       

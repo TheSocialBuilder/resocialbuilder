@@ -27,10 +27,14 @@ gem "formtastic", "~> 2.1"
 
 gem 'country_select'
 gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
+
 gem "paperclip", "~> 3.0"
 gem 'mongoid-paperclip', require: 'mongoid_paperclip', :git => 'git@github.com:bhammond/mongoid-paperclip.git'
 gem 'mongoid_paperclip_queue', :git => 'git@github.com:bhammond/mongoid_paperclip_queue.git'
 gem 'mongoid-tree', :git => 'git://github.com/bhammond/mongoid-tree.git', :require => 'mongoid/tree'
+gem 'mongoid_commentable', :git => 'git@github.com:bhammond/mongoid_commentable.git'
+gem 'mongoid_publishable'
+gem 'streama'
 gem 'phone'
 
 

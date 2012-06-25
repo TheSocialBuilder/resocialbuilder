@@ -9,8 +9,10 @@ class Blog
   include Mongoid::TaggableOn
   
   
+  
   ## fields ##
   field :title, type: String
+  field :views, type: Integer, default: 0
   slug :title, history: true
   field :content, type: String
   field :seo_meta_title, type: String
@@ -22,8 +24,11 @@ class Blog
   
   ## associations ##
   belongs_to :account
+  has_many :comments, as: :commentable
   
   attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :tags
+  
+
   
   
   ## validations ##

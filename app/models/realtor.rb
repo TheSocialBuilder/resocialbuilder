@@ -4,6 +4,7 @@ class Realtor
   ## includes ##
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Streama::Actor
   
   
   ## fields ##

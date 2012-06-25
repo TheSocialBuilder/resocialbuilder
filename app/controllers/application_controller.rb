@@ -67,11 +67,13 @@ class ApplicationController < ActionController::Base
   
   # Helper function to get the current_account
   def current_realtor
+    session[:realtor_id] = '4fe0ce7f9a6f23afbe000026'
     @current_realtor ||= Realtor.find(session[:realtor_id]) if session[:realtor_id]
   end
   
   # Helper function to get the current_account
   def current_account
+    session[:account_id] = '4fe0ce819a6f23afbe000028'
     @current_account ||= Account.find(session[:account_id]) if session[:account_id]
   end
 

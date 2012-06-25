@@ -19,7 +19,7 @@ class Dashboard::DashboardController < ApplicationController
   
   def set_facebook
 
-    @facebook_pic ||= current_realtor.facebook.get_picture("me", {:type => "square"})
+    @facebook_pic ||= current_realtor.facebook.get_picture("me", {:type => "square"}) if current_realtor.facebook.nil?
   end
   
   def setup_system
@@ -76,26 +76,30 @@ class Dashboard::DashboardController < ApplicationController
     
     if params[:account]
       
-      current_facebook_page_id = current_account.facebook_page_id if @facebook
+
+      # raise current_account.to_json
       
-      respond_to do |format|
-        if current_account.update_attributes(params[:account])
+      # current_facebook_page_id = current_account.facebook_page_id if @facebook
+      
+      
+      if current_account.update_attributes(params[:account])
           
           
-          if current_facebook_page_id != params[:account][:facebook_page_id] && @facebook
-            install_facebook(params[:account][:facebook_page_id])
-            uninstall_facebook(current_facebook_page_id)
-          end
+          # if current_facebook_page_id != params[:account][:facebook_page_id] && @facebook
+          #             install_facebook(params[:account][:facebook_page_id])
+          #             uninstall_facebook(current_facebook_page_id)
+          #           end
           
-          format.html { redirect_to dashboard_settings_path, notice: 'Settings was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "settings" }
-          format.json { render json: dashboard_settings_path.errors, status: :unprocessable_entity }
-        end
+          
+        # raise @account.to_json
+          
+        redirect_to dashboard_settings_path, notice: 'Settings was successfully updated.'
+      else
+        render action: "settings"
       end
+
     else
-      @facebook_pages = @facebook.get_connections("me", "accounts") if @facebook
+      # @facebook_pages = @facebook.get_connections("me", "accounts") if @facebook
     end
   end
   

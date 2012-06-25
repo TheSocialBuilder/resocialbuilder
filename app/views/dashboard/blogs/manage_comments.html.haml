@@ -1,0 +1,29 @@
+
+
+%h1= @blog.title
+%h3 Comments (#{@comments.length})
+  
+- @comments.each do |comment|
+  %div{:style => 'margin-bottom:20px; margin-top:20px'}
+    %div
+      #{comment.author} said on #{comment.created_at.strftime("%m/%d/%Y %l:%M %P")}
+    %div
+      = comment.content
+  
+
+%hr
+%h3 Add Comment
+= semantic_form_for [:dashboard, @commentable, @comment] do |f|
+  = f.inputs do
+  
+    = f.input :author
+    = f.input :content, :as => :text
+
+  = f.actions do
+    = f.action :submit, :as => :input
+
+
+
+= link_to 'Edit', edit_dashboard_blog_path(@blog)
+\|
+= link_to 'Back', dashboard_blogs_path(@blog)

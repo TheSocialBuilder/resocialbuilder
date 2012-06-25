@@ -26,10 +26,12 @@ class Account
   has_many :facebook_pages, dependent: :delete
   has_many :facebook_posts, dependent: :delete
   belongs_to :mls_market
+  embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
   
-  attr_accessible :cards_attributes, :realtors_attributes, :subdomain
+  
+  attr_accessible :cards_attributes, :realtors_attributes, :subdomain, :location_attributes
 
-  accepts_nested_attributes_for :cards, :realtors
+  accepts_nested_attributes_for :cards, :realtors, :location
 
   
   

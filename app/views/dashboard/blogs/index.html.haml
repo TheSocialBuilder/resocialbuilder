@@ -5,6 +5,8 @@
   %thead
     %tr
       %th Title
+      %th Comments
+      %th Views
       %th Created
       %th Updated
       %th.action_row Actions
@@ -14,11 +16,14 @@
       %tr
         %td= blog.title
         %td
+          = link_to blog.comments.length, dashboard_manage_comments_path(blog)
+        %td= blog.views
+        %td
           = blog.created_at.strftime("%m/%d/%Y %l:%M %P")
         %td
           = blog.updated_at.strftime("%m/%d/%Y %l:%M %P")
 
         %td
-          = link_to 'Show', dashboard_blog_path(blog)
+          
           = link_to 'Edit', edit_dashboard_blog_path(blog)
           = link_to 'Destroy', dashboard_blog_path(blog), :confirm => 'Are you sure?', :method => :delete

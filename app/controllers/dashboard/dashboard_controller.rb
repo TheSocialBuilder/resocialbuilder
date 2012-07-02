@@ -82,6 +82,15 @@ class Dashboard::DashboardController < ApplicationController
       
       
       if current_account.update_attributes(params[:account])
+        # 
+        # if !params[:account][:internal_agent_nrds_id].nil?
+        #   agent = Agent.find_by(internal_agent_nrds_id: params[:account][:internal_agent_nrds_id])
+        # 
+        #   current_account.agent_id = agent.id.to_s
+        #   # current_account.agent_attributes = {id: agent.id.to_s}
+        #   current_account.save
+        #   raise agent.to_json
+        # end
           
           
           # if current_facebook_page_id != params[:account][:facebook_page_id] && @facebook

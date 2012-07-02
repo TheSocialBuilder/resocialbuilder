@@ -11,6 +11,8 @@ class Account
   field :last_name, type: String
   field :name, type: String
   field :email, type: String
+  field :phone, type: String
+  field :subdomain, type: String
   
   # Facebook Omniauth Fields
   field :fb_id, type: String
@@ -19,16 +21,14 @@ class Account
 	field :fb_token_expiration, type: DateTime
 	field :fb_image, type: String
   
-  field :title, type: String
+  
   field :site_title, type: String
-  field :subdomain, type: String
   field :settings_search_min, type: String
   field :settings_search_max, type: String
-  field :mls_office_id, type: String
   
 
   
-  field :phone, type: String
+  
   field :time_zone, type: String, default: 'Mountain Time (US & Canada)'
   field :internal_agent_nrds_id, type: String
   
@@ -38,6 +38,7 @@ class Account
   mount_uploader :logo, MediaUploader
   
   ## associations ##
+  # has_one :agent
   has_many :transactions, dependent: :delete
   has_many :cards, dependent: :delete
   has_many :pages, dependent: :delete
@@ -48,7 +49,7 @@ class Account
   embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
   
   
-  attr_accessible :cards_attributes, :subdomain, :location_attributes
+  attr_accessible :first_name, :last_name, :name, :email, :fb_id, :fb_info, :fb_token, :fb_token_expiration, :fb_image, :phone, :cards_attributes, :subdomain, :location_attributes, :internal_agent_nrds_id
 
   accepts_nested_attributes_for :cards, :location
 
@@ -61,7 +62,7 @@ class Account
   
   
   ## callbacks ##
-  
+  before_save :build_phone
   
   ## methods ##
 
@@ -133,6 +134,14 @@ class Account
 
   def facebook
     @facebook ||= Koala::Facebook::GraphAPI.new(self.fb_token) if self.fb_token
+  end
+  
+  # Clean up the phone and format it correctly
+  def build_phone
+    if Phoner::Phone.valid? self.phone
+      pn = Phoner::Phone.parse phone, :country_code => '1'
+      self.phone = pn.format("(%a) %f-%l")
+    end
   end
 
 end

@@ -22,7 +22,7 @@ class Account
 	field :fb_image, type: String
   
   
-  field :site_title, type: String
+  field :settings_site_title, type: String
   field :settings_search_min, type: String
   field :settings_search_max, type: String
   
@@ -49,7 +49,10 @@ class Account
   embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
   
   
-  attr_accessible :first_name, :last_name, :name, :email, :fb_id, :fb_info, :fb_token, :fb_token_expiration, :fb_image, :phone, :cards_attributes, :subdomain, :location_attributes, :internal_agent_nrds_id
+  attr_accessible :first_name, :last_name, :name, :email, :phone, :subdomain, :internal_agent_nrds_id
+  attr_accessible :settings_site_title, :settings_search_min, :settings_search_max
+  attr_accessible :fb_id, :fb_info, :fb_token, :fb_token_expiration, :fb_image
+  attr_accessible :cards_attributes, :location_attributes
 
   accepts_nested_attributes_for :cards, :location
 
@@ -62,7 +65,7 @@ class Account
   
   
   ## callbacks ##
-  before_save :build_phone
+  before_save :format_phone
   
   ## methods ##
 
@@ -72,7 +75,6 @@ class Account
       
       account.first_name = omniauth.info.first_name
       account.last_name = omniauth.info.last_name
-      account.name = omniauth.info.name
       account.email = omniauth.info.email
     
       account.fb_id = omniauth.uid
@@ -137,11 +139,16 @@ class Account
   end
   
   # Clean up the phone and format it correctly
-  def build_phone
+  def format_phone
     if Phoner::Phone.valid? self.phone
       pn = Phoner::Phone.parse phone, :country_code => '1'
       self.phone = pn.format("(%a) %f-%l")
     end
+  end
+  
+  # Format the users full name
+  def name
+    "#{self.first_name} #{self.last_name}"
   end
 
 end

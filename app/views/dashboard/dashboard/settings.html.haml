@@ -1,13 +1,13 @@
-settings
+%h3.heading Settings
 = semantic_form_for [:dashboard, current_account], :url => 'settings' do |f|
-  = f.inputs do
-    = f.input :subdomain
+    
+  = f.inputs 'Personal' do
     = f.input :first_name
     = f.input :last_name
-    = f.input :phone
-    
+    = f.input :email, :as => :email
+    = f.input :phone, :hint => 'Ex: (555) 555-5555'
     = f.input :internal_agent_nrds_id
-
+    
 
     = f.semantic_fields_for :location do |location|
       = location.input :address_1
@@ -15,8 +15,17 @@ settings
       = location.input :city
       = location.input :state, :collection => us_states, :include_blank => false
       = location.input :zip
+  
+  = f.inputs 'Site Settings' do
+    = f.input :subdomain
+    = f.input :settings_site_title
+  
+    
+    
 
     
+
+
     
 
   = f.actions do

@@ -48,9 +48,9 @@ class Account
   embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
   
   
-  attr_accessible :cards_attributes, :realtors_attributes, :subdomain, :location_attributes
+  attr_accessible :cards_attributes, :subdomain, :location_attributes
 
-  accepts_nested_attributes_for :cards, :realtors, :location
+  accepts_nested_attributes_for :cards, :location
 
   
   
@@ -67,25 +67,23 @@ class Account
 
   def self.from_omniauth(omniauth)
     
-    where(fb_id: omniauth.uid).find_or_initialize_by do |user|
+    where(fb_id: omniauth.uid).find_or_initialize_by do |account|
       
-      user.first_name = omniauth.info.first_name
-      user.last_name = omniauth.info.last_name
-      user.name = omniauth.info.name
-      user.email = omniauth.info.email
-      
-      user.location = omniauth.info.location
+      account.first_name = omniauth.info.first_name
+      account.last_name = omniauth.info.last_name
+      account.name = omniauth.info.name
+      account.email = omniauth.info.email
     
-      user.fb_id = omniauth.uid
-      user.fb_info = omniauth.info
-      user.fb_token = omniauth.credentials.token
-      user.fb_token_expiration = Time.at(omniauth.credentials.expires_at)
-      user.fb_image = omniauth.info.image
+      account.fb_id = omniauth.uid
+      account.fb_info = omniauth.info
+      account.fb_token = omniauth.credentials.token
+      account.fb_token_expiration = Time.at(omniauth.credentials.expires_at)
+      account.fb_image = omniauth.info.image
       
-      user.save!
+      account.save!
       
       
-      @facebook = Koala::Facebook::GraphAPI.new(user.fb_token)
+      @facebook = Koala::Facebook::GraphAPI.new(account.fb_token)
       
       @facebook_pages = @facebook.get_connections("me", "accounts")
       # raise @facebook_pages.to_yaml
@@ -99,7 +97,7 @@ class Account
             page = page_graph.get_object("me")
             # raise page.to_yaml
 
-            facebook_page = user.facebook_pages.new
+            facebook_page = account.facebook_pages.new
       
 
             facebook_page.name = fb_page['name']

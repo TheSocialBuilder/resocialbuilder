@@ -24,11 +24,8 @@
                 %li.divider-vertical.hidden-phone.hidden-tablet
                 %li.dropdown
                   = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                    - if @facebook_pic
-                      = image_tag @facebook_pic, :size => '20x20'
-                    - else
-                      %i.icon-user
-                    = current_realtor.name
+                    = image_tag current_account.fb_image, :size => '20x20'
+                    = current_account.name
                     %b.caret
                   %ul.dropdown-menu
                     %li

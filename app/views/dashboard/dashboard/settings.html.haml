@@ -2,6 +2,7 @@ settings
 = semantic_form_for [:dashboard, current_account], :url => 'settings' do |f|
   = f.inputs do
     = f.input :subdomain
+    = f.input :internal_agent_nrds_id
 
     = f.semantic_fields_for :location do |location|
       = location.input :address_1

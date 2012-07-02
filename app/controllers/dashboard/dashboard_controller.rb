@@ -3,7 +3,6 @@ class Dashboard::DashboardController < ApplicationController
 
   before_filter :authenticate_account!
   # before_filter :set_timezone
-  before_filter :set_facebook
   before_filter :setup_system
   before_filter :setup_menu
   
@@ -16,11 +15,7 @@ class Dashboard::DashboardController < ApplicationController
     gon.menu_active_accordian = 'dashboard'
     gon.menu_active_link = 'dashboard'
   end
-  
-  def set_facebook
 
-    @facebook_pic ||= current_realtor.facebook.get_picture("me", {:type => "square"}) if current_realtor.facebook.nil?
-  end
   
   def setup_system
     gon.search_fields = ['user', 'listings 4fd6395e9a6f23070e00003b', "page #{current_account.id}", "blog #{current_account.id}"]
@@ -79,15 +74,14 @@ class Dashboard::DashboardController < ApplicationController
     
     if params[:account]
       
-      @account = current_account
       
-      # @account.realtor.find(current_realtor)
+      # @account.realtor.find(current_account)
       # raise current_account.to_json
       
       # current_facebook_page_id = current_account.facebook_page_id if @facebook
       
       
-      if @account.update_attributes(params[:account])
+      if current_account.update_attributes(params[:account])
           
           
           # if current_facebook_page_id != params[:account][:facebook_page_id] && @facebook

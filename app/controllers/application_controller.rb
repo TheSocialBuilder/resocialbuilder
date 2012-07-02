@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery
   
-  helper_method :mls_markets_supported, :default_office_or_agent, :default_prices, :current_account, :authenticate_account!, :current_user, :us_states, :page_assigned, :current_domain, :current_subdomain, :authenticate_subdomain!, :current_realtor
+  helper_method :mls_markets_supported, :default_office_or_agent, :default_prices, :current_account, :authenticate_account!, :current_user, :us_states, :page_assigned, :current_domain, :current_subdomain, :authenticate_subdomain!
   
   
   # Helper function to show and set just the domain name
@@ -63,17 +63,10 @@ class ApplicationController < ActionController::Base
   end
   
   
-  
-  
-  # Helper function to get the current_account
-  def current_realtor
-    session[:realtor_id] = '4fe0ce7f9a6f23afbe000026'
-    @current_realtor ||= Realtor.find(session[:realtor_id]) if session[:realtor_id]
-  end
+
   
   # Helper function to get the current_account
   def current_account
-    session[:account_id] = '4fe0ce819a6f23afbe000028'
     @current_account ||= Account.find(session[:account_id]) if session[:account_id]
   end
 
@@ -100,21 +93,7 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-
-    def ckeditor_filebrowser_scope(options = {})
-      super({ :assetable_id => current_account.id, :assetable_type => 'Account' }.merge(options))
-    end
-    
-    # Set current_user as assetable
-    def ckeditor_before_create_asset(asset)
-      asset.assetable = current_account
-      return true
-    end
-    
-    def ckeditor_authenticate
-      redirect_to '/', alert: "You must be logged in to access this page" if current_account.nil?
-    end
-    
+  
     def us_states
       [
         ['Alabama', 'Alabama'],

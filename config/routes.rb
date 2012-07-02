@@ -18,7 +18,7 @@ Resocialbuilder::Application.routes.draw do
   match '/login', to: 'accounts#login'
   match '/logout', to: 'accounts#logout'
 
-  match '/auth/:provider/callback', to: 'authentications#create'
+  match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/failure', to: 'home::register#new', as: 'register'
   
   

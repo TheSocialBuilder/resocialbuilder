@@ -18,13 +18,6 @@ GIT
     geocoder (1.1.2)
 
 GIT
-  remote: git@github.com:bhammond/mongoid-paperclip.git
-  revision: 71a2d21a0fec44c454428aad9c32ce9f93e9208c
-  specs:
-    mongoid-paperclip (0.0.7)
-      paperclip (>= 2.3.6)
-
-GIT
   remote: git@github.com:bhammond/mongoid-slug.git
   revision: d45cc836fb673b57e26cb8441420a44db3187c7a
   specs:
@@ -36,15 +29,6 @@ GIT
   revision: 08be29dc6ac2312f626aa67f99c129dd16d6710a
   specs:
     mongoid_commentable (0.0.4)
-
-GIT
-  remote: git@github.com:bhammond/mongoid_paperclip_queue.git
-  revision: c1edbb807405f24bb5a35fe9e48cdc13e742f6b2
-  specs:
-    mongoid_paperclip_queue (0.1.4)
-      paperclip
-      redis-namespace
-      resque
 
 GIT
   remote: git@github.com:bhammond/mongoid_taggable_with_context.git
@@ -108,7 +92,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.3.1)
     bourbon (2.1.0)
       sass (>= 3.1)
@@ -127,10 +110,6 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     chunky_png (1.2.5)
-    ckeditor (3.7.1)
-      mime-types
-      orm_adapter
-    cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -228,13 +207,6 @@ GEM
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
     origin (1.0.1)
-    orm_adapter (0.3.0)
-    paperclip (3.1.2)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (>= 0.0.2)
-      mime-types
     phone (1.1)
     polyglot (0.3.3)
     quiet_assets (1.0.1)
@@ -261,8 +233,6 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
-    rails3-generators (0.17.4)
-      railties (>= 3.0.0)
     railties (3.2.3)
       actionpack (= 3.2.3)
       activesupport (= 3.2.3)
@@ -308,6 +278,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    select2-rails (0.0.6)
+      thor (~> 0.14)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
@@ -346,7 +318,6 @@ PLATFORMS
 
 DEPENDENCIES
   activemerchant
-  bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 2.0.3)
   bourbon
   breadcrumbs_on_rails
@@ -355,7 +326,6 @@ DEPENDENCIES
   cells (~> 3.8.5)
   chosen-rails
   chunky_png
-  ckeditor (= 3.7.1)
   coffee-rails (~> 3.2.1)
   country_select
   fog (~> 1.3.1)
@@ -370,10 +340,8 @@ DEPENDENCIES
   kss (~> 0.3.0)
   liquid
   mongoid (~> 3.0.0rc)
-  mongoid-paperclip!
   mongoid-tree!
   mongoid_commentable!
-  mongoid_paperclip_queue!
   mongoid_publishable
   mongoid_slug!
   mongoid_taggable_on
@@ -381,14 +349,12 @@ DEPENDENCIES
   moped (~> 1.0.0.rc)
   omniauth (~> 1.0.3)
   omniauth-facebook
-  paperclip (~> 3.0)
   phone
   quiet_assets
   rabl
   rack-contrib
   railroady!
   rails (= 3.2.3)
-  rails3-generators
   redis (~> 2.2.2)
   redis-objects
   redis-rails
@@ -396,6 +362,7 @@ DEPENDENCIES
   rmagick
   ruby-rets
   sass-rails (~> 3.1)
+  select2-rails
   soulmate
   sprite-factory (>= 1.4.0)!
   streama

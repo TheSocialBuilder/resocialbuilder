@@ -14,6 +14,7 @@ class Realtor
   field :password, type: String
   field :phone, type: String
   field :time_zone, type: String, default: 'Mountain Time (US & Canada)'
+  field :internal_agent_nrds_id, type: String
   
   mount_uploader :avatar, MediaUploader
   

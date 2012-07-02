@@ -72,17 +72,22 @@ class Dashboard::DashboardController < ApplicationController
   end
   
   def settings
+    
+    gon.menu_active_accordian = 'account'
+    gon.menu_active_link = 'settings'
     add_breadcrumb "Settings", dashboard_settings_path
     
     if params[:account]
       
-
+      @account = current_account
+      
+      # @account.realtor.find(current_realtor)
       # raise current_account.to_json
       
       # current_facebook_page_id = current_account.facebook_page_id if @facebook
       
       
-      if current_account.update_attributes(params[:account])
+      if @account.update_attributes(params[:account])
           
           
           # if current_facebook_page_id != params[:account][:facebook_page_id] && @facebook

@@ -1,6 +1,6 @@
 = semantic_form_for [:dashboard, @facebook_post] do |f|
   = f.inputs do
-    = f.input :facebook_page, :collection => current_realtor.facebook_pages.order_by_name, :include_blank => false
+    = f.input :facebook_page, :collection => current_account.facebook_pages.order_by_name, :include_blank => false, :input_html => {:class => 'select2'}
     = f.input :message, :as => :text, :label => 'Post Message'
     = f.input :publish_on, :as => :datetime, :minute_step => 15, :include_year => false, :label => 'Date and Time to publish'
 

@@ -93,6 +93,20 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+
+    def ckeditor_filebrowser_scope(options = {})
+      super({ :assetable_id => current_account.id, :assetable_type => 'Account' }.merge(options))
+    end
+    
+    # Set current_user as assetable
+    def ckeditor_before_create_asset(asset)
+      asset.assetable = current_account
+      return true
+    end
+    
+    def ckeditor_authenticate
+      redirect_to '/', alert: "You must be logged in to access this page" if current_account.nil?
+    end
   
     def us_states
       [

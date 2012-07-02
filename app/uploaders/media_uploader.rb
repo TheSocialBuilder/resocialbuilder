@@ -16,9 +16,13 @@ class MediaUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-     "#{timestamp}_test.#{file.extension}" if original_filename.present?
+     "#{timestamp}_#{id}.#{file.extension}" if original_filename.present?
   end
   
+  def id
+    model.id.to_s
+  end
+
   def timestamp
     var = :"@#{mounted_as}_timestamp"
     model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)

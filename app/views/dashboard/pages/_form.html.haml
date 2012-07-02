@@ -1,7 +1,7 @@
 = semantic_form_for [:dashboard, @page] do |f|
   = f.inputs do
     = f.input :title
-    = f.input :content, :as => :text, :input_html => {:class => 'wysiwg_full'}
+    = f.input :content, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Full' }
     = f.input :tags
     
     = f.inputs :name => 'Optional Settings' do

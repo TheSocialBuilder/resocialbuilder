@@ -248,12 +248,12 @@ class ListingsController < ApplicationController
     # raise meta_data.to_yaml
     # , :select => select_fields
     # , :limit => 2
-    @client.search(:search_type => :Property, :class => 'A', :select => search_fields, :limit => 1) do |data|
+    @client.search(:search_type => :Property, :class => 'A', :select => search_fields, :limit => 50) do |data|
 
 
 
 
-      listing = @market.listings.find_or_create_by(listing: data['LIST_105'])      
+      listing = @market.listings.find_or_initialize_by(listing: data['LIST_105'])      
 
       listing.listing = data['LIST_105']
       listing.listing_timestamp = data['LIST_87']

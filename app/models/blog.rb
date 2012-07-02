@@ -32,7 +32,7 @@ class Blog
   
   
   ## validations ##
-  
+  validates_presence_of :title
   
   ## scopes ##
   

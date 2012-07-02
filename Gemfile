@@ -27,7 +27,7 @@ gem 'resque', '~> 1.20.0', :require => 'resque/server'
 # Image Handling
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'rmagick'
+gem 'rmagick', '~> 2.12.2'
 gem 'fog', '~> 1.3.1'
 
 # Omniauth / Facebook
@@ -43,6 +43,8 @@ gem 'yajl-ruby'
 # Miscellaneous Gems
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'ckeditor', '3.7.1'
+gem 'mini_magick'
 gem 'gon', '~> 3.0.4'
 gem 'formtastic', '~> 2.1'
 gem 'country_select'
@@ -54,6 +56,7 @@ gem 'streama'
 gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
 gem 'chosen-rails'
 gem 'select2-rails'
+
 
 
 gem 'liquid'

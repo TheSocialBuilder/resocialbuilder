@@ -1,5 +1,7 @@
 Resocialbuilder::Application.routes.draw do
   
+  
+
   constraints(:subdomain => 'soulmate') do
     mount Soulmate::Server, :at => '/'
   end
@@ -26,21 +28,22 @@ Resocialbuilder::Application.routes.draw do
   match 'listings/stgeorge', to: 'listings#stgeorge', as: 'stgeorge'
   match 'listings/mls', to: 'listings#mls', as: 'mls'
   
-  
+  mount Ckeditor::Engine => "/ckeditor"
   
   namespace :dashboard do
+    
+    
+    
     match '/', to: 'dashboard#index', as: 'dashboard'
     match '/mls', to: 'dashboard#mls', as: 'mls'
     match '/menu', to: 'dashboard#menu', as: 'menu'
     match '/support', to: 'dashboard#support', as: 'support'
     match '/settings', to: 'dashboard#settings', as: 'settings'
-    # match 'savesort', to: 'pages#savesort', as: 'savesort'
     post '/savesort' => 'pages#savesort'
     
     
     
     resources :blogs do
-      
       resources :comments
     end
     

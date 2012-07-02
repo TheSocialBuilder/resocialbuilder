@@ -25,6 +25,8 @@ class Account
   field :settings_site_title, type: String
   field :settings_search_min, type: String
   field :settings_search_max, type: String
+  field :settings_featured_listings, type: Array
+  
   
 
   
@@ -36,6 +38,7 @@ class Account
   
   
   mount_uploader :logo, MediaUploader
+  mount_uploader :avatar, MediaUploader
   
   ## associations ##
   # has_one :agent
@@ -49,8 +52,8 @@ class Account
   embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
   
   
-  attr_accessible :first_name, :last_name, :name, :email, :phone, :subdomain, :internal_agent_nrds_id
-  attr_accessible :settings_site_title, :settings_search_min, :settings_search_max
+  attr_accessible :first_name, :last_name, :name, :email, :phone, :subdomain, :internal_agent_nrds_id, :logo, :avatar
+  attr_accessible :settings_site_title, :settings_search_min, :settings_search_max, :settings_featured_listings
   attr_accessible :fb_id, :fb_info, :fb_token, :fb_token_expiration, :fb_image
   attr_accessible :cards_attributes, :location_attributes
 

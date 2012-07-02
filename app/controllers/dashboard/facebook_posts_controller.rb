@@ -9,7 +9,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
   end
   
   def setup_fb_pages
-    @facebook_pages = current_realtor.facebook.get_connections("me", "accounts") if current_realtor.facebook
+    @facebook_pages = current_account.facebook.get_connections("me", "accounts") if current_account.facebook
     
     # raise @facebook_pages.to_yaml
     
@@ -23,7 +23,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
 
           facebook_page = current_account.facebook_pages.new
       
-          facebook_page.realtor_id = current_realtor.id.to_s
+          facebook_page.realtor_id = current_account.id.to_s
           facebook_page.name = fb_page['name']
           facebook_page.access_token = fb_page['access_token']
           facebook_page.category = fb_page['category']
@@ -98,7 +98,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
     respond_to do |format|
       if @facebook_post.save
         
-        # @facebook_page = current_realtor.facebook_pages.find(@facebook_post.facebook_page_id)
+        # @facebook_page = current_account.facebook_pages.find(@facebook_post.facebook_page_id)
         
         # raise @facebook_page.to_yaml
         

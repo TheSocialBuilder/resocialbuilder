@@ -35,6 +35,9 @@ $(document).ready ->
       set = {set : JSON.stringify($('ol.sortable').nestedSortable('toHierarchy', {startDepthCount: 0}))}
       $.post("savesort", set)
       $('#output').html('<p id="flash_notice">Saved Successfully</p>')
+      
+  $(".select2").select2()
+
 
 
   lastWindowHeight = $(window).height()
@@ -55,8 +58,8 @@ $(document).ready ->
     resb_popOver.init()
   resb_sidebar.init()
   resb_sidebar.make_active()
-  resb_crumbs.init()
-  prettyPrint()
+
+
   resb_external_links.init()
 
 
@@ -152,14 +155,6 @@ resb_tips = init: ->
 resb_popOver = init: ->
   $(".pop_over").popover()
 
-resb_crumbs = init: ->
-  $("#jCrumbs").jBreadCrumb
-    endElementsToLeaveOpen: 0
-    beginingElementsToLeaveOpen: 0
-    timeExpansionAnimation: 500
-    timeCompressionAnimation: 500
-    timeInitialCollapse: 500
-    previewWidth: 30
 
 resb_external_links = init: ->
   $("a[href^='http']").each ->

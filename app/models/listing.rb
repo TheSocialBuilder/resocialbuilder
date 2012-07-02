@@ -15,8 +15,8 @@ class Listing
   field :year, type: Integer
   field :acres, type: Float
   field :short_sale
-  field :beds, type: Integer
-  field :baths, type: Integer
+  field :beds, type: Float
+  field :baths, type: Float
   field :sub_division
   field :description
   field :garage_type

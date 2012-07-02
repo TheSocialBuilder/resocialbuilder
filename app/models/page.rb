@@ -31,7 +31,7 @@ class Page
   
   
   ## validations ##
-  
+  validates_presence_of :title
   
   ## scopes ##
   

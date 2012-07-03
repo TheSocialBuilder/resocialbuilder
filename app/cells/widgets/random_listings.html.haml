@@ -1,0 +1,19 @@
+.widget
+  %h3.title
+    Random Listings
+  .content
+    - @listings.each do |listing|
+      .image_area
+        -# = image_tag listing.images.first.original_image_url
+      .content_area
+        .address
+          = link_to listing.location.county, '#'
+
+        .city
+          = listing.location.city
+      
+        .price
+          = number_to_currency listing.price
+      
+        .bed_bath_sq_foot
+          #{listing.beds} Bed, #{listing.baths} Bath, #{listing.square_feet} Sq Ft

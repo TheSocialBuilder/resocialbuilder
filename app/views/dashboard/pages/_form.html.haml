@@ -1,12 +1,15 @@
 = semantic_form_for [:dashboard, @page] do |f|
   = f.inputs do
     = f.input :title
-    = f.input :content, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Full' }
+    = f.input :content, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
     = f.input :tags
     
     = f.inputs :name => 'Optional Settings' do
       = f.input :published, :as => :boolean
       = f.input :parent, :collection => @build_tree_select, :prompt => "New parent page"
+      = f.input :page_type, :collection => page_type, :prompt => false
+      
+      
       = f.input :seo_meta_title, :label => 'SEO Title'
       = f.input :seo_meta_keys, :label => 'SEO Keywords'
       = f.input :seo_meta_desc, :label => 'SEO Description'

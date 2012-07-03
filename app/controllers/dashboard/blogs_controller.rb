@@ -67,9 +67,9 @@ class Dashboard::BlogsController < Dashboard::DashboardController
     respond_to do |format|
       if @blog.save
         
-        Activity.create_indexes
+        # Activity.create_indexes
         
-        current_realtor.publish_activity(:new_blog, :object => @blog)
+        # current_account.publish_activity(:new_blog, :object => @blog)
         
         soul = Soulmate::Loader.new("blog #{current_account.id}")
         soul.add("term" => @blog.title, "id" => @blog.id, "data" => {"url" => edit_dashboard_blog_path(@blog.slug), "subtitle" => @blog.title})

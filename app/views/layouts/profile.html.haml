@@ -1,0 +1,38 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title RE Social Builder Website
+    = stylesheet_link_tag    "profile/application", "profile/templates/#{current_profile.template}"
+    = javascript_include_tag "application", "profile/application"
+    = csrf_meta_tags
+
+  %body.profile
+    
+    .container
+    
+      .header
+        
+        .logo
+          = image_tag current_profile.logo.thumb.url
+          
+        .navigation
+          Navigation Here
+
+      .main_content
+        .column_left
+          .yield
+            = yield
+        .column_right
+          .sidebar
+            = render_cell :widgets, :about_realtor
+            = render_cell :widgets, :recent_blog_posts
+            = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
+            = render_cell :widgets, :facebook
+            
+        
+          
+    
+      .footer
+        Footer Here
+      
+    

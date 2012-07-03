@@ -76,14 +76,16 @@ Resocialbuilder::Application.routes.draw do
       end
     end
   
-  
-    match '/listing/:mls_list_id', to: 'website::website#listing', as: 'listing', :via => :get
-    get '/listings', to: 'website::website#listings', as: 'listings', :via => :get
+    get '/listings', to: 'profile::profile#listings', as: 'listings', :via => :get
+    match '/listing/:mls_list_id', to: 'profile::profile#listing', as: 'listing', :via => :get
     
-    match '/blogs/:id', to: 'website::website#blogs', as: 'blogs', :via => :get
-    get '/blogs', to: 'website::website#blogs', as: 'blogs', :via => :get
     
-    root to: 'website::website#index'
+    match '/blogs/:id', to: 'profile::profile#blogs', as: 'blogs', :via => :get
+    get '/blogs', to: 'profile::profile#blogs', as: 'blogs', :via => :get
+    
+    match '/:id', to: 'profile::profile#page', as: 'page', :via => :get
+    
+    root to: 'profile::profile#index'
   end
   
 

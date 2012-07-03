@@ -2,17 +2,15 @@
 = semantic_form_for [:dashboard, current_account], :url => 'settings' do |f|
     
   = f.inputs 'Personal' do
-    = f.input :first_name
-    = f.input :last_name
+    = f.input :first_name, :label => 'First Name'
+    = f.input :last_name, :label => 'Last Name'
     = f.input :email, :as => :email
     = f.input :phone, :hint => 'Ex: (555) 555-5555'
-    = f.input :internal_agent_nrds_id
-    = f.input :settings_featured_listings, :collection => Listing.all.map { |listing| [truncate("#{listing.listing} - #{listing.location.address_1}", :length => 35), listing.id]}, :include_blank => false, :input_html => {:class => 'select2', :multiple => 'multiple'}
-    = f.input :settings_search_min, :collection => default_prices, :include_blank => false, :input_html => {:class => 'select2'}
-    = f.input :settings_search_max, :collection => default_prices, :include_blank => false, :input_html => {:class => 'select2'}
     
-    = f.input :logo, :as => :file, :hint => image_tag(current_account.logo.thumb.url) if current_account.logo
-    = f.input :avatar, :as => :file, :hint => image_tag(current_account.avatar.thumb.url) if current_account.avatar
+    
+    
+    = f.input :logo, :label => 'Brokerage Logo', :as => :file, :hint => image_tag(current_account.logo.thumb.url) if current_account.logo
+    = f.input :avatar, :label => 'Personal Image', :as => :file, :hint => image_tag(current_account.avatar.thumb.url) if current_account.avatar
 
 
     = f.semantic_fields_for :location do |location|
@@ -24,7 +22,25 @@
   
   = f.inputs 'Site Settings' do
     = f.input :subdomain
-    = f.input :settings_site_title
+    = f.input :settings_site_title, :label => 'Site Title'
+    = f.input :settings_google_analytics, :label => 'Google Analytics', :placeholder => 'UA-XXXXXXX-XX', :hint => "Refer to http://google.com/analytics"
+    
+    
+    
+  = f.inputs 'Realtor Settings' do
+    = f.input :internal_agent_nrds_id, :label => "MLS Agent NRDS ID"
+    = f.input :settings_featured_listings, :label => 'Featured Listings', :collection => Listing.all.map { |listing| [truncate("#{listing.listing} - #{listing.location.address_1}", :length => 35), listing.id]}, :include_blank => false, :input_html => {:class => 'select2', :multiple => 'multiple'}
+    = f.input :settings_search_min, :label => 'Search Price Min', :collection => default_prices, :include_blank => false, :input_html => {:class => 'select2'}
+    = f.input :settings_search_max, :label => 'Search Price Max', :collection => default_prices, :include_blank => false, :input_html => {:class => 'select2'}
+    
+    
+    
+  = f.inputs 'Social Links' do
+    = f.input :settings_social_facebook, :label => "Facebook Link", :placeholder => 'http://facebook.com/username'
+    = f.input :settings_social_twitter, :label => "Twitter Link", :placeholder => 'http://twitter.com/username'
+    = f.input :settings_social_linkedin, :label => "LinkedIn Link", :placeholder => 'http://linkedin.com/username'
+    = f.input :settings_social_youtube, :label => "YouTube Link", :placeholder => 'http://youtube.com/username'
+
   
     
     

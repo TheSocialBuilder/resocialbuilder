@@ -1,0 +1,7 @@
+.widget
+  %h3.title
+    About
+  .content
+    
+    = image_tag @current_profile.avatar.medium.url, :class => 'image_wrap'
+    = @current_profile.name

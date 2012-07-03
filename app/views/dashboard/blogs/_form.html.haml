@@ -1,7 +1,7 @@
 = semantic_form_for [:dashboard, @blog] do |f|
   = f.inputs do
     = f.input :title, :label => 'Post Title'
-    = f.input :content, :as => :ckeditor, :label => 'Post Content'
+    = f.input :content, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
     = f.input :tags
     
     = f.inputs :name => 'Optional Settings' do

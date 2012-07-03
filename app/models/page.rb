@@ -21,13 +21,14 @@ class Page
   field :seo_meta_keys, type: String
   field :seo_meta_desc, type: String
   field :published, type: Boolean, default: true
+  field :page_type, type: Integer
   taggable_on :tags
   
   
   ## associations ##
   belongs_to :account
   
-  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id, :tags
+  attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :parent_id, :tags, :page_type
   
   
   ## validations ##

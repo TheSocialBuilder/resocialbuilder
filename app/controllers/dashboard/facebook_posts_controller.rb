@@ -5,7 +5,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
 
   def setup_menu
     gon.menu_active_accordian = 'dashboard'
-    gon.menu_active_link = 'posts'
+    gon.menu_active_link = 'facebook_posts'
   end
   
   def setup_fb_pages

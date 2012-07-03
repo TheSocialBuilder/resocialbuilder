@@ -19,13 +19,18 @@ hr{
 // Sets up the default no padding, no margin and removes list bullets
 ul.list{
   list-style-type:none;
+  margin:0;
+  padding:0;
   li{
     line-height: 18px;
   }
 }
 
 ul{
+  margin:0;
+  padding:0;
   li{
+
     line-height: 18px;
   }
 }
@@ -35,18 +40,13 @@ h1 {
   font-size:36px;
   line-height:42px;
   margin:0 0 24px;
-  color: #353A44;
+  color: #000000;
 }
 
 p{
   font-size:12px;
-  color: #353A44;
+  color: #000000;
   margin:0 0 20px;
-  img{
-    margin:10px;
-    border: 1px solid #ddd;
-    padding: 5px;
-  }
 }
 
 .container{
@@ -72,6 +72,51 @@ p{
   }
   
   .header{
+    position:relative;
+    height:200px;
+    overflow:auto;
+    
+    .logo{
+      position: absolute;
+      top:10px;
+      left:10px;
+    }
+    
+    .navigation{
+      position: absolute;
+      top:115px;
+      left:10px;
+      
+      ul.main_navigation{
+        height:auto;
+        overflow:auto;
+        @include linear-gradient(#F9F9F9, #EAEAEA);
+        border: 1px solid #D1D1D1;
+        @include border-radius(10px);
+        @include box-shadow(0px 1px 1px 0px hsla(0, 0%, 0%, 0.25));
+  
+        li{
+          display:inline;
+          a{
+            display: block;
+            position: relative;
+            float: left;
+            padding: 0px 15px;
+            z-index: 5;
+            color: #333333;
+            border-right:1px solid #999;
+            margin:10px 0;
+          }
+          &:last-child{
+            a{
+              border-right:none;
+            }
+          }
+        }
+      }
+      
+      
+    }
     
   }
   
@@ -100,7 +145,6 @@ p{
     padding: 5px;
     width: auto;
     height:auto;
-
   }
   
   .page{

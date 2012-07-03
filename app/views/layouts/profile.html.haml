@@ -16,7 +16,19 @@
           = image_tag current_profile.logo.thumb.url
           
         .navigation
-          Navigation Here
+          %ul.main_navigation
+            %li
+              = link_to 'Home', '/'
+            %li
+              = link_to 'Listings', listings_path
+            %li
+              = link_to 'Blogs', blogs_path
+            %li
+              %a{:href => '#', 'data-link' => 'testing-the-pages-test'} About
+            %li
+              %a{:href => '#', 'data-link' => 'team'} Our Team
+            %li
+              %a{:href => '#', 'data-link' => 'contact'} Contact
 
       .main_content
         .column_left

@@ -64,7 +64,7 @@ gem 'cells', '~> 3.8.5'
 
 
 group :assets do
-  gem 'font-awesome-rails'
+  
   gem 'jquery-ui-rails'
 	gem 'sass-rails', '~> 3.1'
 	gem 'coffee-rails', '~> 3.2.1'
@@ -73,6 +73,7 @@ group :assets do
 	gem 'bourbon'
   gem 'haml_coffee_assets'
   gem 'uglifier', '>= 1.0.3'
+  gem 'font-awesome-sass-rails'
 end
 
 group :development, :test do

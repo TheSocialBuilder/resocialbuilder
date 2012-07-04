@@ -1,5 +1,18 @@
-%h1 New Blog
-
-= render 'form'
-
-= link_to 'Back', dashboard_blogs_path
+.page
+  .header
+    .links
+      = link_to dashboard_blogs_path, :class => 'btn btn-regular pull-right' do
+        %i.icon-search
+        View All Blogs
+        
+    .title
+      %i.icon-comments
+      Blog Posts - New Post
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_blogs_path do
+      %i.icon-arrow-left
+      Go Back

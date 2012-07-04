@@ -1,5 +1,25 @@
-%h1 Editing Blog
+.page
+  .header
+    .links
+      = link_to new_dashboard_blog_path, :class => 'btn btn-primary pull-right' do
+        %i.icon-plus
+        New Blog
+      = link_to dashboard_blog_path(@blog), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger pull-right' do
+        %i.icon-trash
+        Delete Blog
+      = link_to dashboard_blogs_path, :class => 'btn btn-regular pull-right' do
+        %i.icon-search
+        View All Blogs
+        
+    .title
+      %i.icon-comments
+      Blog Posts - Edit
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_blogs_path do
+      %i.icon-arrow-left
+      Go Back
 
-= render 'form'
-
-= link_to 'Back', dashboard_blogs_path(@blog)

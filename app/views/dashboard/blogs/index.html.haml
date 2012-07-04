@@ -1,10 +1,11 @@
 .page
   .header
     .links
-      = link_to 'New Blog', new_dashboard_blog_path, :class => 'btn btn-primary pull-right'
-      = link_to 'Delete Blog', new_dashboard_blog_path, :class => 'btn btn-danger pull-right'
-      = link_to 'View All Blogs', new_dashboard_blog_path, :class => 'btn btn-regular pull-right'
+      = link_to new_dashboard_blog_path, :class => 'btn btn-primary pull-right' do
+        %i.icon-plus
+        New Blog        
     .title
+      %i.icon-comments
       Blog Posts
       
   .content
@@ -31,9 +32,12 @@
             %td
               = blog.updated_at.strftime("%m/%d/%Y %l:%M %P")
 
-            %td
-              %i.icon-adt_trash
-              = link_to 'Edit', edit_dashboard_blog_path(blog)
-              = link_to 'Destroy', dashboard_blog_path(blog), :confirm => 'Are you sure?', :method => :delete
-    = link_to '< Go back', dashboard_blogs_path(@blog)
+            %td.action_links
+              
+              = link_to edit_dashboard_blog_path(blog) do
+                %i.icon-edit
+                
+              = link_to dashboard_blog_path(blog), :confirm => 'Are you sure?', :method => :delete do
+                %i.icon-trash
+
 

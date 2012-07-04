@@ -6,6 +6,9 @@ body{
 }
 a{
   color:#4d84de;
+  &:hover{
+    text-decoration:none;
+  }
 }
 .heading{
   border-bottom: 1px solid #dcdcdc;
@@ -55,6 +58,8 @@ a{
 
   .navbar-inner {
     background: #4d84de;
+    border-top: 1px solid #254d8b;
+    border-bottom: 1px solid #254d8b;
     
     .brand{
       margin:0;
@@ -197,6 +202,16 @@ a{
           @include border-radius(2px);
           color:#FFF;
         }
+        
+      }
+      &.active{
+        a{
+          text-decoration:none;
+          background-color: #4d84de;
+          @include border-radius(2px);
+          color:#FFF;
+        
+        }
       }
       &.side_nav_header{
         padding-left:7px;
@@ -230,7 +245,8 @@ a{
     }
   }
   .content{
-    
+    margin:0;
+    padding:0;
   }
   
   
@@ -267,7 +283,28 @@ a{
   }
 }
 
+td.action_links a{
+  color:#707172;
+  font-size:18px;
+  background:none;
+}
 
+input{
+  border:1px solid #b3bdbf !important;
+}
+fieldset{
+  @include border-radius(3px);
+  background-color:#f4f4f4;
+  border:1px solid #b3bcc1 !important;
+  margin:0 !important;
+  padding:20px !important;
+  margin-bottom:20px !important;
+
+}
+
+.hidden{
+  display:block;
+}
 
 
 

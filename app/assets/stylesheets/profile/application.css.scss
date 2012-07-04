@@ -1,12 +1,16 @@
 @import "bourbon";
 
+$bkg_color: #f2f2f2;
+$container_border_color: #dbdbdb;
+
+
 body{
   margin:0;
   padding:0;
   font-size: 12px;
   line-height: 18px;
   font-weight: normal;
-  background-color: #EFEFEF;
+  background-color: $bkg_color;
 }
 
 hr{
@@ -54,18 +58,18 @@ p{
   margin-right: auto;
   margin-left: auto;
   width:962px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-left: 1px solid $container_border_color;
+  border-right: 1px solid $container_border_color;
+  border-bottom: 1px solid $container_border_color;
   
-  
-  *zoom: 1;
   
   &:before {
+    
     display: table;
     content: ""; 
   }
   &:after {
+
     display: table;
     content: "";
     clear: both;
@@ -80,20 +84,21 @@ p{
       position: absolute;
       top:10px;
       left:10px;
+      height:150px;
     }
     
     .navigation{
       position: absolute;
       top:115px;
-      left:10px;
+      left:0px;
+      height:50px;
       
       ul.main_navigation{
-        height:auto;
+        height:100%;
         overflow:auto;
-        @include linear-gradient(#F9F9F9, #EAEAEA);
-        border: 1px solid #D1D1D1;
-        @include border-radius(10px);
-        @include box-shadow(0px 1px 1px 0px hsla(0, 0%, 0%, 0.25));
+        width: 962px;
+        border-bottom: 1px solid #D1D1D1;
+        border-top:1px solid #D1D1D1;
   
         li{
           display:inline;

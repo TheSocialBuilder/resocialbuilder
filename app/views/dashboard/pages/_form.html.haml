@@ -7,7 +7,7 @@
     = f.inputs :name => 'Optional Settings' do
       = f.input :published, :as => :boolean
       = f.input :parent, :collection => @build_tree_select, :prompt => "New parent page"
-      = f.input :page_type, :collection => page_type, :prompt => false
+      = f.input :page_type, :collection => page_type, :prompt => false, :include_blank => false
       
       
       = f.input :seo_meta_title, :label => 'SEO Title'

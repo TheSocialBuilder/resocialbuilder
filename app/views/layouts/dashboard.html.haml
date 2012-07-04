@@ -12,202 +12,107 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    #maincontainer.clearfix
-      %header
-        .navbar.navbar-fixed-top
-          .navbar-inner
-            .container-fluid
-              = link_to dashboard_path, :class => 'brand' do
-                %i.icon-home.icon-white
-                RE Social Builder
-              %ul.nav.user_menu.pull-right
+    %header
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            = link_to dashboard_path, :class => 'brand' do
+              RE Social Builder
 
-                %li.divider-vertical.hidden-phone.hidden-tablet
-                %li.dropdown
-                  = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                    = image_tag current_account.fb_image, :size => '20x20'
-                    = current_account.name
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to 'My Profile', '#'
-                    %li
-                      = link_to 'Another action', '#'
-                    %li.divider
-                    %li
-                      = link_to 'Log Out', '#'
-              %nav
-                .nav-collapse
-                  %ul.nav
-                    %li.dropdown
-                      = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                        %i.icon-list-alt.icon-white
-                        Forms
-                        %b.caret
-                      %ul.dropdown-menu
-                        %li
-                          = link_to 'Form elements', '#'
-                        %li
-                          = link_to 'Extended form elements', '#'
-                        %li
-                          = link_to 'Form Validation', '#'
-                    %li.dropdown
-                      = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                        %i.icon-th.icon-white
-                        Components
-                        %b.caret
-                      %ul.dropdown-menu
-                        %li
-                          = link_to 'Alerts & Buttons', '#'
-                        %li
-                          = link_to 'Icons', '#'
-                        %li
-                          = link_to 'Notifications', '#'
-                        %li
-                          = link_to 'Tables', '#'
-                        %li
-                          = link_to 'Tabs & Accordion', '#' 
-                        %li
-                          = link_to 'Tooltips, Popovers', '#'
-                        %li
-                          = link_to 'Typography', '#'
-                    %li.dropdown
-                      = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                        %i.icon-wrench.icon-white
-                        Plugins
-                        %b.caret
-                      %ul.dropdown-menu
-                        %li
-                          = link_to 'Charts', '#'
-                        %li
-                          = link_to 'Calendar', '#'
-                        %li
-                          = link_to 'Datatable', '#'
-                        %li
-                          = link_to 'File Manager', '#'
-                        %li
-                          = link_to 'Floating List Header', '#'
-                        %li
-                          = link_to 'Google Maps', '#'
-                        %li
-                          = link_to 'Gallery Grid', '#'
-                        %li
-                          = link_to 'Wizard', '#'
-                    %li.dropdown
-                      = link_to '#', :class => 'dropdown-toggle', "data-toggle" => "dropdown" do
-                        %i.icon-file.icon-white
-                        Pages
-                        %b.caret
-                      %ul.dropdown-menu
-                        %li
-                          = link_to 'Error 404', '#'
-                        %li
-                          = link_to 'Search page', '#'
-                        %li
-                          = link_to 'User profile', '#' 
-                    %li
-                    %li
-                      = link_to '#' do
-                        %i.icon-book.icon-white
-                        Help
+            .user_area.pull-right
+              .username
+                Welcome, 
+                = current_account.name
+              .circular_before
+                .circular{:style => "background: url(#{current_account.fb_image}) top  no-repeat;"}
+        
+            -# %nav
+            -#   .nav-form
+            -#     %form
+            -#       %input.dashboard_search.search-input{:autocomplete => "off", :name => "query", :placeholder => "Search...", :size => "16", :type => "text"}/
+
         
 
-      #contentwrapper
-        .main_content
-          %nav
-            %ul.breadcrumb
-              %li
-                = render_breadcrumbs :separator => ' / '
-          .row-fluid
-            .span12
-              = yield
-        %aside
-          
-          .sidebar
-            .sidebar_inner
-              %form
-                %input.dashboard_search.search-input{:autocomplete => "off", :name => "query", :placeholder => "Search...", :size => "16", :type => "text"}/
-
-              #side_accordion.accordion
-                .accordion-group
-                  .accordion-heading
-                    = link_to '#accordian_dashboard', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+      #maincontainer.container          
+        .row
+          .span3
+            .sidebar
+              .sidebar_inner
+                .accordion
+                  %h3
+                    %a{:href =>"#"}
                       %i.icon-folder-close
                       Dashboard
-                  #accordian_dashboard.accordion-body.collapse
-                    .accordion-inner
-                      %ul.nav.nav-list
-                        %li#link_dashboard
-                          = link_to 'Home', dashboard_path
-                        %li#link_pages
-                          = link_to 'Pages', dashboard_pages_path
-                        %li#link_blogs
-                          = link_to 'Blogs', dashboard_blogs_path
-                        %li#link_facebook_posts
-                          = link_to 'Facebook Posts', dashboard_facebook_posts_path
-                .accordion-group
-                  .accordion-heading
-                    = link_to '#accordian_listings', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                  %div
+                    %ul.nav.nav-list
+                      %li#link_dashboard
+                        = link_to 'Home', dashboard_path
+                      %li#link_pages
+                        = link_to 'Pages', dashboard_pages_path
+                      %li#link_blogs
+                        = link_to 'Blogs', dashboard_blogs_path
+                      %li#link_facebook_posts
+                        = link_to 'Facebook Posts', dashboard_facebook_posts_path
+                        
+                  %h3
+                    %a{:href =>"#"}
                       %i.icon-th
                       Listings
-                  #accordian_listings.accordion-body.collapse
-                    .accordion-inner
-                      %ul.nav.nav-list
-                        %li
-                          = link_to 'View All Listings', '#'
-                        %li
-                          = link_to 'My Listings', '#'
-                        %li
-                          = link_to 'Set Featured Listings', '#'
-                .accordion-group
-                  .accordion-heading
-                    = link_to '#accordian_users', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                  %div
+                    %ul.nav.nav-list
+                      %li
+                        = link_to 'View All Listings', '#'
+                      %li
+                        = link_to 'My Listings', '#'
+                      %li
+                        = link_to 'Set Featured Listings', '#'
+                  
+                  %h3
+                    %a{:href =>"#"}
                       %i.icon-user
-                      User/Leads
-                  #accordian_users.accordion-body.collapse
-                    .accordion-inner
-                      %ul.nav.nav-list
-                        %li
-                          = link_to 'Manage Users', '#'
-                        %li
-                          = link_to 'Manage Messages', '#'
-                        %li
-                          = link_to 'User Activity', '#'
-                        %li
-                          = link_to 'User Searches', '#'
-                .accordion-group
-                  .accordion-heading
-                    = link_to '#accordian_account', :class => 'accordion-toggle', "data-parent" => "#side_accordion", "data-toggle" => "collapse" do
+                      User/Leads                
+                  %div
+                    %ul.nav.nav-list
+                      %li
+                        = link_to 'Manage Users', '#'
+                      %li
+                        = link_to 'Manage Messages', '#'
+                      %li
+                        = link_to 'User Activity', '#'
+                      %li
+                        = link_to 'User Searches', '#'
+                  
+                  %h3
+                    %a{:href =>"#"}
                       %i.icon-cog
                       Account Management
-                  #accordian_account.accordion-body.collapse
-                    .accordion-inner
-                      %ul.nav.nav-list
-                        %li.nav-header Account
-                        %li#link_settings
-                          = link_to 'Settings', dashboard_settings_path
-                        %li
-                          = link_to 'Facebook', '#'
-                        %li.nav-header Billing
-                        %li#link_transactions
-                          = link_to "Statements (#{transactions_total})", dashboard_transactions_path
-                        %li#link_cards
-                          = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
-                        %li
-                          = link_to 'Membership', '#'
-                        %li.divider
-                        %li
-                          = link_to 'Help', '#'
-              .copyright
-                Copyright 2012 The Social Builder LLC
-              .sidebar_info
-                %ul.unstyled
-                  %li
-                    %span.act.act-warning 65
-                    %strong New comments
-                  %li
-                    %span.act.act-success 10
-                    %strong New articles
-                  %li
-                    %span.act.act-danger 85
-                    %strong New registrations
+                  %div
+                    %ul.nav.nav-list
+                      %li.nav-header Account
+                      %li#link_settings
+                        = link_to 'Settings', dashboard_settings_path
+                      %li
+                        = link_to 'Facebook', '#'
+                      %li.nav-header Billing
+                      %li#link_transactions
+                        = link_to "Statements (#{transactions_total})", dashboard_transactions_path
+                      %li#link_cards
+                        = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
+                      %li
+                        = link_to 'Membership', '#'
+                      %li.divider
+                      %li
+                        = link_to 'Help', '#'
+
+
+          .span9
+            %nav
+              %ul.breadcrumb
+                %li
+                  = render_breadcrumbs :separator => ' / '
+          
+            = yield
+          
+        .copyright
+          Copyright 2012 The Social Builder LLC
+          

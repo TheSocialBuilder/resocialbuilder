@@ -38,81 +38,82 @@
           .span3
             .sidebar
               .sidebar_inner
-                .accordion
-                  %h3
-                    %a{:href =>"#"}
-                      %i.icon-folder-close
-                      Dashboard
-                  %div
-                    %ul.nav.nav-list
-                      %li#link_dashboard
-                        = link_to 'Home', dashboard_path
-                      %li#link_pages
-                        = link_to 'Pages', dashboard_pages_path
-                      %li#link_blogs
-                        = link_to 'Blogs', dashboard_blogs_path
-                      %li#link_facebook_posts
-                        = link_to 'Facebook Posts', dashboard_facebook_posts_path
+                .accordian_box
+                  .accordian
+                    %h3.first_accordian
+                      %a{:href =>"#"}
+                        %i.icon-folder-close
+                        Dashboard
+                    %div
+                      %ul.side_nav
+                        %li#link_dashboard
+                          = link_to 'Home', dashboard_path
+                        %li#link_pages
+                          = link_to 'Pages', dashboard_pages_path
+                        %li#link_blogs
+                          = link_to 'Blogs', dashboard_blogs_path
+                        %li#link_facebook_posts
+                          = link_to 'Facebook Posts', dashboard_facebook_posts_path
                         
-                  %h3
-                    %a{:href =>"#"}
-                      %i.icon-th
-                      Listings
-                  %div
-                    %ul.nav.nav-list
-                      %li
-                        = link_to 'View All Listings', '#'
-                      %li
-                        = link_to 'My Listings', '#'
-                      %li
-                        = link_to 'Set Featured Listings', '#'
+                    %h3
+                      %a{:href =>"#"}
+                        %i.icon-th
+                        Listings
+                    %div
+                      %ul.side_nav
+                        %li
+                          = link_to 'View All Listings', '#'
+                        %li
+                          = link_to 'My Listings', '#'
+                        %li
+                          = link_to 'Set Featured Listings', '#'
                   
-                  %h3
-                    %a{:href =>"#"}
-                      %i.icon-user
-                      User/Leads                
-                  %div
-                    %ul.nav.nav-list
-                      %li
-                        = link_to 'Manage Users', '#'
-                      %li
-                        = link_to 'Manage Messages', '#'
-                      %li
-                        = link_to 'User Activity', '#'
-                      %li
-                        = link_to 'User Searches', '#'
+                    %h3
+                      %a{:href =>"#"}
+                        %i.icon-user
+                        User/Leads                
+                    %div
+                      %ul.side_nav
+                        %li
+                          = link_to 'Manage Users', '#'
+                        %li
+                          = link_to 'Manage Messages', '#'
+                        %li
+                          = link_to 'User Activity', '#'
+                        %li
+                          = link_to 'User Searches', '#'
                   
-                  %h3
-                    %a{:href =>"#"}
-                      %i.icon-cog
-                      Account Management
-                  %div
-                    %ul.nav.nav-list
-                      %li.nav-header Account
-                      %li#link_settings
-                        = link_to 'Settings', dashboard_settings_path
-                      %li
-                        = link_to 'Facebook', '#'
-                      %li.nav-header Billing
-                      %li#link_transactions
-                        = link_to "Statements (#{transactions_total})", dashboard_transactions_path
-                      %li#link_cards
-                        = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
-                      %li
-                        = link_to 'Membership', '#'
-                      %li.divider
-                      %li
-                        = link_to 'Help', '#'
+                    %h3.last_accordian
+                      %a{:href =>"#"}
+                        %i.icon-cog
+                        Account Management
+                    %div
+                      %ul.side_nav
+                        %li.side_nav_header Account
+                        %li#link_settings
+                          = link_to 'Settings', dashboard_settings_path
+                        %li
+                          = link_to 'Facebook', '#'
+                        %li.side_nav_header Billing
+                        %li#link_transactions
+                          = link_to "Statements (#{transactions_total})", dashboard_transactions_path
+                        %li#link_cards
+                          = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
+                        %li
+                          = link_to 'Membership', '#'
+                        %li.divider
+                        %li
+                          = link_to 'Help', '#'
 
 
           .span9
-            %nav
-              %ul.breadcrumb
-                %li
-                  = render_breadcrumbs :separator => ' / '
+            -# %nav
+            -#   %ul.breadcrumb
+            -#     %li
+            -#       = render_breadcrumbs :separator => ' / '
           
             = yield
-          
-        .copyright
+      .container
+        .footer
           Copyright 2012 The Social Builder LLC
           

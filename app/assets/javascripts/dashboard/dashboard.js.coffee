@@ -1,6 +1,7 @@
-$(document).ready ->
+jQuery ->
   
-  $('.accordian').accordion();
+  $('.accordian').accordion ->
+    autoHeight: false
 
   
   render = (term, data, type) -> 

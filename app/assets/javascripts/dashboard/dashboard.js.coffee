@@ -1,7 +1,21 @@
 jQuery ->
   
-  $('.accordian').accordion ->
+  $('.accordian').accordion
     autoHeight: false
+    fillSpace: false
+    collapsible: true
+    active: RESocialBuilder.menu_active_accordian
+    
+  
+  menu_active_link = RESocialBuilder.menu_active_link
+
+  if menu_active_link
+    $('ul.side_nav li').removeClass('active')
+    $('#link_'+menu_active_link).addClass('active')
+  else
+    $('ul.side_nav li').removeClass('active')
+    $('#link_dashboard').addClass('active')
+    
 
   
   render = (term, data, type) -> 

@@ -4,7 +4,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
   # before_filter :setup_fb_pages
 
   def setup_menu
-    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_accordian = 0
     gon.menu_active_link = 'facebook_posts'
   end
   
@@ -52,7 +52,7 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
 
   end
 
-  add_breadcrumb "Facebook Posts", :dashboard_facebook_posts_path
+
   def index
     @facebook_posts = current_account.facebook_posts.all
 
@@ -64,17 +64,15 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
 
 
   def show
-    add_breadcrumb "Showing Facebook Post", dashboard_facebook_post_path
     @facebook_post = current_account.facebook_posts.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render "edit" }
       format.json { render json: @facebook_post }
     end
   end
 
   def new
-    add_breadcrumb "Creating New Facebook Post", new_dashboard_facebook_post_path
     @facebook_post = current_account.facebook_posts.new
 
     respond_to do |format|
@@ -85,7 +83,6 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
 
 
   def edit
-    add_breadcrumb "Updating Facebook Post", edit_dashboard_facebook_post_path
     @facebook_post = current_account.facebook_posts.find(params[:id])
   end
 
@@ -141,9 +138,6 @@ class Dashboard::FacebookPostsController < Dashboard::DashboardController
     @facebook_post = current_account.facebook_posts.find(params[:id])
     @facebook_post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to dashboard_facebook_posts_path }
-      format.json { head :no_content }
-    end
+    redirect_to dashboard_facebook_posts_path
   end
 end

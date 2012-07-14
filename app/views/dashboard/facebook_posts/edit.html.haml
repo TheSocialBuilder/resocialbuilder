@@ -1,5 +1,18 @@
-%h1 Editing post
+.page
+  .header
+    .links
 
-= render 'form'
-
-= link_to 'Back', dashboard_facebook_posts_path(@facebook_post)
+      = link_to dashboard_facebook_posts_path(@blog), :class => t("dashboard.facebook_posts.buttons.delete.css"), :title => t("dashboard.facebook_posts.buttons.delete.title"), :confirm => t("dashboard.facebook_posts.buttons.delete.confirm"), :method => :delete do
+        = t("dashboard.facebook_posts.buttons.delete.content").html_safe
+      = link_to dashboard_facebook_posts_path, :class => t("dashboard.facebook_posts.buttons.index.css"), :title => t("dashboard.facebook_posts.buttons.index.title") do
+        = t("dashboard.facebook_posts.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_facebook_posts_path do
+      %i.icon-arrow-left
+      Go Back

@@ -732,7 +732,7 @@ fieldset {
 }
 
 legend {
-  display: block;
+//  display: block;
   width: 100%;
   padding: 0;
   margin-bottom: 27px;
@@ -740,7 +740,7 @@ legend {
   line-height: 36px;
   color: #333333;
   border: 0;
-  border-bottom: 1px solid #eee;
+//  border-bottom: 1px solid #eee;
 }
 
 legend small {
@@ -3190,7 +3190,9 @@ button.close {
   margin-left: -1px;
 }
 
-.label {
+.label, .badge {
+  width:auto;
+  overflow:auto;
   padding: 1px 4px 2px;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;

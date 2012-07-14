@@ -1,13 +1,10 @@
 .page
   .header
     .links
-      = link_to dashboard_blogs_path, :class => 'btn btn-regular pull-right' do
-        %i.icon-search
-        View All Blogs
-        
+      = link_to dashboard_blogs_path, :class => t("dashboard.blogs.buttons.index.css"), :title => t("dashboard.blogs.buttons.index.title") do
+        = t("dashboard.blogs.buttons.index.content").html_safe
     .title
-      %i.icon-comments
-      Blog Posts - New Post
+      = t(".title").html_safe
       
   .content
     = render 'form'

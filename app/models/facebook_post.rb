@@ -18,7 +18,7 @@ class FacebookPost
   ## associations ##
   belongs_to :account
   belongs_to :facebook_page
-  has_many :realtors
+  # has_many :realtors
   # attr_accessible :title, :content, :seo_meta_title, :seo_meta_keys, :seo_meta_desc, :published, :tags
   
   

@@ -3,12 +3,11 @@ class Dashboard::CardsController < Dashboard::DashboardController
   before_filter :setup_menu
 
   def setup_menu
-    gon.menu_active_accordian = 'account'
+    gon.menu_active_accordian = 3
     gon.menu_active_link = 'cards'
   end
   
   
-  add_breadcrumb "Cards", :dashboard_cards_path
   def index
     @cards = current_account.cards.all
 
@@ -20,7 +19,6 @@ class Dashboard::CardsController < Dashboard::DashboardController
 
 
   def show
-    add_breadcrumb "Showing Card", dashboard_card_path
     @card = current_account.cards.find(params[:id])
 
     respond_to do |format|
@@ -30,7 +28,6 @@ class Dashboard::CardsController < Dashboard::DashboardController
   end
 
   def new
-    add_breadcrumb "Creating New Card", new_dashboard_card_path
     @card = current_account.cards.new
 
     respond_to do |format|
@@ -41,7 +38,6 @@ class Dashboard::CardsController < Dashboard::DashboardController
 
 
   def edit
-    add_breadcrumb "Updating Card", edit_dashboard_card_path
     @card = current_account.cards.find(params[:id])
   end
 

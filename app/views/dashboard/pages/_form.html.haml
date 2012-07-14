@@ -15,4 +15,4 @@
       = f.input :seo_meta_desc, :label => 'SEO Description'
 
   = f.actions do
-    = f.action :submit, :as => :input
+    = f.action :submit, :label => t(".buttons.save.content").html_safe, :as => :button, :button_html => { :class => t(".buttons.save.css") }

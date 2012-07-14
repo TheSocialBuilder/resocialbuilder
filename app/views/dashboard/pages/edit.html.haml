@@ -1,7 +1,19 @@
-%h1 Editing page
-
-= render 'form'
-
-= link_to 'Show', dashboard_pages_path(@page)
-\|
-= link_to 'Back', dashboard_page_path(@page)
+.page
+  .header
+    .links
+      = link_to new_dashboard_page_path, :class => t("dashboard.pages.buttons.add.css"), :title => t("dashboard.pages.buttons.add.title") do
+        = t("dashboard.pages.buttons.add.content").html_safe
+      = link_to dashboard_pages_path(@page), :class => t("dashboard.pages.buttons.delete.css"), :title => t("dashboard.pages.buttons.delete.title"), :confirm => t("dashboard.pages.buttons.delete.confirm"), :method => :delete do
+        = t("dashboard.pages.buttons.delete.content").html_safe
+      = link_to dashboard_pages_path, :class => t("dashboard.pages.buttons.index.css"), :title => t("dashboard.pages.buttons.index.title") do
+        = t("dashboard.pages.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_pages_path do
+      %i.icon-arrow-left
+      Go Back

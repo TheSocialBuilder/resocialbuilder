@@ -1,6 +1,20 @@
-= link_to 'New Page', new_dashboard_page_path, :class => 'btn btn-primary pull-right'
-%h1 Pages
-
+.page
+  .header
+    .links
+      = link_to new_dashboard_page_path, :class => t("dashboard.pages.buttons.add.css"), :title => t("dashboard.pages.buttons.add.title") do
+        = t("dashboard.pages.buttons.add.content").html_safe
+    .title
+      = t(".title").html_safe
+  .content
+    .well
+      
+      %h4
+        %i.icon-moved
+        Drag and Drop Menu Builder
+      %p
+        By dragging and dropping pages you can build custom multi-tiered navigation menus for both your Website and Facebook. To create Sub Navigation Links under any link Drag the link to the right.
+  
+  
 #output
 
 %ol.sortable
@@ -8,8 +22,23 @@
     %li{:id => "page_#{page.id}"}
       %div
         %span.actions.pull-right
-          = link_to 'Show', dashboard_page_path(page)
-          = link_to 'Edit', edit_dashboard_page_path(page)
-          = link_to 'Destroy', dashboard_page_path(page), :confirm => 'Are you sure?', :method => :delete
+          = link_to edit_dashboard_page_path(page) do
+            %i.icon-edit.action_links
+          = link_to dashboard_page_path(page), :confirm => t("dashboard.pages.buttons.delete.confirm"), :method => :delete do
+            %i.icon-trash.action_links
+        %i.icon-move.action_links
         = page.title
+        
+        - if page.page_type == 2
+          %span.badge.badge-info
+            Facebook Page
+        - elsif page.page_type == 3
+          %span.badge.badge-success
+            Home Page
+        - elsif page.page_type == 4
+          %span.badge.badge-warning
+            Contact Page
+        - else
+          
+        
       = render 'children', :page => page unless page.leaf?

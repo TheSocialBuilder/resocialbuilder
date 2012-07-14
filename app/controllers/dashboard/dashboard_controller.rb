@@ -12,7 +12,7 @@ class Dashboard::DashboardController < ApplicationController
   
   def setup_menu
     
-    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_accordian = 0
     gon.menu_active_link = 'dashboard'
   end
 
@@ -24,6 +24,11 @@ class Dashboard::DashboardController < ApplicationController
   def index
     gon.menu_active_link = 'dashboard'
     # @listings = Listing.all.cache
+    
+    @listings = Listing.limit(5).cache
+    
+    
+    
   end
   
   def install_facebook(page_id)
@@ -68,7 +73,7 @@ class Dashboard::DashboardController < ApplicationController
   
   def settings
     
-    gon.menu_active_accordian = 'account'
+    gon.menu_active_accordian = 3
     gon.menu_active_link = 'settings'
     add_breadcrumb "Settings", dashboard_settings_path
     

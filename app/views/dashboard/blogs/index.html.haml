@@ -1,12 +1,10 @@
 .page
   .header
     .links
-      = link_to new_dashboard_blog_path, :class => 'btn btn-primary pull-right' do
-        %i.icon-plus
-        New Blog        
+      = link_to new_dashboard_blog_path, :class => t("dashboard.blogs.buttons.add.css"), :title => t("dashboard.blogs.buttons.add.title") do
+        = t("dashboard.blogs.buttons.add.content").html_safe
     .title
-      %i.icon-comments
-      Blog Posts
+      = t(".title").html_safe
       
   .content
 
@@ -14,7 +12,6 @@
       %thead
         %tr
           %th Title
-          %th Comments
           %th Views
           %th Created
           %th Updated
@@ -23,21 +20,17 @@
       %tbody
         - @blogs.each do |blog|
           %tr
-            %td= blog.title
             %td
-              = link_to blog.comments.length, dashboard_manage_comments_path(blog)
-            %td= blog.views
+              = blog.title
+            %td
+              = blog.views
             %td
               = blog.created_at.strftime("%m/%d/%Y %l:%M %P")
             %td
               = blog.updated_at.strftime("%m/%d/%Y %l:%M %P")
 
             %td.action_links
-              
               = link_to edit_dashboard_blog_path(blog) do
                 %i.icon-edit
-                
-              = link_to dashboard_blog_path(blog), :confirm => 'Are you sure?', :method => :delete do
+              = link_to dashboard_blog_path(blog), :confirm => t("dashboard.blogs.buttons.delete.confirm"), :method => :delete do
                 %i.icon-trash
-
-

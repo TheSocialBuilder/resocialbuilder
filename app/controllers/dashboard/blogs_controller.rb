@@ -3,12 +3,10 @@ class Dashboard::BlogsController < Dashboard::DashboardController
   before_filter :setup_menu
 
   def setup_menu
-    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_accordian = 0
     gon.menu_active_link = 'blogs'
   end
 
-
-  add_breadcrumb "Blogs", :dashboard_blogs_path
   def index
     @blogs = current_account.blogs.all
 
@@ -20,17 +18,15 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
 
   def show
-    add_breadcrumb "Showing Blog", dashboard_blog_path
     @blog = current_account.blogs.find_by_slug(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render "edit" }
       format.json { render json: @blog }
     end
   end
   
   def manage_comments
-    add_breadcrumb "Manage Blog Comments", dashboard_blog_path
     @blog = current_account.blogs.find_by_slug(params[:id])
     
     @commentable = @blog
@@ -45,7 +41,6 @@ class Dashboard::BlogsController < Dashboard::DashboardController
   end
 
   def new
-    add_breadcrumb "Creating New Blog", new_dashboard_blog_path
     @blog = current_account.blogs.new
 
     respond_to do |format|
@@ -56,7 +51,6 @@ class Dashboard::BlogsController < Dashboard::DashboardController
 
 
   def edit
-    add_breadcrumb "Updating Blog", edit_dashboard_blog_path
     @blog = current_account.blogs.find_by_slug(params[:id])
   end
 

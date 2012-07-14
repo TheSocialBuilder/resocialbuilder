@@ -20,19 +20,12 @@
               RE Social Builder
 
             .user_area.pull-right
-              .username
-                Welcome, 
-                = current_account.name
-              .circular_before
-                .circular{:style => "background: url(#{current_account.fb_image}) top  no-repeat;"}
+              = link_to dashboard_settings_path do
+                .username
+                  = current_account.name
+                .circular_before
+                  .circular{:style => "background: url(#{current_account.fb_image}) top  no-repeat;"}
         
-            -# %nav
-            -#   .nav-form
-            -#     %form
-            -#       %input.dashboard_search.search-input{:autocomplete => "off", :name => "query", :placeholder => "Search...", :size => "16", :type => "text"}/
-
-        
-
       #maincontainer.container          
         .row
           .span3
@@ -41,79 +34,72 @@
                 .accordian_box
                   .accordian
                     %h3.first_accordian
-                      %a{:href =>"#"}
-                        %i.icon-folder-close
-                        Dashboard
+                      = link_to t("dashboard.navigation.accordian_1.title").html_safe, "#"
                     %div
                       %ul.side_nav
                         %li#link_dashboard
-                          = link_to 'Home', dashboard_path
+                          = link_to t("dashboard.navigation.accordian_1.links.home").html_safe, dashboard_path
                         %li#link_pages
-                          = link_to 'Pages', dashboard_pages_path
+                          = link_to t("dashboard.navigation.accordian_1.links.pages").html_safe, dashboard_pages_path
                         %li#link_blogs.active
-                          = link_to 'Blogs', dashboard_blogs_path
+                          = link_to t("dashboard.navigation.accordian_1.links.blogs").html_safe, dashboard_blogs_path
                         %li#link_facebook_posts
-                          = link_to 'Facebook Posts', dashboard_facebook_posts_path
+                          = link_to t("dashboard.navigation.accordian_1.links.facebook_posts").html_safe, dashboard_facebook_posts_path
                         
                     %h3
-                      %a{:href =>"#"}
-                        %i.icon-th
-                        Listings
+                      = link_to t("dashboard.navigation.accordian_2.title").html_safe, "#"
                     %div
                       %ul.side_nav
                         %li
-                          = link_to 'View All Listings', '#'
+                          = link_to t("dashboard.navigation.accordian_2.links.all_listings").html_safe, "#"
                         %li
-                          = link_to 'My Listings', '#'
+                          = link_to t("dashboard.navigation.accordian_2.links.listings").html_safe, "#"
                         %li
-                          = link_to 'Set Featured Listings', '#'
+                          = link_to t("dashboard.navigation.accordian_2.links.featured").html_safe, "#"
                   
                     %h3
-                      %a{:href =>"#"}
-                        %i.icon-user
-                        User/Leads                
+                      = link_to t("dashboard.navigation.accordian_3.title").html_safe, "#"        
                     %div
                       %ul.side_nav
                         %li
-                          = link_to 'Manage Users', '#'
+                          = link_to t("dashboard.navigation.accordian_3.links.users").html_safe, "#"
                         %li
-                          = link_to 'Manage Messages', '#'
+                          = link_to t("dashboard.navigation.accordian_3.links.messages").html_safe, "#"
                         %li
-                          = link_to 'User Activity', '#'
+                          = link_to t("dashboard.navigation.accordian_3.links.user_activity").html_safe, "#"
                         %li
-                          = link_to 'User Searches', '#'
+                          = link_to t("dashboard.navigation.accordian_3.links.user_searches").html_safe, "#"
                   
                     %h3.last_accordian
-                      %a{:href =>"#"}
-                        %i.icon-cog
-                        Account Management
+                      = link_to t("dashboard.navigation.accordian_4.title").html_safe, "#"
                     %div
                       %ul.side_nav
-                        %li.side_nav_header Account
+                        %li.side_nav_header
+                          = t("dashboard.navigation.accordian_4.links.account").html_safe
                         %li#link_settings
-                          = link_to 'Settings', dashboard_settings_path
+                          = link_to t("dashboard.navigation.accordian_3.links.settings").html_safe, dashboard_settings_path
                         %li
-                          = link_to 'Facebook', '#'
-                        %li.side_nav_header Billing
+                          = link_to t("dashboard.navigation.accordian_3.links.facebook").html_safe, "#"
+                        %li.side_nav_header
+                          = t("dashboard.navigation.accordian_4.links.billing").html_safe
                         %li#link_transactions
-                          = link_to "Statements (#{transactions_total})", dashboard_transactions_path
+                          = link_to t("dashboard.navigation.accordian_3.links.transactions").html_safe, dashboard_transactions_path
                         %li#link_cards
-                          = link_to "Credit Cards (#{cards_total})", dashboard_cards_path
+                          = link_to t("dashboard.navigation.accordian_3.links.cards").html_safe, dashboard_cards_path
                         %li
-                          = link_to 'Membership', '#'
+                          = link_to t("dashboard.navigation.accordian_3.links.membership").html_safe, "#"
                         %li.divider
                         %li
-                          = link_to 'Help', '#'
-
-
+                          = link_to t("dashboard.navigation.accordian_3.links.help").html_safe, "#"
           .span9
-            -# %nav
-            -#   %ul.breadcrumb
-            -#     %li
-            -#       = render_breadcrumbs :separator => ' / '
-          
             = yield
+            
       .container
         .footer
-          Copyright 2012 The Social Builder LLC
-          
+          .footer_right.pull-right
+            = link_to t("dashboard.footer.link_1").html_safe, "#"
+            · 
+            = link_to t("dashboard.footer.link_2").html_safe, "#"
+            · 
+            = link_to t("dashboard.footer.link_3").html_safe, "#"
+          = t("dashboard.footer.copyright")

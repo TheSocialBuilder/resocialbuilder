@@ -2,4 +2,241 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  dashboard:
+######################################################      
+#
+# Dashboard
+#
+###################################################### 
+    dashboard:
+      index:
+        title: "<i class='icon-dashboard'></i> Dashboard"
+
+
+######################################################      
+#
+# Blogs
+#
+###################################################### 
+    blogs:
+      buttons:
+        index:
+          title: "View and Manage all Blog Posts"
+          content: "<i class='icon-search'></i> View All Posts"
+          css: "btn btn-regular pull-right"
+        add:
+          title: "Create a new Blog Post"
+          content: "<i class='icon-plus'></i> Create Post"
+          css: "btn btn-primary pull-right"
+        edit:
+          title: "Edit Blog Post"
+          content: "<i class='icon-pencil'></i> Edit Post"
+          css: "btn btn-regular pull-right"
+        delete:
+          title: "Delete Blog Post"
+          content: "<i class='icon-trash'></i> Delete Post"
+          css: "btn btn-danger pull-right"
+          confirm: "Are you sure you want to delete this Blog Post?"
+      form:
+        buttons:
+          save:
+            content: "<i class='icon-ok'></i> Save Post"
+            css: "btn btn-submit"
+
+      index:
+        title: "<i class='icon-comments'></i> Blog Posts"
+      new:
+        title: "<i class='icon-comments'></i> Blog Posts - New Post"
+      edit:
+        title: "<i class='icon-comments'></i> Blog Posts - Edit Post"
+      show:
+        title: "<i class='icon-comments'></i> Blog Posts - View Post"
+        
+        
+######################################################      
+#
+# Pages
+#
+###################################################### 
+
+    pages:
+      buttons:
+        index:
+          title: "View and Manage all Pages"
+          content: "<i class='icon-search'></i> View Pages"
+          css: "btn btn-regular pull-right"
+        add:
+          title: "Create a new Page"
+          content: "<i class='icon-plus'></i> Create Page"
+          css: "btn btn-primary pull-right"
+        edit:
+          title: "Edit Page"
+          content: "<i class='icon-pencil'></i> Edit Page"
+          css: "btn btn-regular pull-right"
+        delete:
+          title: "Delete Page"
+          content: "<i class='icon-trash'></i> Delete Page"
+          css: "btn btn-danger pull-right"
+          confirm: "Are you sure you want to delete this Page?"
+      form:
+        buttons:
+          save:
+            content: "<i class='icon-ok'></i> Save Page"
+            css: "btn btn-submit"
+
+      index:
+        title: "<i class='icon-file'></i> Pages"
+      new:
+        title: "<i class='icon-file'></i> Pages - New Page"
+      edit:
+        title: "<i class='icon-file'></i> Pages - Edit Page"
+      show:
+        title: "<i class='icon-file'></i> Pages - View Page"
+        
+        
+######################################################      
+#
+# Facebook Posts
+#
+###################################################### 
+
+    facebook_posts:
+      buttons:
+        index:
+          title: "View and Manage all Posts"
+          content: "<i class='icon-search'></i> View All Facebook Posts"
+          css: "btn btn-regular pull-right"
+        add:
+          title: "Create a new Blog Post"
+          content: "<i class='icon-plus'></i> Create Facebook Post"
+          css: "btn btn-primary pull-right"
+        edit:
+          title: "Edit Blog Post"
+          content: "<i class='icon-pencil'></i> Edit Facebook Post"
+          css: "btn btn-regular pull-right"
+        delete:
+          title: "Delete Blog Post"
+          content: "<i class='icon-trash'></i> Delete Facebook Post"
+          css: "btn btn-danger pull-right"
+          confirm: "Are you sure you want to delete this Facebook Post?"
+      form:
+        buttons:
+          save:
+            content: "<i class='icon-ok'></i> Save Facebook Post"
+            css: "btn btn-submit"
+
+      index:
+        title: "<i class='icon-facebook-sign'></i> Facebook Posts"
+      new:
+        title: "<i class='icon-facebook-sign'></i> Facebook Posts - Schedule New Post"
+      edit:
+        title: "<i class='icon-facebook-sign'></i> Facebook Posts - Edit Post"
+      show:
+        title: "<i class='icon-facebook-sign'></i> Facebook Posts - View Post"
+        
+        
+######################################################      
+#
+# Credit Cards
+#
+###################################################### 
+
+    cards:
+      buttons:
+        index:
+          title: "View and Manage all Cards"
+          content: "<i class='icon-search'></i> View Credit Cards"
+          css: "btn btn-regular pull-right"
+        add:
+          title: "Create a new Card"
+          content: "<i class='icon-plus'></i> Create Credit Card"
+          css: "btn btn-primary pull-right"
+        edit:
+          title: "Edit Card"
+          content: "<i class='icon-pencil'></i> Edit Credit Card"
+          css: "btn btn-regular pull-right"
+        delete:
+          title: "Delete Card"
+          content: "<i class='icon-trash'></i> Delete Credit Card"
+          css: "btn btn-danger pull-right"
+          confirm: "Are you sure you want to delete this Credit Card?"
+      form:
+        buttons:
+          save:
+            content: "<i class='icon-ok'></i> Save Credit Card"
+            css: "btn btn-submit"
+
+      index:
+        title: "<i class='icon-credit-card'></i> Credit Cards"
+      new:
+        title: "<i class='icon-credit-card'></i> Pages - New Credit Card"
+      edit:
+        title: "<i class='icon-credit-card'></i> Pages - Edit Credit Card"
+      show:
+        title: "<i class='icon-credit-card'></i> Pages - View Credit Card"
+        
+        
+######################################################      
+#
+# Transactions
+#
+###################################################### 
+
+    transactions:
+      buttons:
+        index:
+          title: "View and Manage all Statements"
+          content: "<i class='icon-search'></i> View Statements"
+          css: "btn btn-regular pull-right"
+
+      index:
+        title: "<i class='icon-shopping-cart'></i> Statements"
+      show:
+        title: "<i class='icon-shopping-cart'></i> Statements - View Statement"
+        
+        
+      
+        
+######################################################      
+#
+# Dashboard Navigation links
+#
+###################################################### 
+    navigation:
+      accordian_1:
+        title: "<i class='icon-dashboard'></i> Dashboard"
+        links:
+          home: "<i class='icon-dashboard'></i> Dashboard"
+          pages: "<i class='icon-file'></i> Pages"
+          blogs: "<i class='icon-comments'></i> Blogs"
+          facebook_posts: "<i class='icon-facebook-sign'></i> Facebook Posts"
+      accordian_2:
+        title: "<i class='icon-home'></i> Listings"
+        links:
+          all_listings: "<i class='icon-dashboard'></i> View All Listings"
+          listings: "<i class='icon-file'></i> My Listings"
+          featured: "<i class='icon-comments'></i> Set Featured Listings"
+      accordian_3:
+        title: "<i class='icon-user'></i> Users - Leads"
+        links:
+          users: "<i class='icon-dashboard'></i> Manage Users"
+          messages: "<i class='icon-file'></i> Manage Messages"
+          user_activity: "<i class='icon-comments'></i> User Activity"
+          user_searches: "<i class='icon-facebook-sign'></i> User Searches"
+      accordian_4:
+        title: "<i class='icon-dashboard'></i> Account Management"
+        links:
+          account: "<i class='icon-dashboard'></i> Account"
+          settings: "<i class='icon-file'></i> Settings"
+          facebook: "<i class='icon-comments'></i> Facebook"
+          billing: "<i class='icon-money'></i> Billing"
+          transactions: "<i class='icon-credit-card'></i> Statements"
+          cards: "<i class='icon-facebook-sign'></i> Credit Cards"
+          membership: "<i class='icon-facebook-sign'></i> Membership"
+          help: "<i class='icon-facebook-sign'></i> Help"
+        
+    footer:
+      copyright: "Copyright 2012 The Social Builder LLC"
+      link_1: "Help"
+      link_2: "Support"
+      link_2: "Contact Us"

@@ -1,19 +1,14 @@
 .page
   .header
     .links
-      = link_to new_dashboard_blog_path, :class => 'btn btn-primary pull-right' do
-        %i.icon-plus
-        New Blog
-      = link_to dashboard_blog_path(@blog), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger pull-right' do
-        %i.icon-trash
-        Delete Blog
-      = link_to dashboard_blogs_path, :class => 'btn btn-regular pull-right' do
-        %i.icon-search
-        View All Blogs
-        
+      = link_to new_dashboard_blog_path, :class => t("dashboard.blogs.buttons.add.css"), :title => t("dashboard.blogs.buttons.add.title") do
+        = t("dashboard.blogs.buttons.add.content").html_safe
+      = link_to dashboard_blogs_path(@blog), :class => t("dashboard.blogs.buttons.delete.css"), :title => t("dashboard.blogs.buttons.delete.title"), :confirm => t("dashboard.blogs.buttons.delete.confirm"), :method => :delete do
+        = t("dashboard.blogs.buttons.delete.content").html_safe
+      = link_to dashboard_blogs_path, :class => t("dashboard.blogs.buttons.index.css"), :title => t("dashboard.blogs.buttons.index.title") do
+        = t("dashboard.blogs.buttons.index.content").html_safe
     .title
-      %i.icon-comments
-      Blog Posts - Edit
+      = t(".title").html_safe
       
   .content
     = render 'form'

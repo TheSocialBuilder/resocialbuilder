@@ -1,5 +1,15 @@
-%h1 New post
-
-= render 'form'
-
-= link_to 'Back', dashboard_facebook_posts_path(@facebook_post)
+.page
+  .header
+    .links
+      = link_to dashboard_facebook_posts_path, :class => t("dashboard.facebook_posts.buttons.index.css"), :title => t("dashboard.facebook_posts.buttons.index.title") do
+        = t("dashboard.facebook_posts.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_facebook_posts_path do
+      %i.icon-arrow-left
+      Go Back

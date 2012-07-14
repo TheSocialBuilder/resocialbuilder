@@ -1,5 +1,15 @@
-%h1 New Card
-
-= render 'form'
-
-= link_to 'Back', dashboard_cards_path
+.page
+  .header
+    .links
+      = link_to dashboard_cards_path, :class => t("dashboard.cards.buttons.index.css"), :title => t("dashboard.cards.buttons.index.title") do
+        = t("dashboard.cards.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_cards_path do
+      %i.icon-arrow-left
+      Go Back

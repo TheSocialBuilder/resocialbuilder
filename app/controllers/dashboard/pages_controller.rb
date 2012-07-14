@@ -3,14 +3,9 @@ class Dashboard::PagesController < Dashboard::DashboardController
   before_filter :setup_menu
 
   def setup_menu
-    gon.menu_active_accordian = 'dashboard'
+    gon.menu_active_accordian = 0
     gon.menu_active_link = 'pages'
   end
-  
-  
-  add_breadcrumb "Pages", :dashboard_pages_path
-  
-  
   
   def savesort
     neworder = JSON.parse(params[:set])
@@ -60,13 +55,6 @@ class Dashboard::PagesController < Dashboard::DashboardController
     end
   end
   
-  
-  
-  
-  
-  
-  
-  
   def index
     @pages = current_account.pages.all
 
@@ -78,17 +66,15 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
 
   def show
-    add_breadcrumb "Showing Page", dashboard_page_path
     @page = current_account.pages.find_by_slug(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render "edit" }
       format.json { render json: @page }
     end
   end
 
   def new
-    add_breadcrumb "Creating New Page", new_dashboard_page_path
     @page = current_account.pages.new
     @build_tree_select = current_account.pages.traverse(:depth_first).map{|node| ["#{'--' * node.depth}- #{node.title}",node.id]}
     respond_to do |format|
@@ -99,7 +85,6 @@ class Dashboard::PagesController < Dashboard::DashboardController
 
 
   def edit
-    add_breadcrumb "Updating Page", edit_dashboard_page_path
     @page = current_account.pages.find_by_slug(params[:id])
     
     @build_tree_select = current_account.pages.traverse(:depth_first).map{|node| ["#{'--' * node.depth}- #{node.title}",node.id]}
@@ -156,9 +141,6 @@ class Dashboard::PagesController < Dashboard::DashboardController
     
     @page.destroy
 
-    respond_to do |format|
-      format.html { redirect_to dashboard_pages_path }
-      format.json { head :no_content }
-    end
+    redirect_to dashboard_pages_path
   end
 end

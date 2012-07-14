@@ -1,5 +1,18 @@
-%h1 Editing Card
+.page
+  .header
+    .links
+      = link_to dashboard_cards_path(@card), :class => t("dashboard.cards.buttons.delete.css"), :title => t("dashboard.cards.buttons.delete.title"), :confirm => t("dashboard.cards.buttons.delete.confirm"), :method => :delete do
+        = t("dashboard.cards.buttons.delete.content").html_safe
+      = link_to dashboard_cards_path, :class => t("dashboard.cards.buttons.index.css"), :title => t("dashboard.cards.buttons.index.title") do
+        = t("dashboard.cards.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_cards_path do
+      %i.icon-arrow-left
+      Go Back
 
-= render 'form'
-
-= link_to 'Back', dashboard_cards_path(@card)

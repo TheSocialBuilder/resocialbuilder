@@ -1,2 +1,43 @@
-.heading.clearfix
-  %h3 Dashboard
+.page
+  .header
+    .title
+      = t(".title").html_safe
+      
+  .content
+  
+    .widget.span4
+      .title
+        %i.icon-home
+        Latest Listings
+      .content
+        %table.table
+          %tbody
+            
+            - @listings.each do |listing|
+              %tr
+                %td
+                  %i.icon-home
+                %td
+                  = listing.location.address
+                  %br
+                  = listing.listing
+  
+    .widget.span4
+      .title
+        %i.icon-home
+        Latest Listings
+      .content
+        %table.table
+          %tbody
+            
+            - @listings.each do |listing|
+              %tr
+                %td
+                  %i.icon-home
+                  -# = listing.listing
+                %td
+                  = listing.location.address
+                  %br
+                  = listing.listing
+                  
+                  

@@ -1,5 +1,15 @@
-%h1 New page
-
-= render 'form'
-
-= link_to 'Back', dashboard_pages_path
+.page
+  .header
+    .links
+      = link_to dashboard_pages_path, :class => t("dashboard.pages.buttons.index.css"), :title => t("dashboard.pages.buttons.index.title") do
+        = t("dashboard.pages.buttons.index.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
+    = render 'form'
+    
+  .back
+    = link_to  dashboard_pages_path do
+      %i.icon-arrow-left
+      Go Back

@@ -1,31 +1,39 @@
-= link_to 'Add New Credit Card', new_dashboard_card_path, :class => 'btn btn-primary pull-right'
-%h1 Credit Cards on File
+.page
+  .header
+    .links
+      = link_to new_dashboard_card_path, :class => t("dashboard.cards.buttons.add.css"), :title => t("dashboard.cards.buttons.add.title") do
+        = t("dashboard.cards.buttons.add.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
 
-%table.table.table-bordered
-  %thead
-    %tr
-      %th Type
-      %th Name on Card
-      %th Number
-      %th Expiration Date
-      %th.action_row Actions
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Type
+          %th Name on Card
+          %th Number
+          %th Expiration Date
+          %th.action_row Actions
 
-  %tbody
-    - @cards.each do |card|
-      %tr
-        %td
-          = image_tag("dashboard/cc_#{card.type}.png")
-        %td
-          = card.name
-        %td
-          = card.number 
-          - if card.default
-            %span.label.label-success Default Card
-        %td
-          = "#{card.month}/#{card.year[-2..-1]}"
-        %td
-          = link_to 'Edit', edit_dashboard_card_path(card)
-          - if !card.default
-            = link_to 'Destroy', dashboard_card_path(card), :confirm => 'Are you sure?', :method => :delete
-          - else
-            Destroy
+      %tbody
+        - @cards.each do |card|
+          %tr
+            %td
+              = image_tag("dashboard/cc_#{card.type}.png")
+            %td
+              = card.name
+            %td
+              = card.number 
+              - if card.default
+                %span.label.label-success Default Card
+            %td
+              = "#{card.month}/#{card.year[-2..-1]}"
+            %td.action_links
+              = link_to edit_dashboard_card_path(card) do
+                %i.icon-edit
+              - if !card.default
+                = link_to dashboard_card_path(card), :confirm => t("dashboard.cards.buttons.delete.confirm"), :method => :delete do
+                  %i.icon-trash
+

@@ -1,30 +1,39 @@
-= link_to 'New Post', new_dashboard_facebook_post_path, :class => 'btn btn-primary pull-right'
-%h1 Listing posts
+.page
+  .header
+    .links
+      = link_to new_dashboard_facebook_post_path, :class => t("dashboard.facebook_posts.buttons.add.css"), :title => t("dashboard.facebook_posts.buttons.add.title") do
+        = t("dashboard.facebook_posts.buttons.add.content").html_safe
+    .title
+      = t(".title").html_safe
+      
+  .content
 
-%table.table.table-bordered
-  %thead
-    %tr
-      %th Title
-      %th Page
-      %th Date Scheduled
-      %th Status
-      %th.action_row Actions
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Title
+          %th Page
+          %th Date Scheduled
+          %th Status
+          %th.action_row Actions
 
-  %tbody
-    - @facebook_posts.each do |facebook_post|
-      %tr
-        %td
-          = truncate(facebook_post.message, :length => 25, :omission => '...')
-        %td
-          = image_tag facebook_post.facebook_page.picture, :size => '20x20'
-          = link_to truncate(facebook_post.facebook_page.name, :length => 25), facebook_post.facebook_page.link, :title => facebook_post.facebook_page.name
-        %td
-          = facebook_post.publish_on.strftime("%m/%d/%Y %l:%M %P")
-        %td
-          - if facebook_post.published
-            Posted
-          - else
-            Scheduled
-        %td
-          = link_to 'Edit', edit_dashboard_facebook_post_path(facebook_post)
-          = link_to 'Destroy', dashboard_facebook_post_path(facebook_post), :confirm => 'Are you sure?', :method => :delete
+      %tbody
+        - @facebook_posts.each do |facebook_post|
+          %tr
+            %td
+              = truncate(facebook_post.message, :length => 25, :omission => '...')
+            %td
+              = image_tag facebook_post.facebook_page.picture, :size => '20x20'
+              = link_to truncate(facebook_post.facebook_page.name, :length => 25), facebook_post.facebook_page.link, :title => facebook_post.facebook_page.name, :target => '_blank'
+            %td
+              = facebook_post.publish_on.strftime("%m/%d/%Y %l:%M %P")
+            %td
+              - if facebook_post.published
+                Posted
+              - else
+                Scheduled
+            %td.action_links
+              = link_to edit_dashboard_facebook_post_path(facebook_post) do
+                %i.icon-edit
+              = link_to dashboard_facebook_post_path(facebook_post), :confirm => t("dashboard.facebook_posts.buttons.delete.confirm"), :method => :delete do
+                %i.icon-trash

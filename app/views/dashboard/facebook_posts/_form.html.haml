@@ -5,4 +5,4 @@
     = f.input :publish_on, :as => :datetime, :minute_step => 15, :include_year => false, :label => 'Date and Time to publish'
 
   = f.actions do
-    = f.action :submit, :as => :input
+    = f.action :submit, :label => t(".buttons.save.content").html_safe, :as => :button, :button_html => { :class => t(".buttons.save.css") }

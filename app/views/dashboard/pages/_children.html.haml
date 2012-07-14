@@ -3,8 +3,22 @@
     %li{:id => "page_#{child.id}"}
       %div
         %span.actions.pull-right
-          = link_to 'Show', dashboard_page_path(child)
-          = link_to 'Edit', edit_dashboard_page_path(child)
-          = link_to 'Destroy', dashboard_page_path(child), :confirm => 'Are you sure?', :method => :delete
+          = link_to edit_dashboard_page_path(child) do
+            %i.icon-edit.action_links
+          = link_to dashboard_page_path(child), :confirm => t("dashboard.pages.buttons.delete.confirm"), :method => :delete do
+            %i.icon-trash.action_links
+        %i.icon-move.action_links
         = child.title
+        
+        - if child.page_type == 2
+          %span.badge.badge-info
+            Facebook Page
+        - elsif child.page_type == 3
+          %span.badge.badge-info
+            Home Page
+        - elsif child.page_type == 4
+          %span.badge.badge-info
+            Contact Page
+        - else
+        
       = render 'children', :page => child unless child.leaf?

@@ -1,0 +1,38 @@
+<table width="100%"><tr><td background="http://www.postlets.com/css/styles/zillow/bg_body.gif" align="center" style="padding: 10px;"><table cellspacing="0" align="center" width="770" style="border: 1px solid #ABB2C5; font-family: Arial,Verdana,sans-serif;"><tr><td bgcolor="#3366BB" style="color: AliceBlue; padding: 3px; text-align: right; font-size: smaller;"><span style="font-weight: bold;"><%= current_user.name %></span>&nbsp;|&nbsp;RE/MAX ASSOCIATES ST GEORGE&nbsp;|&nbsp;<%= current_user.phone %></td></tr><tr><td background="http://www.postlets.com/css/colors/FFFEFD.gif" style="text-align: left; padding-left: 5px;">
+<h1 style="font-size: x-large; font-weight: lighter;"><%= @listing.location.address_formatted %></h1><div><table cellspacing="10" width="750"><tr><td  style="border: 1px solid #ABB2C5; color: #666666; padding: 10px; font-size: small;"><div style="font-size: large;"><div style="padding-bottom: 10px; float: left; width: 50%;"><%= @listing.beds %>BR/<%= @listing.baths %>BA <%= @listing.type %></div><div style="padding-bottom: 10px; float: right; width: 50%; text-align: right;">offered at <%= number_to_currency @listing.price %></div></div><div style="float: left; width: 45%;"><table style="border-top: 1px solid #ABB2C5; width: 100%; color: #666666;">
+<tr><th style="font-size: small; font-weight: normal; text-align: left;">Year Built</th><td style="font-size: small; font-weight: normal; text-align: left;"><%= @listing.year %></td></tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Sq Footage</th><td style="font-size: small; font-weight: normal; text-align: left;"><%= @listing.square_feet %></td></tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Bedrooms</th><td style="font-size: small; font-weight: normal; text-align: left;"><%= @listing.beds %></td>
+</tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Bathrooms</th><td style="font-size: small; font-weight: normal; text-align: left;"><%= @listing.baths %></td></tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Floors</th><td style="font-size: small; font-weight: normal; text-align: left;">Unspecified</td></tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Parking</th><td style="font-size: small; font-weight: normal; text-align: left;">Unspecified</td>
+</tr><tr><th style="font-size: small; font-weight: normal; text-align: left;">Lot Size</th><td style="font-size: small; font-weight: normal; text-align: left;"><%= @listing.acres %> sq ft</td></tr></table><h2 style="border-bottom: 1px solid #ABB2C5; font-size: large; font-weight: normal; font-variant: small-caps;">description</h2><div style="padding-top: 10px;"><%= @listing.description %>
+</div></div><div style="float: left; clear: right; width: 55%;"><div style="padding-left: 10px; clear: right;"><div style="border: 1px solid #5A471B; padding: 8px; float: right;"><%= image_tag @listing.images.first.image.url %><br/></div></div><div style="text-align: center; float: left; width: 100%;">see additional photos below</div></div></td></tr></td></tr><tr><td style="border: 1px solid #ABB2C5; color: #666666; padding: 10px; font-size: small;"><h2 style="border-bottom: 1px solid #ABB2C5; font-size: large; font-weight: normal; font-variant: small-caps;">additional photos</h2>
+  
+  <% @listing.images.each do |image| %>
+    <%= image_tag image.image.url %>
+  <% end %>
+
+  
+  
+  
+  
+<div style="clear: both;">
+  <div style="float: left; width: 50%;">
+    <img src="http://photos3.zillow.com/p_c/IS-1mx0nsylf2s0t.jpg" border="0" width="344" alt="Untitled-1"/>
+    <div style="text-align: center; padding-top: 5px;">Untitled-1</div>
+  </div>
+  
+  <div style="float: left; width: 50%;">
+    <img src="http://photos1.zillow.com/p_c/IS-b5ocpmjlxowt.jpg" border="0" width="344" alt="Untitled-2"/>
+    <div style="text-align: center; padding-top: 5px;">Untitled-2</div>
+  </div>
+</div>
+<div style="clear: both;">
+  <div style="float: left; width: 50%;">
+    <img src="http://photos2.zillow.com/p_c/IS-1mx0nsuncuo2l.jpg" border="0" width="344" alt="Untitled-3"/>
+    <div style="text-align: center; padding-top: 5px;">Untitled-3</div>
+  </div>
+</div>
+</td>
+</tr>
+</table>
+
+<div style="clear: both; padding-bottom: 15px; color: #666666;"><h3 style="font-weight: bold; font-size: small;">Contact info:</h3><div style="float: left;">&nbsp;<img src="http://photos3.zillow.com/h_e/IS1sm2rfyp72eub.jpg" width="95" alt="Shane Wood"/></div><div style="padding-left: 15px; float: left; font-size: small;">
+<div>Shane Wood</div><div>RE/MAX ASSOCIATES ST GEORGE</div><div>(435) 632-2446</div></div></div><div style="clear: both;text-align: center;padding: 10px 0px; "><img src="http://www.postlets.com/images/created_at_zillow_re.png" width="730" height="59" alt=""/></div></div></td></tr><tr><td bgcolor="#3366BB" style="color: AliceBlue; padding: 3px; text-align: left; font-size: smaller;"> Posted: July 04, 2012</td></tr></table></td></tr></table>

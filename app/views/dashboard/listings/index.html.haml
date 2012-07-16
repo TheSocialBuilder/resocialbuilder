@@ -1,0 +1,28 @@
+.page
+  .header
+    .title
+      = t(".title").html_safe
+      
+  .content
+  
+    .listings_search.well
+      search
+  
+  
+    .widget
+      .title
+        %i.icon-home
+        Latest Listings
+      .content
+        %table.table
+          %tbody
+            
+            - @listings.each do |listing|
+            
+              %tr
+                %td
+                  = image_tag listing.images.first.image.thumb.url
+                %td
+                  = link_to listing.location.address, dashboard_listing_path(listing)
+                  %br
+                  = listing.listing

@@ -293,11 +293,7 @@ class ListingsController < ApplicationController
       
       
       
-      listing.save
-      
-      
-      soul = Soulmate::Loader.new("listings #{@market.id}")
-      soul.add("term" => "#{listing.listing} - #{listing.location.address_formatted}", "id" => listing.id, "data" => {"url" => dashboard_listing_path(listing), "subtitle" => "#{listing.listing} - #{listing.location.address_formatted}"})
+
     
     
       
@@ -305,22 +301,26 @@ class ListingsController < ApplicationController
       
       # raise listing.to_json
       
-      # id = data['LIST_105']
-      # 
-      # # Loop through all the images and store them into a new array since this block is a bitch
-      # image_data = Array.new
-      # # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5:6:7:8:9:10") do |object|
-      # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1") do |object|
-      #   image_data << object if object
-      # end
-      # 
-      # 
-      # image_data.each do |photo|
-      #   listing.images.new(:remote_image_url => photo['location'], :location => photo['location'], :image_content_id => photo['content-id'], :image_object_id => photo['object-id'], :description => photo['content-description'], :preferred => photo['preferred'])
-      # end
+      id = data['LIST_105']
+      
+      # Loop through all the images and store them into a new array since this block is a bitch
+      image_data = Array.new
+      # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5:6:7:8:9:10") do |object|
+      @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5") do |object|
+        image_data << object if object
+      end
       
       
-      # listing.save
+      image_data.each do |photo|
+        listing.images.new(:remote_image_url => photo['location'], :location => photo['location'], :image_content_id => photo['content-id'], :image_object_id => photo['object-id'], :description => photo['content-description'], :preferred => photo['preferred'])
+      end
+      
+      
+      listing.save
+      
+      
+      soul = Soulmate::Loader.new("listings #{@market.id}")
+      soul.add("term" => "#{listing.listing} - #{listing.location.address_formatted}", "id" => listing.id, "data" => {"url" => dashboard_listing_path(listing), "subtitle" => "#{listing.listing} - #{listing.location.address_formatted}"})
       
       
       

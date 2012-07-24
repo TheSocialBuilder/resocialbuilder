@@ -85,8 +85,8 @@ h2, h4 , h6 {
   font-weight:300;
 }
 h1 {
-  font-size: 30px;
-  line-height: 45px;
+  line-height: 20px;
+  font-size: 16px;
   
 }
 h2 {
@@ -94,9 +94,9 @@ h2 {
   line-height: 45px;
 }
 h3 {
-  font-size: 24px;
-  line-height: 30px;
+  line-height: 20px;
   margin: 0 0 25px;
+  font-size: 16px;
 }
 h4 {
   font-size: 24px;
@@ -146,6 +146,7 @@ p{
         margin-right:6px;
       
         .name{
+          color: $scheme;
           font-size:18px;
           font-weight:100;
           margin-bottom:5px;
@@ -166,7 +167,7 @@ p{
   .navigation{
     border:1px solid #b5bdc0;
     border-bottom:none;
-    @include border-radius(3px 3px 0px 0px);
+    @include border-radius(4px 4px 0px 0px);
     background: $scheme;
     
     ul.main_navigation{
@@ -211,7 +212,7 @@ p{
         }
         &:first-child{
           a{
-            @include border-radius(4px 0px 0px 0px);
+            @include border-radius(2px 0px 0px 0px);
           }
         }
         &:last-child{
@@ -232,7 +233,7 @@ p{
     background-color:$scheme_content_background;
     height:auto;
     overflow:auto;
-    @include border-radius(0px 0px 4px 4px);
+    @include border-radius(0px 0px 6px 6px);
     border:1px solid #b5bdc0;
     border-top:none;
     
@@ -272,11 +273,14 @@ p{
       border-top: 1px solid darken($scheme, 20%);;
       background: darken($scheme, 10%);
       height:200px;
+      @include border-radius(0px 0px 6px 6px);
     }
     
   }
   
   .footer{
+    margin-top:10px;
+    margin-bottom:10px;
     
   }
   
@@ -330,6 +334,8 @@ p{
 //      line-height: 22px;
 //      margin: 0 0 15px;
       border-bottom: 1px solid #ccc;
+      font-weight:200 !important;
+      font-size: 16px;
     }
     .content{
       font-size: 12px;
@@ -338,28 +344,172 @@ p{
   }
   
   .featured_listings{
+    overflow:auto;
+
+
     .single_featured_listing{
       .image_area{
-        
+        float:left;
+        width:338px;
+        height: 250px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        position:relative;
+
       }
       .content_area{
+        float:left;
+        width:260px;
+        height:258px;
+        margin-left:10px;
+        margin-right:10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
         .address{
+          font-size: 22px;
+          line-height: 18px;
+          
+          border-bottom: 1px solid #ddd;
+          text-align:center;
+          padding-top: 7px;
+          padding-bottom: 4px;
+          margin-bottom: 8px;
+          a{
+            color: $scheme;
+            text-decoration: none;
+          }
           
         }
         .city{
+          font-size: 10px;
+          color:#888888;
+          text-transform: uppercase;
           
         }
         .price{
+          margin-top:6px;
+          margin-bottom:6px;
+          font-size: 20px;
+          line-height: 20px;
+          color: darken($scheme, 20%);
+          text-align:center;
+          font-weight:bold;
           
         }
         .bed_bath_sq_foot{
+          font-size: 13px;
+          color:#888888;
+          margin:0 0 15px;
+          text-align:center;
           
+        }
+        .link{
+          float:right;
+          margin-top:8px;
+          a{
+            text-decoration: none
+          }
         }
       }
     }
   }
+  .featured_listings_nav{
+    text-align:center;
+    margin-top:5px;
+    width:360px;
+    a{
+      text-align:center;
+      font-size: 12px;
+      text-decoration: none;
+      color: $scheme;
+      border: 1px solid #ddd;
+      @include border-radius(4px);
+      padding:3px 5px;
+      margin: 0 2px 0 0;
+      &.activeSlide, &:focus{
+        color: darken($scheme, 40%);
+        background-color: lighten(#ddd, 10%);
+
+      }
+
+    }
+  }
   
-  
+  .ribbon{
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+
+
+    
+    
+    .ribbon_green {
+      font: bold 12px Sans-Serif;
+      color: #124666;
+      text-align: center;
+      text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+      @include transform(rotate(45deg));
+      position: relative;
+      padding: 7px 0;
+      left: -5px;
+      top: 15px;
+      width: 120px;
+      background-color: #BFDC7A;
+
+      @include box-shadow(0px 0px 3px rgba(0,0,0,0.3));
+      
+      &:before, &:after{
+        content: "";
+        border-top: 3px solid #6e8900;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        position:absolute;
+        bottom: -3px;
+      }
+      &:before{
+        left: 0;
+      }
+      &:after{
+        right: 0;
+      }
+    }
+    .ribbon_blue{
+      @extend .ribbon_green;
+      @include linear-gradient(#34BFEF, #176FB7);
+      color: #FFF;
+      text-shadow: rgba(0,0,0,0.9) 0px 1px 0px;
+      &:before, &:after{
+        border-top: 3px solid #26639b;
+      }
+    }
+    
+    &.left{
+      top: -3px;
+      left: -22px; 
+      .ribbon_green {
+        @include transform(rotate(-45deg));
+        right: -5px;
+
+        &:before, &:after{
+          content: "";
+          border-top: 3px solid #6e8900;
+          border-left: 3px solid transparent;
+          border-right: 3px solid transparent;
+          position:absolute;
+          bottom: -3px;
+        }
+        &:before{
+          left: 0;
+        }
+        &:after{
+          right: 0;
+        }
+      }
+    }
+  }
   
   
   

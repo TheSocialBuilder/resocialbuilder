@@ -3,6 +3,7 @@ class WidgetsCell < Cell::Rails
   include ApplicationHelper
 
   def member_area
+    @current_user = current_user
     render
   end
   
@@ -27,7 +28,10 @@ class WidgetsCell < Cell::Rails
 
   # Twitter recent tweets
   def twitter
-    @settings_social_twitter = current_profile.settings_social_twitter
+    @settings_social_twitter = current_profile.settings_social_twitter.gsub('https://twitter.com/', '').gsub('http://twitter.com/', '').gsub('https://www.twitter.com/', '').gsub('http://www.twitter.com/', '')
+
+    
+
     render
   end
 

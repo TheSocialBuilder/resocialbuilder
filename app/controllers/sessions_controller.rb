@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    raise request.env['omniauth.origin']
     omniauth = request.env["omniauth.auth"]
     account = Account.from_omniauth(omniauth)
     

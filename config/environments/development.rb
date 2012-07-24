@@ -44,4 +44,9 @@ Resocialbuilder::Application.configure do
     :password             => 'SoCcEr13',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+
+  ENV["FACEBOOK_APP_ID"] = "208065319210030"
+  ENV["FACEBOOK_APP_SECRET"] = "e5af6b7b10b9ccaf3e6a589f82002c18"
+
+
 end

@@ -1,6 +1,21 @@
 .widget.well
   %h3.title
-    Account Registration
+    %i.icon-lock
+    - if @current_user
+      My Account
+    - else
+      Account Registration
   .content
-    Not a member yet? Register with Facebook today to create a free account and receive all the benefits we offer!
+    #user_nav
+    - if @current_user
+      Signed in as
+      %strong
+        = @current_user.name
+
+    - else
+      Not a member yet? Register with Facebook today to create a free account and receive all the benefits we offer!
+      = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+
+
+    
     

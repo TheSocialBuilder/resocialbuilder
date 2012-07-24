@@ -1,6 +1,7 @@
 class Profile::ProfileController < ApplicationController
   layout "profile"
 
+
   # before_filter :authenticate_subdomain!
 
   def index
@@ -11,20 +12,20 @@ class Profile::ProfileController < ApplicationController
   def listings
     @listings = Listing.paginate(:page => params[:page], :per_page => 15)
     
-    respond_to do |format|
-      format.html { render "templates/template_1/listings" }
-      format.js { render "templates/template_1/listings" }
-    end
+    # respond_to do |format|
+    #   format.html { render "templates/template_1/listings" }
+    #   format.js { render "templates/template_1/listings" }
+    # end
   end
   
   def listing
     @listing = Listing.find_by(:mls_list_id => params[:mls_list_id])
-    render "templates/template_1/single_listing"
+    # render "templates/template_1/single_listing"
   end
   
   def blogs
     @blogs = current_profile.blogs.cache
-    render "templates/template_1/blogs"
+    # render "templates/template_1/blogs"
   end
   
   def page

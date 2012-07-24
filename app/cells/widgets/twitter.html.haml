@@ -1,0 +1,36 @@
+.widget
+  %h3.title
+    %i.icon-twitter
+    Twitter
+  .content
+    %script{:src => "http://widgets.twimg.com/j/2/widget.js", :type => "text/javascript"}
+    :javascript
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 4,
+        interval: 4000,
+        width: 'auto',
+        height: 260,
+        theme: {
+          shell: {
+            background: '#ffffff',
+            border: '#ccccc',
+            color: '#000000'
+          },
+          tweets: {
+            background: '#ffffff',
+            color: '#2b2b2b',
+            links: '#00a3de'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: false,
+          hashtags: true,
+          timestamp: true,
+          avatars: false,
+          behavior: 'default'
+        }
+      }).render().setUser("#{@settings_social_twitter}").start();

@@ -3,19 +3,34 @@
 
     .single_featured_listing
       .image_area
+        .ribbon
+          .ribbon_green
+            Featured
         - if listing.images?
-          = image_tag listing.images.first.image.url 
+          = link_to image_tag(listing.images.first.image.url, :size => "350x250"), listing_path(listing.listing)
         - else
-          = image_tag "http://c15062414.r14.cf2.rackcdn.com/uploads/50049690b48f665322000101_11-132422_1.jpg"
+          = link_to image_tag("http://c15062414.r14.cf2.rackcdn.com/uploads/50049690b48f665322000101_11-132422_1.jpg", :size => "350x250"), listing_path(listing.listing)
       .content_area
         .address
-          = link_to listing.location.county, '#'
 
-        .city
-          = listing.location.city
+          = link_to listing_path(listing.listing) do
+            = listing.location.address
+
+          .city
+            = "#{listing.location.city}, #{listing.location.state} #{listing.location.zip}"
+
       
         .price
-          = number_to_currency listing.price
+          = number_to_currency(listing.price, :strip_insignificant_zeros => true)
       
         .bed_bath_sq_foot
-          #{listing.beds} Bed, #{listing.baths} Bath, #{listing.square_feet} Sq Ft
+          #{listing.beds} Bed, #{listing.baths} Bath, #{number_with_delimiter(listing.square_feet)} Sq Ft
+
+        .description
+          = truncate(listing.description, :length => 200)
+
+        .link
+          = link_to listing_path(listing.listing) do
+            View More
+            %i.icon-arrow-right
+.featured_listings_nav

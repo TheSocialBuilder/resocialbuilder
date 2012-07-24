@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  currency:
+    format:
+      strip_insignificant_zeros: true
   dashboard:
 ######################################################      
 #
@@ -51,8 +54,7 @@ en:
         title: "<i class='icon-comments'></i> Blog Posts - Edit Post"
       show:
         title: "<i class='icon-comments'></i> Blog Posts - View Post"
-        
-        
+
 ######################################################      
 #
 # Pages

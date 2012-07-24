@@ -1,11 +1,8 @@
 
-.row
-  .featured_listings
-    = render_cell :widgets, :featured_listings
+= render_cell :widgets, :featured_listings
 
 %hr
-
-.row
+%div
   = render_cell :widgets, :page, :title => @page.title, :content => @page.content.html_safe
 
 

@@ -1,9 +1,12 @@
 .featured_listings
   - @listings.each do |listing|
 
-    .featured_listing
+    .single_featured_listing
       .image_area
-        -# = image_tag listing.images.first.original_image_url
+        - if listing.images?
+          = image_tag listing.images.first.image.url 
+        - else
+          = image_tag "http://c15062414.r14.cf2.rackcdn.com/uploads/50049690b48f665322000101_11-132422_1.jpg"
       .content_area
         .address
           = link_to listing.location.county, '#'

@@ -16,7 +16,10 @@
             - @listings.each do |listing|
               %tr
                 %td
-                  %i.icon-home
+                  - if listing.images? 
+                    = image_tag listing.images.first.image.thumb.url if listing.images?
+                  - else
+                    %i.icon-home
                 %td
                   = listing.location.address
                   %br

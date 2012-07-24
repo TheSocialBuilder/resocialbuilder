@@ -2,49 +2,89 @@
 %html{:lang => "en"}
   %head
     %title RE Social Builder Website
-    = stylesheet_link_tag    "profile/application", "profile/templates/#{current_profile.template}"
+    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag    "profile/application", :media => "all"
     = javascript_include_tag "application", "profile/application"
     = csrf_meta_tags
 
   %body.profile
     
-    .container
+    .site_container
     
       .header
         
         .logo
-          = image_tag current_profile.logo.thumb.url
+          = link_to image_tag(current_profile.logo.url), 'http://demo.lvh.me:3000/'
           
-        .navigation
-          %ul.main_navigation
-            %li
-              = link_to 'Home', '/'
-            %li
-              = link_to 'Listings', listings_path
-            %li
-              = link_to 'Blogs', blogs_path
-            %li
-              %a{:href => '#', 'data-link' => 'testing-the-pages-test'} About
-            %li
-              %a{:href => '#', 'data-link' => 'team'} Our Team
-            %li
-              %a{:href => '#', 'data-link' => 'contact'} Contact
+        .contact_info
+          .contact_details.pull-left
+            .name
+              = current_profile.name
+            .address
+              = current_profile.location.address
+              %br
+              = "#{current_profile.location.city}, #{current_profile.location.state} #{current_profile.location.zip}"
+            .phone
+              = current_profile.phone
 
-      .main_content
-        .column_left
-          .yield
-            = yield
-        .column_right
-          .sidebar
-            = render_cell :widgets, :about_realtor
-            = render_cell :widgets, :recent_blog_posts
-            = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
-            = render_cell :widgets, :facebook
-            
+          .image.pull-right
+            = image_tag(current_profile.avatar.url, :height => "125")
         
           
+      .navigation
+        %ul.main_navigation
+          %li.active
+            = link_to 'Home', '/'
+          %li
+            = link_to 'Listings', listings_path
+          %li
+            = link_to 'Blogs', blogs_path
+          %li
+            %a{:href => '#', 'data-link' => 'testing-the-pages-test'} About
+          %li
+            %a{:href => '#', 'data-link' => 'team'} Our Team
+          %li
+            %a{:href => '#', 'data-link' => 'contact'} Contact
+
+      .main_content
+        .content_wrapper
+          .column_left
+            .yield
+              = yield
+          .column_right
+            .sidebar
+              = render_cell :widgets, :member_area
+              = render_cell :widgets, :recent_blog_posts
+              -# = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
+              = render_cell :widgets, :facebook
+          
+        .clearfix
+        
+          
+        .social_links
+          %center
+            .icons
+              .iconz{:title => 'Facebook'}
+                %i.icon-facebook-sign
+              .iconz{:title => 'Twitter'}
+                %i.icon-twitter-sign
+              .iconz{:title => 'LinkedIn'}
+                %i.icon-linkedin-sign
+              .iconz{:title => 'Google Plus'}
+                %i.icon-google-plus-sign
+              .iconz{:title => 'Pinterest'}
+                %i.icon-pinterest-sign
     
+        .main_footer
+          main footer
+      
       .footer
-        Footer Here
+        .footer_right.pull-right
+          = link_to t("dashboard.footer.link_1").html_safe, "#"
+          · 
+          = link_to t("dashboard.footer.link_2").html_safe, "#"
+          · 
+          = link_to t("dashboard.footer.link_3").html_safe, "#"
+        = t("dashboard.footer.copyright")
       
     

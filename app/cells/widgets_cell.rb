@@ -2,10 +2,14 @@ class WidgetsCell < Cell::Rails
   
   include ApplicationHelper
 
+  def member_area
+    render
+  end
+  
   
   # Get the users featured listings to show on the home page in a banner scroller
   def featured_listings
-    @listings = Listing.limit(5).cache
+    @listings = Listing.limit(5)
     render
   end
   

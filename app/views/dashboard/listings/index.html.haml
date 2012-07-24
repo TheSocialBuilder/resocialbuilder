@@ -21,7 +21,7 @@
             
               %tr
                 %td
-                  = image_tag listing.images.first.image.thumb.url
+                  = image_tag listing.images.first.image.thumb.url if listing.images?
                 %td
                   = link_to listing.location.address, dashboard_listing_path(listing)
                   %br

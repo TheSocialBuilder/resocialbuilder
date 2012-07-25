@@ -9,6 +9,10 @@ class Profile::ProfileController < ApplicationController
 
   def index
     @page = current_profile.pages.where(:page_type => 3).first
+
+
+    # @json = Listing.all.to_gmaps4rails
+
     # render "templates/template_1/index"
   end
   

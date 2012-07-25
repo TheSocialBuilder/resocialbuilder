@@ -2,6 +2,11 @@ class WidgetsCell < Cell::Rails
   
   include ApplicationHelper
 
+  def search
+    
+    render
+  end
+
   def member_area
     @current_user = current_user
     render
@@ -71,6 +76,7 @@ class WidgetsCell < Cell::Rails
 
   # Maps
   def map
+    @json = Listing.all.to_gmaps4rails
     render
   end
   

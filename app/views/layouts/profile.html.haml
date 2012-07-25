@@ -54,6 +54,8 @@
               = yield
           .column_right
             .sidebar
+              
+              = render_cell :widgets, :search
               = render_cell :widgets, :member_area
               = render_cell :widgets, :recent_blog_posts
               -# = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
@@ -81,7 +83,13 @@
         .main_footer
           = render_cell :widgets, :newsletter
           = render_cell :widgets, :recent_blog_posts
-          = render_cell :widgets, :map
+          .widget
+            %h3.title
+              %i.icon-map-marker
+              Location
+            .content
+              = gmaps(:map_options => { "zoom" => 15, :provider => "google", :provider_key => "AIzaSyA4OioJ5YQQYF7Jr91P8KCgrBjW2PIyGuU", :auto_zoom => false}, :markers => {:data => "[{'lng': '#{current_profile.location.longitude}', 'lat': '#{current_profile.location.latitude}'}]"})
+
       
       .footer
         .footer_right.pull-right
@@ -91,5 +99,7 @@
           · 
           = link_to t("dashboard.footer.link_3").html_safe, "#"
         = t("dashboard.footer.copyright")
+
+    = yield :scripts
       
     

@@ -1,0 +1,37 @@
+.widget.bkg
+  %h3.title
+    %i.icon-search
+    Listings Search
+  .content
+    
+    = form_tag '' do
+      .field
+        = label(:search_location, "Location")
+        = select_tag "search[location]", "<option>St. George</option><option>Beaver</option><option>Cedar City</option><option>Hurricane</option>".html_safe
+        
+      .field
+        #slider_search_bedrooms_label
+        #slider_search_bedrooms
+
+
+      .field
+        #slider_search_bathrooms_label
+        #slider_search_bathrooms
+
+
+
+      .field
+        #slider_search_price_range_label
+        #slider_search_price_range
+        
+      .field
+        = label(:search_type, "Property Type")
+        = select_tag "search[type]", "<option>Any Type</option><option>Condo/Townhouse</option><option>Single Family</option><option>New Construction</option>".html_safe
+
+
+      .field
+        = label(:search_mls_list_id, "MLS Listing #")
+        = text_field(:search, :mls_list_id)
+
+      .field
+        = submit_tag("Search", :class => 'button action')

@@ -4,6 +4,9 @@ class Listing
   include Mongoid::Timestamps
   include Mongoid::TaggableWithContext
 
+  include Gmaps4rails::ActsAsGmappable
+
+  acts_as_gmappable :process_geocoding => false
 
   field :listing
   field :type
@@ -45,7 +48,20 @@ class Listing
 
   accepts_nested_attributes_for :location, :market, :images, :agent, :office
 
+  def gmaps4rails_address
+    #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.location.address_full}" 
+  end
+
   # attr_accessible :location
   # accepts_nested_attributes_for :location
+
+  def latitude
+    location.latitude if location.latitude
+  end
+
+  def longitude
+    location.longitude if location.longitude
+  end
 
 end

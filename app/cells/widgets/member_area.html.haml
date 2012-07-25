@@ -1,20 +1,27 @@
-.widget.well
-  %h3.title
-    %i.icon-lock
-    - if @current_user
-      My Account
-    - else
-      Account Registration
-  .content
-    #user_nav
-    - if @current_user
-      Signed in as
-      %strong
-        = @current_user.name
 
-    - else
-      Not a member yet? Register with Facebook today to create a free account and receive all the benefits we offer!
-      = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+- if @current_user
+  .widget
+    .user_area
+      .logged_in
+        .content_area
+          .name
+            = @current_user.name
+          .logout
+            = link_to 'Logout', logout_path
+        .image_area
+          = image_tag @current_user.fb_image
+
+- else
+
+  .widget.bkg
+    %h3.title
+      %i.icon-lock
+      Account Registration
+    .content
+      #user_nav
+        Register with Facebook to create a FREE account and receive all the benefits we offer!
+        %center
+          = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
 
 
     

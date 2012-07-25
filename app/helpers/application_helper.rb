@@ -89,15 +89,13 @@ module ApplicationHelper
     @current_profile ||= Account.find_by(subdomain: current_subdomain) if current_subdomain
   end
 
-
-  # Helper function to get the current_account
+  # Helper function to get the current_user
   def current_user
-    begin
-      @current_account ||= current_account if current_account
-    rescue Mongoid::Errors::DocumentNotFound
-      nil
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  
+
   
   
   # Make sure we have a valid account we are dealing with on the website side

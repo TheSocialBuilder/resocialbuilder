@@ -8,12 +8,30 @@ class SessionsController < ApplicationController
   end
 
   def create
-    raise request.env['omniauth.origin']
     omniauth = request.env["omniauth.auth"]
-    account = Account.from_omniauth(omniauth)
-    
-    session[:account_id] = account.id.to_s if account
-    redirect_to dashboard_path
+
+
+    if session[:from] == 'user'
+
+      user = User.from_omniauth(omniauth)
+      session[:user_id] = user.id.to_s if user
+      redirect_to session[:from_last_path]
+
+    end
+
+    if session[:from] == 'account'
+
+      account = Account.from_omniauth(omniauth)
+      session[:account_id] = account.id.to_s if account
+      redirect_to dashboard_path
+
+    end
+
+  end
+
+  def logout
+    reset_session
+    redirect_to root_url
   end
 
 end

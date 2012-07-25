@@ -1,6 +1,9 @@
 class Profile::ProfileController < ApplicationController
   layout "profile"
 
+  before_filter :set_from_paths
+  # before_filter :log_user_path
+
 
   # before_filter :authenticate_subdomain!
 
@@ -32,4 +35,13 @@ class Profile::ProfileController < ApplicationController
     @page = current_profile.pages.find_by_slug(params[:id])
   end
 
+
+  def set_from_paths
+    session[:from] = 'user'
+    session[:from_last_path] = root_url
+  end
+
+  def log_user_path
+    
+  end
 end

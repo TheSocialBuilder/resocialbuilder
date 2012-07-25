@@ -3,6 +3,6 @@
     %i.icon-comments
     Recent Blog Posts
   .content
-    %ul
+    %ul.list
       - @blog_posts.each do |blog_post|
         %li= link_to blog_post.title, ""

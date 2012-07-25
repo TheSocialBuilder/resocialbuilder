@@ -54,8 +54,10 @@ gem 'activemerchant', :require => 'active_merchant'
 gem 'breadcrumbs_on_rails'
 gem 'streama'
 gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
+gem 'gmaps4rails'
 gem 'chosen-rails'
 gem 'select2-rails'
+
 
 
 

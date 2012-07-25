@@ -61,6 +61,18 @@ class WidgetsCell < Cell::Rails
     @blog_posts = current_profile.blogs.limit(5).cache
     render
   end
+
+
+  # Newsletters
+  def newsletter
+    
+    render
+  end  
+
+  # Maps
+  def map
+    render
+  end
   
 
   

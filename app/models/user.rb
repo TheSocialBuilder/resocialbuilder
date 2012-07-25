@@ -28,7 +28,7 @@ class User
 
   ## methods ##
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(omniauth)
     where(fb_id: omniauth.uid).find_or_initialize_by do |user|
       
       user.first_name = omniauth.info.first_name
@@ -45,6 +45,10 @@ class User
     end
   end
 
+  def facebook
+    @facebook ||= Koala::Facebook::GraphAPI.new(self.fb_token) if self.fb_token
+  end
+  
   # Format the users full name
   def name
     "#{self.first_name} #{self.last_name}"

@@ -59,6 +59,7 @@
               -# = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
               = render_cell :widgets, :facebook
               = render_cell :widgets, :twitter
+
           
         .clearfix
         
@@ -78,7 +79,9 @@
                 %i.icon-pinterest-sign
     
         .main_footer
-          main footer
+          = render_cell :widgets, :newsletter
+          = render_cell :widgets, :recent_blog_posts
+          = render_cell :widgets, :map
       
       .footer
         .footer_right.pull-right

@@ -150,6 +150,7 @@ GEM
       formtastic (~> 2.2)
       railties (>= 3.1.0)
       sass-rails
+    gmaps4rails (1.5.1)
     gon (3.0.5)
       actionpack (>= 2.3.0)
       json
@@ -347,6 +348,7 @@ DEPENDENCIES
   formtastic (~> 2.1)
   formtastic-plus-bootstrap
   geocoder!
+  gmaps4rails
   gon (~> 3.0.4)
   haml-rails
   haml_coffee_assets

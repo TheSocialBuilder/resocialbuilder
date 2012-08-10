@@ -17,9 +17,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id.to_s if user
       redirect_to session[:from_last_path]
 
-    end
-
-    if session[:from] == 'account'
+    else
 
       account = Account.from_omniauth(omniauth)
       session[:account_id] = account.id.to_s if account

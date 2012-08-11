@@ -57,6 +57,7 @@ gem 'geocoder', :git => 'git@github.com:bhammond/geocoder.git'
 gem 'gmaps4rails'
 gem 'chosen-rails'
 gem 'select2-rails'
+gem 'sanitize'
 
 
 

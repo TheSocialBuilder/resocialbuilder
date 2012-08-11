@@ -5,4 +5,12 @@
   .content
     %ul.list
       - @blog_posts.each do |blog_post|
-        %li= link_to blog_post.title, ""
+        %li
+          .link
+            = link_to "" do
+              %i.icon-chevron-right
+              = blog_post.title
+          .content
+            = truncate(Sanitize.clean(blog_post.content), :length => 200)
+
+            

@@ -33,8 +33,12 @@ class WidgetsCell < Cell::Rails
 
   # Twitter recent tweets
   def twitter
-    @settings_social_twitter = current_profile.settings_social_twitter.gsub('https://twitter.com/', '').gsub('http://twitter.com/', '').gsub('https://www.twitter.com/', '').gsub('http://www.twitter.com/', '')
 
+    if current_profile.settings_social_twitter
+      @settings_social_twitter = current_profile.settings_social_twitter.gsub('https://twitter.com/', '').gsub('http://twitter.com/', '').gsub('https://www.twitter.com/', '').gsub('http://www.twitter.com/', '')
+    else
+      @settings_social_twitter = nil
+    end
     
 
     render

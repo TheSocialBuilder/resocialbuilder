@@ -1,6 +1,6 @@
 jQuery ->
   
-  # $("select").select2()
+  $("select").select2()
 
 
 

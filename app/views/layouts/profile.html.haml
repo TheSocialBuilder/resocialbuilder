@@ -15,21 +15,27 @@
       .header
         
         .logo
-          = link_to image_tag(current_profile.logo.url), 'http://demo.lvh.me:3000/'
+          - if current_profile.logo.url
+            = link_to image_tag(current_profile.logo.url), 'http://demo.lvh.me:3000/'
+          - else
+            = link_to image_tag("home/logo_idea.png"), 'http://demo.lvh.me:3000/'
           
         .contact_info
           .contact_details.pull-left
             .name
               = current_profile.name
             .address
-              = current_profile.location.address
+              = current_profile.location.address_1
               %br
               = "#{current_profile.location.city}, #{current_profile.location.state} #{current_profile.location.zip}"
             .phone
               = current_profile.phone
 
           .image.pull-right
-            = image_tag(current_profile.avatar.url, :height => "125")
+            - if current_profile.avatar.url
+              = image_tag(current_profile.avatar.url, :height => "125")
+            - else
+              = image_tag("default_user.jpeg", :height => "125")
         
           
       .navigation

@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.ui.all
+#= require select2
 #= require ckeditor/init
 
 jQuery ->

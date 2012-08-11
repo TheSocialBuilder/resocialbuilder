@@ -53,7 +53,7 @@ class Location
       obj.latitude     = geo.latitude
       obj.longitude    = geo.longitude
       obj.coordinates  = geo.coordinates
-      obj.city         = geo.city
+      obj.city         = geo.city.titlecase
       
       
       address_info_1 = geo.address_components_of_type(:street_number).first

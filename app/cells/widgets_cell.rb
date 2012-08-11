@@ -2,7 +2,35 @@ class WidgetsCell < Cell::Rails
   
   include ApplicationHelper
 
+  before_filter :setup_search
+
+  def setup_search
+    @search = Search.new
+  end
+
   def search
+
+    @search = Search.find(session[:last_search_id])
+    
+
+    @market = Market.find_by(:title => 'stgeorge')
+    @listings = Listing.all
+
+    # Build the list of cities
+    @cities = Array.new
+    @listings.each do |listing|
+      @cities.push(listing.location.city) if listing.location.city
+    end
+    @cities.uniq!
+
+
+    # Build the list of types
+    @type = Array.new
+    @listings.each do |listing|
+      @type.push(listing.type) if listing.type
+    end
+    @type.uniq!
+
     
     render
   end

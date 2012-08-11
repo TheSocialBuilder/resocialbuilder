@@ -4,11 +4,12 @@
     Listings Search
   .content
     
-    = form_tag '' do
-      .field
-        = label(:search_location, "Location")
-        = select_tag "search[location]", "<option>St. George</option><option>Beaver</option><option>Cedar City</option><option>Hurricane</option>".html_safe
+    = semantic_form_for @search, :url => "search", :method => :get do |f|
+      = f.inputs do
+        = f.input :city, :collection => @cities.sort
         
+        
+
       .field
         #slider_search_bedrooms_label
         #slider_search_bedrooms
@@ -24,14 +25,14 @@
         #slider_search_price_range_label
         #slider_search_price_range
         
-      .field
-        = label(:search_type, "Property Type")
-        = select_tag "search[type]", "<option>Any Type</option><option>Condo/Townhouse</option><option>Single Family</option><option>New Construction</option>".html_safe
+      = f.input :type, :collection => @type.sort, :include_blank => true, :label => "Property Type"
 
+      = f.input :listing, :label => "MLS Listing #"
 
-      .field
-        = label(:search_mls_list_id, "MLS Listing #")
-        = text_field(:search, :mls_list_id)
+      = f.input :price_min, :as => :hidden
+      = f.input :price_max, :as => :hidden
 
+      = f.input :beds, :as => :hidden
+      = f.input :baths, :as => :hidden
       .field
-        = submit_tag("Search", :class => 'button action')
+        = f.submit("Search", :class => 'button action')

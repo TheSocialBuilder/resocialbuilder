@@ -1,0 +1,12 @@
+<% @listings.each do |listing| %>
+  
+  var $boxes = $('<%= j render "listings", :listing => listing %>')
+
+  $('.multiple_listings').append($boxes).isotope( 'appended', $boxes );
+<% end %>
+
+<% if @listings.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @listings, :page_links => false %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

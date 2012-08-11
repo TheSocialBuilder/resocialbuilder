@@ -1,0 +1,53 @@
+= link_to listing_path(listing.listing) do 
+  .listing{"data-bed" => listing.beds, "data-bath" => listing.baths}
+    / - if @featured_listings.include? listing.mls_list_id
+    /   .ribbon
+    /     .ribbon_blue
+    /       Featured
+    - if listing.short_sale != 'No'
+      .ribbon
+        .ribbon_green
+          Short Sale
+    -# - if listing.mls_list_id == '11-133981' or listing.mls_list_id == '12-137938'
+    -#   .ribbon
+    -#     .ribbon_blue
+    -#       New Listing
+
+
+    .image_area
+      - if listing.images.first
+        = image_tag listing.images.first.image.url, :size => '170x170'
+      - else
+        = image_tag "default_listing.jpeg", :size => '170x170'
+    .content_area
+      .address
+        = listing.location.address
+      .city
+        = "#{listing.location.city}, #{listing.location.state} #{listing.location.zip}"
+
+      .price
+        = number_to_currency(listing.price, :strip_insignificant_zeros => true)
+
+      .bed_bath_sq_foot
+        = "#{listing.beds} Bed, #{listing.baths} Bath, #{number_with_delimiter(listing.square_feet)} Sq Ft"
+      
+      - if listing.description
+        %hr
+        .public_remarks
+          = listing.description
+      %hr{:style => 'margin-bottom:5px'}
+      .extras_area
+        .extra{:title => "#{listing.images.count} images"}
+          %i.icon-picture
+          %span= listing.images.count
+        .extra{:title => "#{listing.images.count} people have favorited this listing"}
+          %i.icon-star
+          %span= listing.images.count
+        .extra{:title => "#{listing.images.count} people have liked this listing"}
+          %i.icon-thumbs-up
+          %span= listing.images.count
+        .extra{:title => "#{listing.images.count} comments on this listing"}
+          %i.icon-comment
+          %span= listing.images.count
+
+    

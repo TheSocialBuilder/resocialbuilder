@@ -653,4 +653,211 @@ p{
   select{
     width:95%;
   }
+
+  .multiple_listings{
+
+    .listing{
+  //    float:left;
+      position: relative;
+      border: 1px solid $container_border_color;
+      padding: 5px;
+      width: 175px;
+      height:auto;
+      margin:10px;
+      margin-bottom:15px;
+      @include border-radius(3px);
+      @include box-shadow(1px 1px 0px 0px rgba(153, 153, 153, 0.50));
+      
+      &:hover{
+        border: 1px solid #7ABAE2;
+        @include box-shadow(0px 0px 2px 2px rgba(89, 186, 255, 0.55));
+        .image_area{
+          img{
+            border: 1px solid #7ABAE2;
+          }
+        }
+      }
+      
+      
+      .ribbon{
+        width: 85px;
+        height: 88px;
+        overflow: hidden;
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        
+        
+        .ribbon_green {
+          font: bold 12px Sans-Serif;
+          color: #124666;
+          text-align: center;
+          // text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+          @include transform(rotate(45deg));
+          position: relative;
+          padding: 7px 0;
+          left: -5px;
+          top: 15px;
+          width: 120px;
+          background-color: #BFDC7A;
+          // @include linear-gradient(#BFDC7A, #8EBF45);
+
+          @include box-shadow(0px 0px 3px rgba(0,0,0,0.3));
+          
+          &:before, &:after{
+            content: "";
+            border-top: 3px solid #6e8900;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            position:absolute;
+            bottom: -3px;
+          }
+          &:before{
+            left: 0;
+          }
+          &:after{
+            right: 0;
+          }
+        }
+        .ribbon_blue{
+          @extend .ribbon_green;
+          @include linear-gradient(#34BFEF, #176FB7);
+          color: #FFF;
+          text-shadow: rgba(0,0,0,0.9) 0px 1px 0px;
+          &:before, &:after{
+            border-top: 3px solid #26639b;
+          }
+        }
+        
+        
+      }
+      
+      
+      .image_area{
+
+        img{
+
+          padding: 2px;
+          
+          
+        }
+      }
+      .content_area{
+        .address{
+          font-size: 18px;
+          line-height: 18px;
+          color:#59BAFF;
+        }
+        .city{
+          font-size: 10px;
+          color:#888888;
+          margin:0 0 10px;
+          text-transform: uppercase;
+          
+        }
+        .price{
+          font-size: 14px;
+          color:#353A44;
+          line-height: 20px;
+          font-weight:bold;
+          
+        }
+        .bed_bath_sq_foot{
+          font-size: 12px;
+          color:#353A44;
+          margin:0 0 15px;
+          
+        }
+        .public_remarks{
+          font-size: 11px;
+          color:#353A44;
+          margin:0 0 15px;       
+        }
+      }
+      
+      .extras_area{
+        margin-left:2px;
+        .extra{
+          float:left;
+          width:42px;
+
+          font-size: 10px;
+          color:#808284;
+          margin:0;
+          padding: 0;
+
+          i{
+            font-size: 18px;
+            float:left;
+          }
+          img{
+            float:left;
+  //          padding: 5px 0px 3px 3px;
+          }
+          span{
+            float:left;
+            padding: 2px 3px 0px 3px;
+            
+          }
+          &:last-child{
+            border-right: none;
+          }
+        }
+      }
+      
+    }
+    
+    
+  }
+
+
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+}
 }

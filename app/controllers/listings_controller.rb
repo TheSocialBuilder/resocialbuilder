@@ -29,8 +29,18 @@ class ListingsController < ApplicationController
   
   
   def stgeorge
-    
+
+    # market = Market.new
+    # market.login_url = "http://retsgw.flexmls.com:80/rets2_0/Login"
+    # market.title = "stgeorge"
+    # market.search_fields = ['LIST_1','LIST_105','LIST_9','LIST_15','LIST_22','LIST_35','LIST_39','LIST_40','LIST_41', 'LIST_43','LIST_48','LIST_53','LIST_57','LIST_60','LIST_66','LIST_67','LIST_77','LIST_78','LIST_71','LIST_120','LIST_121','GF20060601190119598775000000','GF20060804131623427324000000','GF20060609021220658114000000','GF20060804131609269095000000','GF20060804124524581455000000','GF20060809131734372173000000','listing_office_name','LIST_106','LIST_5','LIST_31','LIST_33','LIST_34','LIST_36','LIST_37', 'LIST_87']
+    # market.login_url = "http://retsgw.flexmls.com:80/rets2_0/Login";
+    # market.username = "stg.rets.efowlke";
+    # market.password = "magic-rrhine78";
+    # market.save
+
     @market = Market.find_by(:title => 'stgeorge')
+
     @client = connect_client
     
     # search_agent
@@ -306,13 +316,21 @@ class ListingsController < ApplicationController
       # Loop through all the images and store them into a new array since this block is a bitch
       image_data = Array.new
       # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5:6:7:8:9:10") do |object|
-      @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5") do |object|
+      # @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2:3:4:5") do |object|
+      @client.get_object(:resource => :Property, :type => :Photo, :location => true, :id => id+":1:2") do |object|
         image_data << object if object
       end
       
-      
+      # raise image_data.to_json
+
       image_data.each do |photo|
-        listing.images.new(:remote_image_url => photo['location'], :location => photo['location'], :image_content_id => photo['content-id'], :image_object_id => photo['object-id'], :description => photo['content-description'], :preferred => photo['preferred'])
+        listing.images.new(
+          :remote_image_url => photo['location'], 
+          :location => photo['location'], 
+          :image_content_id => photo['content-id'], 
+          :image_object_id => photo['object-id'], 
+          :description => photo['content-description'], 
+          :preferred => photo['preferred'])
       end
       
       

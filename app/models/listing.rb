@@ -3,7 +3,7 @@ class Listing
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::TaggableWithContext
-
+  include Origin::Queryable
   include Gmaps4rails::ActsAsGmappable
 
   acts_as_gmappable :process_geocoding => false

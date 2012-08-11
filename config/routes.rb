@@ -84,7 +84,11 @@ Resocialbuilder::Application.routes.draw do
     get '/blogs', to: 'profile::profile#blogs', as: 'blogs', :via => :get
     match '/blog/:id', to: 'profile::profile#blog', as: 'blog', :via => :get
     
+    match '/search', to: 'profile::profile#search', as: 'searches', :via => :get
+    resources :search
+
     match '/:id', to: 'profile::profile#page', as: 'page', :via => :get
+
     
     root to: 'profile::profile#index'
   end

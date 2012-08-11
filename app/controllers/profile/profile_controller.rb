@@ -2,6 +2,7 @@ class Profile::ProfileController < ApplicationController
   layout "profile"
 
   before_filter :set_from_paths
+  before_filter :setup_search
   # before_filter :log_user_path
 
 
@@ -15,14 +16,50 @@ class Profile::ProfileController < ApplicationController
 
     # render "templates/template_1/index"
   end
+
+  def setup_search
+    @search = Search.new
+  end
+
+  def search
+
+    
+
+    if params[:commit] == "Search"
+
+      @search = Search.new(params[:search])
+      @search.save
+
+      session[:last_search_id] = @search.id.to_s
+
+
+      @listings = Listing
+      @listings = @listings.between(price: @search.price_min..@search.price_max).asc(:price)
+
+      @listings = @listings.gt(beds: @search.beds) if @search.beds.present?
+      @listings = @listings.gt(baths: @search.baths) if @search.baths.present?
+
+      @listings = @listings.where("location.city" => @search.city) if @search.city.present?
+
+      # raise @listings.to_json
+      # raise @listings.count.to_s
+
+      @listings = @listings.paginate(:page => params[:page], :per_page => 15)
+
+    end
+
+    respond_to do |format|
+      format.html { render "listings" }
+    end
+  end
   
   def listings
     @listings = Listing.paginate(:page => params[:page], :per_page => 15)
     
-    # respond_to do |format|
-    #   format.html { render "templates/template_1/listings" }
-    #   format.js { render "templates/template_1/listings" }
-    # end
+    respond_to do |format|
+      format.html { render "listings" }
+      format.js { render "listings" }
+    end
   end
   
   def listing

@@ -5,12 +5,11 @@
   .content
     %ul.list
       - @blog_posts.each do |blog_post|
-        %li
+        %li.recent_blog_posts
           .link
-            = link_to "" do
+            = link_to blog_path(blog_post.slug) do
               %i.icon-chevron-right
-              = blog_post.title
+              = truncate(blog_post.title, :length => 50)
           .content
-            = truncate(Sanitize.clean(blog_post.content), :length => 200)
+            = truncate(Sanitize.clean(blog_post.content), :length => 80)
 
-            

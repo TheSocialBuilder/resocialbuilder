@@ -30,6 +30,10 @@ class Profile::ProfileController < ApplicationController
     # render "templates/template_1/single_listing"
   end
   
+  def blog
+    @blog = current_profile.blogs.find_by_slug(params[:id])
+  end
+
   def blogs
     @blogs = current_profile.blogs.cache
     # render "templates/template_1/blogs"

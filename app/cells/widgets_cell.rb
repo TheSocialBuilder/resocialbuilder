@@ -27,7 +27,11 @@ class WidgetsCell < Cell::Rails
   
   # Facebook Like Box
   def facebook
-    @settings_social_facebook = current_profile.settings_social_facebook
+    if current_profile.settings_social_facebook
+      @settings_social_facebook = current_profile.settings_social_facebook
+    else
+      @settings_social_facebook = nil
+    end
     render
   end
 

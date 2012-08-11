@@ -1,0 +1,14 @@
+%h1 
+  %i.icon-comment
+  = @blog.title
+
+%p
+  = @blog.content.html_safe
+
+%hr 
+
+%h1 
+  %i.icon-comment
+  Comments
+
+.fb-comments{"data-href" => blog_url(@blog.slug), "data-num-posts" => "15", "data-width" => "620"}

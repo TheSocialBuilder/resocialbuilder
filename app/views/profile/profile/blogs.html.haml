@@ -1,0 +1,8 @@
+%h1 
+  %i.icon-comment
+  Blog Posts
+
+- @blogs.each do |blog|
+  = link_to blog.title, blog_path(blog.slug)
+  = blog.content.html_safe
+  %hr

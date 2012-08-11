@@ -80,8 +80,9 @@ Resocialbuilder::Application.routes.draw do
     match '/listing/:mls_list_id', to: 'profile::profile#listing', as: 'listing', :via => :get
     
     
-    match '/blogs/:id', to: 'profile::profile#blogs', as: 'blogs', :via => :get
+    
     get '/blogs', to: 'profile::profile#blogs', as: 'blogs', :via => :get
+    match '/blog/:id', to: 'profile::profile#blog', as: 'blog', :via => :get
     
     match '/:id', to: 'profile::profile#page', as: 'page', :via => :get
     

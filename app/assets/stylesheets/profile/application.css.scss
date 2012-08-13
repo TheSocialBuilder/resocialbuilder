@@ -622,12 +622,13 @@ p{
 
   .field{
     margin:0 0 10px;
+    width:250px;
   }
 
   input[type="text"], select{
     @include border-radius(3px);
     display:block;
-    width:auto;
+    width:250px;
     height:20px;
     font-size:12px;
     line-height: 18px;
@@ -651,7 +652,7 @@ p{
   }
 
   select{
-    width:95%;
+    width:250px;
   }
 
   .multiple_listings{
@@ -860,4 +861,65 @@ p{
 }
 
 }
+
+
+.formtastic {
+  width:250px !important;
+  fieldset{
+    margin:0 !important;
+    padding:0 !important;
+    width:250px !important;
+  }
+  ol, ul {
+    list-style-type: none !important;
+    margin:0 !important;
+    padding:0 !important;
+
+    li {
+      list-style-type: none !important;
+      margin-left:0 !important;
+
+      label {
+        margin-left:0 !important;
+        text-align:left !important;
+
+
+        abbr[title='required'] {
+          color: red;
+        }
+      }
+
+      .inline-errors {
+        font-size: 0.7em;
+        font-style: italic;
+        font-weight: bold;
+        color: red;
+      }
+
+      &.error {
+        label {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .button, footer {
+    padding-top: 10px;
+    border-top: 1px solid #aeaeae;
+  }
+
+  .errors {
+    background-color: #ff762b;
+    padding: 10px 10px 5px 10px;
+    margin-bottom: 10px;
+
+    li {
+      font-size: 0.8em;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
 }

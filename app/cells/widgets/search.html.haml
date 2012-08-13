@@ -10,29 +10,29 @@
         
         
 
-      .field
-        #slider_search_bedrooms_label
-        #slider_search_bedrooms
+        .field
+          #slider_search_bedrooms_label
+          #slider_search_bedrooms
 
 
-      .field
-        #slider_search_bathrooms_label
-        #slider_search_bathrooms
+        .field
+          #slider_search_bathrooms_label
+          #slider_search_bathrooms
 
 
 
-      .field
-        #slider_search_price_range_label
-        #slider_search_price_range
-        
-      = f.input :type, :collection => @type.sort, :include_blank => true, :label => "Property Type"
+        .field
+          #slider_search_price_range_label
+          #slider_search_price_range
+          
+        = f.input :type, :collection => @type.sort, :include_blank => true, :label => "Property Type"
 
-      = f.input :listing, :label => "MLS Listing #"
+        = f.input :listing, :label => "MLS Listing #"
 
-      = f.input :price_min, :as => :hidden
-      = f.input :price_max, :as => :hidden
+        = f.input :price_min, :as => :hidden
+        = f.input :price_max, :as => :hidden
 
-      = f.input :beds, :as => :hidden
-      = f.input :baths, :as => :hidden
-      .field
-        = f.submit("Search", :class => 'button action')
+        = f.input :beds, :as => :hidden
+        = f.input :baths, :as => :hidden
+        .field
+          = f.submit("Search", :class => 'button action')

@@ -1,8 +1,39 @@
-%h1 
-  %i.icon-comment
-  Blog Posts
+.blog_posts_container
 
-- @blogs.each do |blog|
-  = link_to blog.title, blog_path(blog.slug)
-  = blog.content.html_safe
-  %hr
+  %ul.blog_posts_ul
+
+    - if @blogs.nil?
+      %li.blog_posts.no_blogs
+        .title_container
+          .title
+            %i.icon-asterisk
+            No Blog Posts have been posted
+            %i.icon-asterisk
+
+    - else
+      - @blogs.each do |blog|
+        %li.blog_posts
+          .title_container
+            .title
+              = link_to blog.title, blog_path(blog.slug)
+            .details
+              %span.date
+                %i.icon-calendar
+                Posted on
+                = blog.updated_at.strftime("%A, %b %d at %I:%M%P")
+              %span.views
+                %i.icon-eye-open
+                = blog.views
+                Views
+              %span.comments
+                %i.icon-comments
+                %fb:comments-count{:href => blog_url(blog.slug)}
+                / %fb:comments-count{:href => "http://stubthumb.com"}
+                Comments
+
+          .content_container
+            .content
+              = truncate(Sanitize.clean(blog.content), :length => 500, :omission => '')
+          .read_more_container
+            = link_to "Read More..", blog_path(blog.slug)
+

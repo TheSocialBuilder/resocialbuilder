@@ -1,14 +1,52 @@
-%h1 
-  %i.icon-comment
-  = @blog.title
+.blog_posts_container
 
-%p
-  = @blog.content.html_safe
+  %ul.blog_posts_ul
 
-%hr 
+    - if @blog.nil?
+      %li.blog_posts.no_blogs
+        .title_container
+          .title
+            %i.icon-asterisk
+            Blog Post could not be located.
+            %i.icon-asterisk
 
-%h1 
-  %i.icon-comment
-  Comments
+    - else
 
-.fb-comments{"data-href" => blog_url(@blog.slug), "data-num-posts" => "15", "data-width" => "620"}
+      %li.blog_posts
+        .title_container
+          .title
+            = @blog.title
+          .details
+            %span.date
+              %i.icon-calendar
+              Posted on
+              = @blog.updated_at.strftime("%A, %b %d at %I:%M%P")
+            %span.views
+              %i.icon-eye-open
+              = @blog.views
+              Views
+            %span.comments
+              %i.icon-comments
+              / %fb:comments-count{:href => blog_url(@blog.slug)}
+              %fb:comments-count{:href => "http://stubthumb.com"}
+              Comments
+
+        .content_container
+          .content
+            = @blog.content.html_safe
+
+
+      %li.blog_posts
+        .title_container
+          .title
+            %i.icon-comment
+            Social Comments
+
+        %br
+
+        .content_container
+          / .fb-comments{"data-href" => blog_url(@blog.slug), "data-num-posts" => "15", "data-width" => "625"}
+          .fb-comments{"data-href" => "http://stubthumb.com", "data-num-posts" => "15", "data-width" => "625"}
+
+          / %iframe{:allowTransparency => "true", :frameborder => "0", :scrolling => "no", :src => blog_url(@blog.slug), :style => "border:none; overflow:hidden; width:130px; height:16px;"}
+          %iframe{:allowTransparency => "true", :frameborder => "0", :scrolling => "no", :src => "http://stubthumb.com", :style => "border:none; overflow:hidden; width:130px; height:16px;"}

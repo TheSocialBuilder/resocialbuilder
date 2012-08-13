@@ -72,7 +72,7 @@ class Profile::ProfileController < ApplicationController
   end
 
   def blogs
-    @blogs = current_profile.blogs.cache
+    @blogs = current_profile.blogs.all.desc(:created_at)
     # render "templates/template_1/blogs"
   end
   

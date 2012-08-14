@@ -172,26 +172,22 @@ p{
       }
     }
   }
-    
-  .navigation{
+
+  .navigation {
     border:1px solid #b5bdc0;
     border-bottom:none;
     @include border-radius(4px 4px 0px 0px);
     background: $scheme;
-    
-    ul.main_navigation{
-      margin:0;
-      padding:0;
-
-
-      li{
-        display:inline;
-        margin:0;
-        padding:0;
-        
-        a{
+    overflow: hidden;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      li {
+        float: left;
+        a {
+          float:left;
           margin:0;
-          display: inline-block;
           position: relative;
           font-size: 16px;
           font-weight:550;
@@ -199,9 +195,9 @@ p{
           padding: 12px 18px 12px 18px;
           color: #fff;
           border-right: 1px solid darken($scheme, 20%);
-          
           text-decoration: none;
-          &:hover{
+
+          &:hover {
             color: #3b3b3b;
             background: $scheme_content_background;
             cursor: pointer;
@@ -209,31 +205,67 @@ p{
             -moz-transition: all 0.3s ease;
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease;
-          }
-          
+          } 
         }
-        &.active{
-          a{
-            color: #3b3b3b;
-            background: #fff;
+        // Sub Menu
+        ul {
+          background: $scheme;
+          left: -999em;
+          margin: 49px 0 0;
+          position: absolute;
+          width: auto;
+          height:auto;
+          overflow:auto;
+          z-index: 9999;
+          li{
+            clear:both;
+            width: 100% !important;
+            height:auto;
+            a{
+              display:block !important;
+              width: 100% !important;
+              color: #FFF;
+              margin:0;
+              position: relative;
+              @include border-radius(0px);
+
+
+              &:hover{
+                color: #3b3b3b;
+                background: $scheme_content_background;
+                cursor: pointer;
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+              }
+            }
           }
-          
         }
-        &:first-child{
-          a{
-            @include border-radius(2px 0px 0px 0px);
-          }
+        &:hover ul {
+          left: auto;
         }
-        &:last-child{
-          a{
-            border-right:none;
-          }
+      }
+      &.active{
+        a{
+          color: #3b3b3b;
+          background: #fff;
+        }
+        
+      }
+      &:first-child{
+        a{
+          @include border-radius(2px 0px 0px 0px);
+        }
+      }
+      &:last-child{
+        a{
+          border-right:none;
         }
       }
     }
-      
-    
   }
+  
   
   .main_content{
     position:relative;

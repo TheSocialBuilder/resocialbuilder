@@ -44,7 +44,9 @@ module ApplicationHelper
       ['General Page', 1],
       ['Facebook Page', 2],
       ['Home Page', 3],
-      ['Contact Page', 4]
+      ['Contact Page', 4],
+      ['Listings Page', 5],
+      ['Blogs Page', 6]
     ]
   end
   

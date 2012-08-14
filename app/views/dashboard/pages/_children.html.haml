@@ -11,14 +11,20 @@
         = child.title
         
         - if child.page_type == 2
-          %span.badge.badge-info
+          %span.badge.badge-success
             Facebook Page
         - elsif child.page_type == 3
-          %span.badge.badge-info
+          %span.badge.badge-success
             Home Page
         - elsif child.page_type == 4
-          %span.badge.badge-info
+          %span.badge.badge-success
             Contact Page
+        - elsif child.page_type == 5
+          %span.badge.badge-success
+            Listings Page
+        - elsif child.page_type == 6
+          %span.badge.badge-success
+            Blog Page
         - else
         
       = render 'children', :page => child unless child.leaf?

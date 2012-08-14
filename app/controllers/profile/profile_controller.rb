@@ -2,6 +2,7 @@ class Profile::ProfileController < ApplicationController
   layout "profile"
 
   before_filter :set_from_paths
+  before_filter :setup_pages
   before_filter :setup_search
   # before_filter :log_user_path
 
@@ -15,6 +16,10 @@ class Profile::ProfileController < ApplicationController
     # @json = Listing.all.to_gmaps4rails
 
     # render "templates/template_1/index"
+  end
+
+  def setup_pages
+    @pages = current_profile.pages.all
   end
 
   def setup_search

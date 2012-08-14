@@ -1,0 +1,18 @@
+%ul
+  - page.children.each do |child|
+    %li{:id => "page_#{child.id}"}
+
+      - if child.page_type == 3
+        = link_to "Home", root_url
+      - elsif child.page_type == 4
+        = link_to "Contact", root_url
+      - elsif child.page_type == 5
+        = link_to "Listings", listings_url
+      - elsif child.page_type == 6
+        = link_to "Blog", blog_url
+      - else
+        = link_to child.title, page_path(child.slug)
+
+
+
+      = render 'shared/menu_children', :page => child unless child.leaf?

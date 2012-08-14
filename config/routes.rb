@@ -76,6 +76,9 @@ Resocialbuilder::Application.routes.draw do
       end
     end
   
+    post '/emails', to: 'profile::profile#emails', as: 'emails', :via => :post
+
+
     get '/listings', to: 'profile::profile#listings', as: 'listings', :via => :get
     match '/listing/:mls_list_id', to: 'profile::profile#listing', as: 'listing', :via => :get
     

@@ -54,13 +54,14 @@ class Account
   has_many :facebook_posts, dependent: :delete
   belongs_to :mls_market
   embeds_one :location, as: :locatable, :cascade_callbacks => true, :autobuild => true
+  embeds_many :emails
   
   
   attr_accessible :first_name, :last_name, :name, :email, :phone, :subdomain, :internal_agent_nrds_id, :logo, :avatar
   attr_accessible :settings_site_title, :settings_search_min, :settings_search_max, :settings_google_analytics, :settings_featured_listings
   attr_accessible :settings_social_facebook, :settings_social_twitter, :settings_social_linkedin, :settings_social_youtube
   attr_accessible :fb_id, :fb_info, :fb_token, :fb_token_expiration, :fb_image
-  attr_accessible :cards_attributes, :location_attributes
+  attr_accessible :cards_attributes, :location_attributes, :emails_attributes
 
   accepts_nested_attributes_for :cards, :location
 

@@ -88,6 +88,10 @@ class Profile::ProfileController < ApplicationController
     @page = current_profile.pages.find_by_slug(params[:id])
   end
 
+  def emails
+    @email = current_profile.emails.create(params[:email])
+  end
+
 
   def set_from_paths
     session[:from] = 'user'

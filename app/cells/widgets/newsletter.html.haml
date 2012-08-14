@@ -4,6 +4,17 @@
     Newsletter
   .content
     #user_nav
-      Enter your email to be included in our mailing list.
       %center
-        = text_field_tag "email_address"
+        Don't miss out! Subscribe to our newsletter for exclusive deals and updates! 
+      
+        .news_form{:style => "margin-top:10px"}
+          = form_for Email.new, :url => "emails", :remote => true do |f|
+            = f.text_field :email, :placeholder => "Email Address"
+            = f.submit "Subscribe", :class => "btn btn-primary", :style => "margin-top:10px"
+        #form_success{:style => "display:none"}
+          %br
+          %h1{:style => "color:green"}
+            %i.icon-ok
+            Your Subscribed!
+          %p
+            You have been added to our list!

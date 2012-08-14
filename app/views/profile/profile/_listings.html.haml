@@ -42,7 +42,7 @@
           %span= listing.images.count
         .extra{:title => "#{listing.images.count} people have favorited this listing"}
           %i.icon-star
-          %span= listing.images.count
+          %span= listing.impressions.to_i
         .extra{:title => "#{listing.images.count} people have liked this listing"}
           %i.icon-thumbs-up
           %span= listing.images.count

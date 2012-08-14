@@ -23,7 +23,7 @@
                 = blog.updated_at.strftime("%A, %b %d at %I:%M%P")
               %span.views
                 %i.icon-eye-open
-                = blog.views
+                = blog.impressions.to_i
                 Views
               %span.comments
                 %i.icon-comments

@@ -8,7 +8,7 @@ class Dashboard::BlogsController < Dashboard::DashboardController
   end
 
   def index
-    @blogs = current_account.blogs.all
+    @blogs = current_account.blogs.desc(:created_at)
 
     respond_to do |format|
       format.html # index.html.erb

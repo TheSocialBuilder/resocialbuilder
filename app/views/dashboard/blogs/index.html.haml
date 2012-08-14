@@ -23,7 +23,7 @@
             %td
               = blog.title
             %td
-              = blog.views
+              = blog.impressions.to_i
             %td
               = blog.created_at.strftime("%m/%d/%Y %l:%M %P")
             %td

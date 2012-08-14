@@ -63,16 +63,19 @@ class Profile::ProfileController < ApplicationController
   end
   
   def listing
-    @listing = Listing.find_by(:mls_list_id => params[:mls_list_id])
+    @listing = Listing.find_by(:listing => params[:mls_list_id])
+    @listing.hit
     # render "templates/template_1/single_listing"
   end
   
   def blog
     @blog = current_profile.blogs.find_by_slug(params[:id])
+    @blog.hit
+
   end
 
   def blogs
-    @blogs = current_profile.blogs.all.desc(:created_at)
+    @blogs = current_profile.blogs.desc(:created_at)
     # render "templates/template_1/blogs"
   end
   

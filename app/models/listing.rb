@@ -34,6 +34,9 @@ class Listing
   field :brokered_by
   field :listing_timestamp, type: DateTime
 
+  field :impressions, type: Integer
+  index({ impressions: 1 }, { unique: true, background: true })
+
   index({ listing: 1 }, { unique: true})
 
   embeds_one :location, store_as: "location", as: :locatable, :cascade_callbacks => true
@@ -44,7 +47,7 @@ class Listing
   belongs_to :market
 
 
-  attr_accessible :listing, :type, :status, :price, :square_feet, :year, :acres, :short_sale, :beds, :baths, :sub_division, :description, :garage_type, :garage_capacity, :carport_capacity, :features, :pool, :utilities, :water, :landscape, :zoning, :garage_type, :brokered_by, :listing_timestamp, :market_attributes, :location_attributes, :images_attributes, :agent_attributes, :office_attributes
+  attr_accessible :listing, :type, :status, :price, :square_feet, :year, :acres, :short_sale, :beds, :baths, :sub_division, :description, :garage_type, :garage_capacity, :carport_capacity, :features, :pool, :utilities, :water, :landscape, :zoning, :garage_type, :brokered_by, :listing_timestamp, :market_attributes, :location_attributes, :images_attributes, :agent_attributes, :office_attributes, :impressions
 
   accepts_nested_attributes_for :location, :market, :images, :agent, :office
 
@@ -62,6 +65,10 @@ class Listing
 
   def longitude
     location.longitude if location.longitude
+  end
+
+  def hit
+    self.inc(:impressions, 1)
   end
 
 end

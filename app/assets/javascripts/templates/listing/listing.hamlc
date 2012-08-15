@@ -1,0 +1,31 @@
+.modal-header
+  .close.float_right{"data-dismiss" => "modal", :type => "button"} ×
+  .modal_listing_header
+    .modal_listing_address
+      = @listing.get('location').address
+      %span.modal_listing_city
+        = @listing.get('location').city
+.modal-body
+  .modal_listing
+    .image_area
+      %img{:src => @listing.get('default_image'), :width => 130, :height => 130}
+      .listings_scoll
+    
+        / - for img in @listing.get('default_image')
+        /   .image_wrap
+        /     %img{:src => img.original_image_url, :width => 180, :height => 180}
+    .content_area
+      .address
+        = @listing.get('location').address
+      .city
+        = "#{@listing.get('location').city}, #{@listing.get('location').county}"
+
+      .price
+        = accounting.formatMoney(@listing.get('price'))
+
+      .bed_bath_sq_foot
+        = "#{@listing.get('beds')} Bed, #{@listing.get('baths')} Bath"
+      - if !@listing.get('description').nil?
+        %hr
+        .public_remarks
+          = @listing.get('description')

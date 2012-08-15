@@ -71,4 +71,13 @@ class Listing
     self.inc(:impressions, 1)
   end
 
+  def default_image
+    if self.images.count == 0
+      "http://demo.lvh.me:3000/assets/default_listing.jpeg"
+    else
+      self.images.first.image.small.url
+    end
+    
+  end
+
 end

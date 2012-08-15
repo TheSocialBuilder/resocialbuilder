@@ -5,7 +5,7 @@
     = favicon_link_tag "icon.png"
     = stylesheet_link_tag    "application", :media => "all"
     = stylesheet_link_tag    "profile/application", :media => "all"
-    = javascript_include_tag "application", "profile/application"
+    = javascript_include_tag "base"
     = csrf_meta_tags
 
   %body.profile
@@ -22,7 +22,6 @@
     .site_container
     
       .header
-        
         .logo
           - if current_profile.logo.url
             = link_to image_tag(current_profile.logo.url), root_url
@@ -58,16 +57,17 @@
 
       .main_content
         .content_wrapper
-          = render_cell :widgets, :search
-          .column_left
-            .yield
-              = yield
-          .column_right
-            .sidebar
-              = render_cell :widgets, :member_area
-              = render_cell :widgets, :recent_blog_posts
-              = render_cell :widgets, :facebook
-              = render_cell :widgets, :twitter
+          #content
+          / = render_cell :widgets, :search
+          / .column_left
+          /   .yield
+          /     = yield
+          / .column_right
+          /   .sidebar
+          /     = render_cell :widgets, :member_area
+          /     = render_cell :widgets, :recent_blog_posts
+          /     = render_cell :widgets, :facebook
+          /     = render_cell :widgets, :twitter
 
           
         .clearfix
@@ -95,7 +95,7 @@
               %i.icon-map-marker
               Location
             .content
-              = gmaps(:map_options => { "zoom" => 15, :provider => "google", :provider_key => "AIzaSyA4OioJ5YQQYF7Jr91P8KCgrBjW2PIyGuU", :auto_zoom => false}, :markers => {:data => "[{'lng': '#{current_profile.location.longitude}', 'lat': '#{current_profile.location.latitude}'}]"})
+              / = gmaps(:map_options => { "zoom" => 15, :provider => "google", :provider_key => "AIzaSyA4OioJ5YQQYF7Jr91P8KCgrBjW2PIyGuU", :auto_zoom => false}, :markers => {:data => "[{'lng': '#{current_profile.location.longitude}', 'lat': '#{current_profile.location.latitude}'}]"})
 
       
       .footer

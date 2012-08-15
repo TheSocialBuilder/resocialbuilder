@@ -1,0 +1,33 @@
+.container
+  .row
+    .column_full
+      .row
+        .column_half
+          %img{:src => @current_account.get('logo')['original']}
+        .column_half
+          %ul.main_navigation
+            %li
+              %a{:href => '#', 'data-link' => 'home'} Home
+            %li
+              %a{:href => '#', 'data-link' => 'listings'} Listings
+            %li
+              %a{:href => '#', 'data-link' => 'blog'} Blog
+            %li
+              %a{:href => '#', 'data-link' => 'testing-the-pages-test'} About
+            %li
+              %a{:href => '#', 'data-link' => 'team'} Our Team
+            %li
+              %a{:href => '#', 'data-link' => 'contact'} Contact
+          
+          
+      %hr
+      .row
+        .column_full
+          #yield
+  .row
+    .column_full
+      %hr
+      .footer
+        .float_right
+          Support | Something | Something
+        The Social Builder LLC

@@ -1,0 +1,49 @@
+-# - if @featured_listings.include? listing.mls_list_id
+-#   .ribbon
+-#     .ribbon_blue
+-#       Featured
+- if @listing.get('short_sale') != 'No'
+  .ribbon
+    .ribbon_green
+      Short Sale
+- if @listing.get('listing') == '11-133981' or @listing.get('listing') == '12-137938'
+  .ribbon
+    .ribbon_blue
+      New Listing
+
+
+.image_area
+  -# %img{:src => @listing.get('images')[0].original_image_url, :width => 130, :height => 130}
+  %img{:src => @listing.get('default_image'), :width => 180, :height => 180}
+.content_area
+  .address
+    = @listing.get('location').address
+  .city
+    = "#{@listing.get('location').city}, #{@listing.get('location').state} #{@listing.get('location').zip}"
+
+  .price
+    = accounting.formatMoney(@listing.get('price'))
+
+  .bed_bath_sq_foot
+    = "#{@listing.get('beds')} Bed, #{@listing.get('baths')} Bath"
+    
+  - if !@listing.get('description').nil?
+    %hr
+    .public_remarks
+      = @listing.get('description')
+  %hr{:style => 'margin-bottom:5px'}
+  / .extras_area
+  /   .extra{:title => "#{@listing.get('images').length} images"}
+  /     %img{:src => '/assets/web_templates/template_1/icon/image.png'}
+  /     %span= @listing.get('images').length
+  /   .extra{:title => "#{@listing.get('images').length} people have favorited this listing"}
+  /     %img{:src => '/assets/web_templates/template_1/icon/star.png'}
+  /     %span= @listing.get('images').length
+  /   .extra{:title => "#{@listing.get('images').length} people have liked this listing"}
+  /     %img{:src => '/assets/web_templates/template_1/icon/thumb.png'}
+  /     %span= @listing.get('images').length
+  /   .extra{:title => "#{@listing.get('images').length} comments on this listing"}
+  /     %img{:src => '/assets/web_templates/template_1/icon/comment.png'}
+  /     %span= @listing.get('images').length
+
+    

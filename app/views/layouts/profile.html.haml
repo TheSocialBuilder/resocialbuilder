@@ -25,9 +25,9 @@
         
         .logo
           - if current_profile.logo.url
-            = link_to image_tag(current_profile.logo.url), 'http://demo.lvh.me:3000/'
+            = link_to image_tag(current_profile.logo.url), root_url
           - else
-            = link_to image_tag("home/logo_idea.png"), 'http://demo.lvh.me:3000/'
+            = link_to image_tag("home/logo_idea.png"), root_url
           
         .contact_info
           .contact_details.pull-left
@@ -50,35 +50,22 @@
       .navigation
 
         %ul
-          - @pages.roots.each do |page|
-            %li{:id => "page_#{page.id}"}
-
-              - if page.page_type == 3
-                = link_to "Home", root_url
-              - elsif page.page_type == 4
-                = link_to "Contact", root_url
-              - elsif page.page_type == 5
-                = link_to "Listings", listings_url
-              - elsif page.page_type == 6
-                = link_to "Blog", blogs_url
-              - else
-                = link_to page.title, page_path(page.slug)
-
-              = render 'shared/menu_children', :page => page unless page.leaf?
+          %li.active= link_to "Listings", root_url
+          %li= link_to "Blog", blogs_url
+          %li= link_to "About", root_url
+          %li= link_to "Contact", root_url
 
 
       .main_content
         .content_wrapper
+          = render_cell :widgets, :search
           .column_left
             .yield
               = yield
           .column_right
             .sidebar
-              
-              = render_cell :widgets, :search
               = render_cell :widgets, :member_area
               = render_cell :widgets, :recent_blog_posts
-              -# = render_cell :widgets, :text, :title => "TESTING", :content => "TESTING CONTENT"
               = render_cell :widgets, :facebook
               = render_cell :widgets, :twitter
 

@@ -10,7 +10,7 @@ class WidgetsCell < Cell::Rails
 
   def search
 
-    @search = Search.find(session[:last_search_id])
+    @search = Search.find(session[:last_search_id]) if session[:last_search_id]
     
 
     @market = Market.find_by(:title => 'stgeorge')

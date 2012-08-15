@@ -50,12 +50,6 @@ GIT
     will_paginate_mongoid (1.0.5)
       will_paginate (~> 3.0.2)
 
-PATH
-  remote: /Users/bretthammond/Code/gems/trackoid
-  specs:
-    trackoid (0.3.8)
-      mongoid (>= 2.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -395,7 +389,6 @@ DEPENDENCIES
   sprite-factory (>= 1.4.0)!
   streama
   thin
-  trackoid!
   uglifier (>= 1.0.3)
   will_paginate_mongoid!
   yajl-ruby

@@ -8,14 +8,20 @@ class RESocialBuilder.Views.Listings extends Backbone.View
     'change #search_location': 'test'
 
   options:
+    emptyListings: false
+    hold_up: false
     per_page: 25
     page: 1
-    limit: 10
+    limit: 5
+    total_entries: 0
+    total_pages: 0
+    current_page: 1
+    entry_count: 0
 
 
   initialize: =>
     # _.bindAll(this, 'detect_scroll');
-    
+
     
     
     @collection = new RESocialBuilder.Collections.Listings()
@@ -35,63 +41,58 @@ class RESocialBuilder.Views.Listings extends Backbone.View
     
     $(window).scroll(@detect_scroll)
 
+    $(@el).html('<div class="multiple_listings"></div>')
     
-    # console.log @collection.length
-    # @template()
-    $(@el).html('')
-    @collection.each(@renderListing)
+    $('.multiple_listings').isotope
+      itemSelector: '.listing'
     
-    # $(@el).masonry( 'reloadItems' )
-    # $('.multiple_listings').masonry
-    # 
-    # $(window).load ->
-    #   
-    #   $('.multiple_listings').masonry
-    #     itemSelector: '.listing'
-    #     isAnimated: true
-    
+    @collection.each(@appendListing)
     
     @
 
-    
-  renderListing: (listing) =>
-
-    listingView = new RESocialBuilder.Views.Listing(model: listing)
-    view = listingView.render().el
-    $(@el).append(listingView.render().el)
-
   appendListing: (listing) =>
-    
+
+
+    @options.current_page = listing.get('pagination').current_page
+    @options.total_pages = listing.get('pagination').total_pages
+
+
     listingView = new RESocialBuilder.Views.Listing(model: listing)
     view = listingView.render().el
-    $(@el).append(view).fadeIn('slow').masonry('reload')
 
+    $('.multiple_listings').isotope( 'insert', $(view)).delay(3000)
     
     
   detect_scroll: =>
     # alert "scroll"
     triggerPoint = 100
 
-    if !@options.emptyListings && $(window).scrollTop() > $(document).height() - $(window).height() - triggerPoint
+
+    if @options.current_page < @options.total_pages && $(window).scrollTop() > $(document).height() - $(window).height() - triggerPoint
       # $('html, body').animate({scrollTop: ($(window).height() / 2)+'px'}, 800)
       @options.page += 1
       
       @collection.fetch
         add: true
-        wait: true
         data: 
           page: @options.page
           limit: @options.limit
         success: (collection, response) =>
           if response.length != 0
+            # alert listings[0].get('pagination').total_pages
+            # if listing[0].get('pagination').total_pages >= @options.page
+
             for listings in response          
               listing = @collection.get(listings.id)
-              @appendListing(listing)
+              @appendListing(listing) 
               @options.emptyListings = false
-              $('.sticky').stickySidebar()
+              # $('.sticky').stickySidebar()
+            # $(window).scrollTop()
           else
+            # @options.page = 1
             @options.emptyListings = true
             $(@el).append('<div style="position:absolute; bottom:25px; left:300px; "><center>No More Listings to Load</center></div>')
+
           
           
       

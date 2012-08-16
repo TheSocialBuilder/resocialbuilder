@@ -5,7 +5,7 @@ class Api::V1::ListingsController < Api::ApiController
     # params[:page] = 1 if params[:page].nil?
     # params[:limit] = 15 if params[:limit].nil?
     
-    @listings = Listing.paginate(:page => params[:page], :limit => params[:limit])
+    @listings = Listing.paginate(:page => params[:page], :per_page => params[:limit])
 
     respond_with @listings
   end

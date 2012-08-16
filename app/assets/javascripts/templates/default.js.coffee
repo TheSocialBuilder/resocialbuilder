@@ -22,18 +22,11 @@ $(window).load ->
   
   $('.multiple_listings').isotope
     itemSelector: '.listing'
-    getSortData:
-      bed: ($elem) ->
-        return parseInt($elem.data('bed'))
-
-      
-    sortAscending : true
-    sortBy : 'bed'
 
 
 
     
-  $('.sticky').stickySidebar()
+  # $('.sticky').stickySidebar()
   
   $("#slider_search_bedrooms").slider
     value: 1
@@ -42,7 +35,7 @@ $(window).load ->
     step: 1
     slide: (event, ui) ->
       $("#slider_search_bedrooms_label").html("Bedrooms: "+ui.value)
-      $('.multiple_listings').isotope({ sortBy: 'bed'});
+      # $('.multiple_listings').isotope({ sortBy: 'bed'});
 
   $("#slider_search_bedrooms_label").html("Bedrooms: "+$("#slider_search_bedrooms").slider("value"))
 
